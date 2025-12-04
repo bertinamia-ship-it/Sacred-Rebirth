@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rapé Ceremony · Michelle Robles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest-green: #315B3A;
+      --beige: #E6D9B7;
+      --brown: #6C4F3D;
+      --gold: #D9AE5F;
+      --smoke-white: #F5F5F5;
+      --earth-dark: #2A3E2F;
+      --white: #FFFFFF;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--smoke-white);
+      color: var(--earth-dark);
+      line-height: 1.7;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(245, 245, 245, 0.98);
+      border-bottom: 1px solid rgba(49, 91, 58, 0.1);
+      box-shadow: 0 5px 30px rgba(49, 91, 58, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: 'Satisfy', cursive;
+      font-size: 2rem;
+      color: var(--forest-green);
+      text-decoration: none;
+    }
+
+    .back-btn {
+      padding: 0.8rem 2rem;
+      background: var(--forest-green);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .back-btn:hover {
+      background: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    .hero-medicine {
+      margin-top: 80px;
+      height: 60vh;
+      background: linear-gradient(135deg, rgba(49, 91, 58, 0.85), rgba(108, 79, 61, 0.75)),
+                  url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1920') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-medicine h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero-medicine p {
+      font-size: 1.5rem;
+      opacity: 0.95;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .content-section {
+      background: white;
+      padding: 3rem;
+      border-radius: 25px;
+      box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
+    }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--forest-green);
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--forest-green);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .content-section li {
+      padding: 1rem 0;
+      padding-left: 2rem;
+      position: relative;
+      font-size: 1.1rem;
+      color: var(--brown);
+    }
+
+    .content-section li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .full-width-section {
+      grid-column: 1 / -1;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--forest-green), var(--brown));
+      color: white;
+      border-radius: 35px;
+      margin-top: 4rem;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+    }
+
+    .btn-primary {
+      padding: 1.4rem 3.5rem;
+      background: var(--gold);
+      color: var(--earth-dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: inline-block;
+      box-shadow: 0 15px 40px rgba(217, 174, 95, 0.4);
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(217, 174, 95, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .nav-inner {
+        padding: 1rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Michelle Robles</a>
+      <a href="index.html#ceremonies" class="back-btn">← Back to Ceremonies</a>
+    </div>
+  </nav>
+
+  <div class="hero-medicine">
+    <div>
+      <h1>Rapé</h1>
+      <p>Sacred Tobacco Medicine</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-grid">
+      <div class="content-section">
+        <h2>What is Rapé?</h2>
+        <p>Rapé (pronounced "ha-peh" or "rapay") is a sacred shamanic snuff made from powdered Amazonian tobacco and other medicinal plants, ashes, and tree barks. It has been used for thousands of years by indigenous tribes of the Amazon for healing, prayer, and spiritual connection.</p>
+        
+        <p>This powerful medicine is blown into the nostrils through a ceremonial pipe called a "Tepi" (administered by another person) or "Kuripe" (self-administered), creating an immediate grounding and centering effect.</p>
+
+        <p>Each tribe has its own unique blend, often containing specific plants chosen for their healing properties and spiritual significance.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Benefits of Rapé</h2>
+        <ul>
+          <li>Immediate grounding and centering</li>
+          <li>Mental clarity and focus</li>
+          <li>Clearing of negative energies</li>
+          <li>Opening of the third eye chakra</li>
+          <li>Release of emotional blockages</li>
+          <li>Connection with ancestral wisdom</li>
+          <li>Heightened awareness and presence</li>
+          <li>Spiritual protection and cleansing</li>
+          <li>Alignment with higher self</li>
+        </ul>
+      </div>
+
+      <div class="content-section full-width-section">
+        <h2>What to Expect in Ceremony</h2>
+        
+        <h3>Preparation</h3>
+        <p>Before receiving Rapé, set a clear intention for what you wish to release or receive. The facilitator will prepare the sacred medicine and create a ceremonial space.</p>
+
+        <h3>During Ceremony</h3>
+        <p>Rapé is administered into both nostrils, one at a time. Upon receiving the medicine:</p>
+        <ul>
+          <li>Immediate intense sensation in the sinuses</li>
+          <li>Possible tearing and purging through the nose</li>
+          <li>Instant grounding and presence</li>
+          <li>Mental clarity and stillness</li>
+          <li>Opening of energy channels</li>
+          <li>Deep connection with the present moment</li>
+        </ul>
+
+        <p>The intense phase lasts only a few minutes, followed by a profound sense of calm, clarity, and connection. Participants are encouraged to sit quietly and integrate the experience.</p>
+
+        <h3>After Ceremony</h3>
+        <p>Following Rapé, many people experience enhanced mental clarity, emotional balance, and a deep sense of grounding that can last for hours or days.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Our Approach</h2>
+        <p>We work with high-quality, ethically sourced Rapé from indigenous communities in the Amazon. Each ceremony is conducted with deep respect for the traditions and spirits of the medicine.</p>
+
+        <p>Each ceremony includes:</p>
+        <ul>
+          <li>Sacred ceremonial setting</li>
+          <li>Traditional prayers and intentions</li>
+          <li>Experienced facilitators</li>
+          <li>Individual attention and support</li>
+          <li>Integration guidance</li>
+          <li>Multiple medicine options</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>Is Rapé Right for You?</h2>
+        <p>Rapé is ideal for those seeking quick grounding, mental clarity, and spiritual connection. It's particularly beneficial for:</p>
+        <ul>
+          <li>Clearing mental fog or confusion</li>
+          <li>Grounding scattered energy</li>
+          <li>Preparing for other ceremonies</li>
+          <li>Daily spiritual practice</li>
+          <li>Releasing stuck energy</li>
+          <li>Connecting with ancestral wisdom</li>
+          <li>Enhancing meditation practice</li>
+        </ul>
+
+        <p><strong>Note:</strong> While Rapé is generally safe, it's not recommended for those with severe sinus issues, high blood pressure, or heart conditions. Consult with facilitators if you have any concerns.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to Experience Rapé?</h2>
+      <p>Connect with ancient wisdom and grounding clarity</p>
+      <a href="index.html#contact" class="btn-primary">Book Your Retreat</a>
+    </div>
+  </div>
+
+</body>
+</html>

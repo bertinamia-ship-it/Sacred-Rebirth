@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kambo Ceremony · Michelle Robles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest-green: #315B3A;
+      --beige: #E6D9B7;
+      --brown: #6C4F3D;
+      --gold: #D9AE5F;
+      --smoke-white: #F5F5F5;
+      --earth-dark: #2A3E2F;
+      --white: #FFFFFF;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--smoke-white);
+      color: var(--earth-dark);
+      line-height: 1.7;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(245, 245, 245, 0.98);
+      border-bottom: 1px solid rgba(49, 91, 58, 0.1);
+      box-shadow: 0 5px 30px rgba(49, 91, 58, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: 'Satisfy', cursive;
+      font-size: 2rem;
+      color: var(--forest-green);
+      text-decoration: none;
+    }
+
+    .back-btn {
+      padding: 0.8rem 2rem;
+      background: var(--forest-green);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .back-btn:hover {
+      background: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    .hero-medicine {
+      margin-top: 80px;
+      height: 60vh;
+      background: linear-gradient(135deg, rgba(49, 91, 58, 0.85), rgba(108, 79, 61, 0.75)),
+                  url('https://images.unsplash.com/photo-1615671524827-c1fe3973b648?w=1920') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-medicine h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero-medicine p {
+      font-size: 1.5rem;
+      opacity: 0.95;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .content-section {
+      background: white;
+      padding: 3rem;
+      border-radius: 25px;
+      box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
+    }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--forest-green);
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--forest-green);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .content-section li {
+      padding: 1rem 0;
+      padding-left: 2rem;
+      position: relative;
+      font-size: 1.1rem;
+      color: var(--brown);
+    }
+
+    .content-section li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .full-width-section {
+      grid-column: 1 / -1;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--forest-green), var(--brown));
+      color: white;
+      border-radius: 35px;
+      margin-top: 4rem;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+    }
+
+    .btn-primary {
+      padding: 1.4rem 3.5rem;
+      background: var(--gold);
+      color: var(--earth-dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: inline-block;
+      box-shadow: 0 15px 40px rgba(217, 174, 95, 0.4);
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(217, 174, 95, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .nav-inner {
+        padding: 1rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Michelle Robles</a>
+      <a href="index.html#ceremonies" class="back-btn">← Back to Ceremonies</a>
+    </div>
+  </nav>
+
+  <div class="hero-medicine">
+    <div>
+      <h1>Kambo</h1>
+      <p>Amazonian Frog Medicine</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-grid">
+      <div class="content-section">
+        <h2>What is Kambo?</h2>
+        <p>Kambo is a powerful natural medicine derived from the secretion of the Giant Monkey Frog (Phyllomedusa bicolor), native to the Amazon rainforest. This sacred medicine has been used for centuries by indigenous tribes for physical and spiritual cleansing.</p>
+        
+        <p>The secretion contains powerful bioactive peptides that stimulate the body's natural healing systems, providing deep physical, emotional, and energetic purification.</p>
+
+        <p>Kambo is known as the "vaccine of the forest" due to its powerful immune-boosting and detoxifying properties.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Benefits of Kambo</h2>
+        <ul>
+          <li>Deep physical detoxification</li>
+          <li>Immune system strengthening</li>
+          <li>Mental clarity and focus</li>
+          <li>Emotional release and balance</li>
+          <li>Increased energy and vitality</li>
+          <li>Pain relief and anti-inflammatory effects</li>
+          <li>Breaking addictive patterns</li>
+          <li>Energetic cleansing and protection</li>
+          <li>Enhanced mood and well-being</li>
+        </ul>
+      </div>
+
+      <div class="content-section full-width-section">
+        <h2>What to Expect in Ceremony</h2>
+        
+        <h3>Preparation</h3>
+        <p>Before receiving Kambo, participants drink 1-2 liters of water to support the purging process. It's important to come on an empty stomach (fasting for at least 8 hours before the ceremony).</p>
+
+        <h3>During Ceremony</h3>
+        <p>The Kambo is applied to small burns on the skin (called "gates"). The effects come on quickly, typically within minutes:</p>
+        <ul>
+          <li>Increased heart rate and body temperature</li>
+          <li>Flushing and tingling sensations</li>
+          <li>Nausea and purging (vomiting)</li>
+          <li>Feeling of pressure or swelling</li>
+          <li>Deep physical and energetic release</li>
+        </ul>
+
+        <p>The intense phase lasts 15-40 minutes, followed by a deep sense of calm, clarity, and renewal. The entire ceremony typically lasts 1-2 hours.</p>
+
+        <h3>After Ceremony</h3>
+        <p>Following the ceremony, participants often experience increased energy, mental clarity, and a sense of lightness. The benefits continue to unfold over the following days and weeks.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Our Approach</h2>
+        <p>We work with Kambo in a respectful, ceremonial context, honoring the indigenous traditions while ensuring safety and support for all participants.</p>
+
+        <p>Each ceremony includes:</p>
+        <ul>
+          <li>Thorough health screening</li>
+          <li>Sacred ceremonial space</li>
+          <li>Experienced practitioners</li>
+          <li>Individual attention and care</li>
+          <li>Integration support</li>
+          <li>Comfortable recovery time</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>Is Kambo Right for You?</h2>
+        <p>Kambo is ideal for those seeking physical detoxification, immune support, and energetic cleansing. It's particularly beneficial for:</p>
+        <ul>
+          <li>Chronic fatigue or low energy</li>
+          <li>Immune system support</li>
+          <li>Mental fog or lack of clarity</li>
+          <li>Emotional stagnation</li>
+          <li>Physical detox from toxins</li>
+          <li>Spiritual cleansing</li>
+        </ul>
+
+        <p><strong>Contraindications:</strong> Kambo is not suitable for those with certain heart conditions, pregnancy, certain medications, or specific health conditions. A comprehensive health screening is required.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to Experience Kambo?</h2>
+      <p>Powerful cleansing and renewal awaits</p>
+      <a href="index.html#contact" class="btn-primary">Book Your Retreat</a>
+    </div>
+  </div>
+
+</body>
+</html>

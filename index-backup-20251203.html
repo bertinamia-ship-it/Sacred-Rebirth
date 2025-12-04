@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spiritual Retreat · Michelle Robles ✧ Valle de Bravo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest-green: #315B3A;
+      --beige: #E6D9B7;
+      --brown: #6C4F3D;
+      --gold: #D9AE5F;
+      --smoke-white: #F5F5F5;
+      --earth-dark: #2A3E2F;
+      --white: #FFFFFF;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--smoke-white);
+      color: var(--earth-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.75);
+      border-bottom: none;
+      box-shadow: 0 8px 32px rgba(49, 91, 58, 0.10);
+      height: 62px;
+      backdrop-filter: blur(18px) saturate(1.2);
+      animation: navFadeIn 1.2s cubic-bezier(.6,-0.28,.74,.05);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    @keyframes navFadeIn {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacdisity: 1; transform: translateY(0); }
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+      gap: 1.2rem;
+    }
+
+    .brand {
+      font-family: 'Satisfy', cursive;
+      font-size: 2rem;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    .brand img {
+      height: 48px !important;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.10));
+      transition: transform 0.3s;
+    }
+    .brand img:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    }
+
+    .brand img {
+      height: 62px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 16px rgba(49,91,58,0.18));
+      animation: logoPop 1.2s cubic-bezier(.6,-0.28,.74,.05);
+      background: #fff;
+      border-radius: 50%;
+      border: 1px solid #d9ae5f;
+    }
+
+    .btn-book {
+      padding: 1.4rem 3.5rem;
+      background: linear-gradient(135deg, var(--forest-green), var(--brown));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(49, 91, 58, 0.25);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-book::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-book:hover::before {
+      left: 100%;
+    }
+
+    .btn-book:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(49, 91, 58, 0.35);
+    }
+
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(49, 91, 58, 0.35), rgba(108, 79, 61, 0.25)),
+                  url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920') center/cover;
+      z-index: 1;
+      filter: brightness(1.15) contrast(1.2) saturate(1.4) hue-rotate(-5deg);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(49, 91, 58, 0.15) 100%);
+      pointer-events: none;
+    }
+
+    /* Crystal Water Effect */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, 
+        rgba(135, 206, 235, 0.15) 0%, 
+        rgba(135, 206, 235, 0.08) 50%,
+        transparent 100%);
+      animation: waterShimmer 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes waterShimmer {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.9; }
+    }
+
+    /* Koi Fish Container */
+    .koi-pond {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 45%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Individual Koi Fish */
+    .koi {
+      position: absolute;
+      width: 120px;
+      height: 40px;
+    }
+
+    /* Koi body (elongated fish shape) */
+    .koi::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 140, 0, 0.95) 15%,
+        rgba(255, 255, 255, 0.98) 35%,
+        rgba(255, 140, 0, 0.95) 55%,
+        rgba(220, 20, 60, 0.92) 75%,
+        rgba(255, 140, 0, 0.88) 100%);
+      border-radius: 60% 40% 40% 60% / 50% 50% 50% 50%;
+      box-shadow: 
+        inset -10px 0 15px rgba(0, 0, 0, 0.1),
+        inset 10px 0 15px rgba(255, 255, 255, 0.3),
+        0 5px 20px rgba(0, 0, 0, 0.3);
+      filter: blur(0.3px);
+    }
+
+    /* Koi tail */
+    .koi::after {
+      content: '';
+      position: absolute;
+      right: -35px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 25px 0 25px 40px;
+      border-color: transparent transparent transparent rgba(255, 140, 0, 0.85);
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    /* Koi eye */
+    .koi > span {
+      position: absolute;
+      left: 15%;
+      top: 30%;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle at 35% 35%, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(0, 0, 0, 0.95) 25%,
+        rgba(0, 0, 0, 1) 100%);
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+
+    /* Koi dorsal fin */
+    .koi > span:nth-child(2) {
+      position: absolute;
+      left: 40%;
+      top: -8px;
+      width: 20px;
+      height: 15px;
+      background: rgba(255, 140, 0, 0.7);
+      border-radius: 50% 50% 0 0;
+      clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+      box-shadow: none;
+    }
+
+    /* Koi pectoral fin */
+    .koi > span:nth-child(3) {
+      position: absolute;
+      left: 25%;
+      top: 50%;
+      width: 18px;
+      height: 12px;
+      background: rgba(255, 140, 0, 0.6);
+      border-radius: 0 50% 50% 0;
+      transform: translateY(-50%) rotate(-20deg);
+      box-shadow: none;
+      animation: finMove 2s ease-in-out infinite;
+    }
+
+    @keyframes finMove {
+      0%, 100% { transform: translateY(-50%) rotate(-20deg); }
+      50% { transform: translateY(-50%) rotate(-35deg); }
+    }
+
+    /* Koi 1 - Orange with white spots (Kohaku pattern) */
+    .koi-1::before {
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.98) 15%,
+        rgba(220, 20, 60, 0.95) 30%,
+        rgba(255, 255, 255, 0.98) 50%,
+        rgba(220, 20, 60, 0.92) 70%,
+        rgba(255, 255, 255, 0.95) 90%,
+        rgba(220, 20, 60, 0.85) 100%);
+    }
+
+    .koi-1::after {
+      border-left-color: rgba(220, 20, 60, 0.85);
+    }
+
+    /* Koi 1 - Orange with white spots */
+    .koi-1 {
+      bottom: 15%;
+      left: -100px;
+      animation: swimKoi1 25s linear infinite;
+    }
+
+    @keyframes swimKoi1 {
+      0% { left: -100px; transform: translateY(0px) rotate(-5deg); }
+      25% { transform: translateY(-20px) rotate(2deg); }
+      50% { transform: translateY(-10px) rotate(-3deg); }
+      75% { transform: translateY(-25px) rotate(1deg); }
+      100% { left: calc(100% + 100px); transform: translateY(0px) rotate(-5deg); }
+    }
+
+    /* Koi 2 - Red and white (Kohaku) */
+    .koi-2 {
+      bottom: 25%;
+      left: -100px;
+      animation: swimKoi2 30s linear infinite 5s;
+    }
+
+    .koi-2::before {
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(220, 20, 60, 0.95) 15%,
+        rgba(255, 255, 255, 0.98) 35%,
+        rgba(220, 20, 60, 0.92) 55%,
+        rgba(255, 255, 255, 0.95) 75%,
+        rgba(220, 20, 60, 0.88) 100%);
+    }
+
+    .koi-2::after {
+      border-left-color: rgba(220, 20, 60, 0.85);
+    }
+
+    .koi-2 > span:nth-child(2) {
+      background: rgba(220, 20, 60, 0.7);
+    }
+
+    @keyframes swimKoi2 {
+      0% { left: -100px; transform: translateY(0px) rotate(3deg); }
+      30% { transform: translateY(15px) rotate(-2deg); }
+      60% { transform: translateY(8px) rotate(4deg); }
+      90% { transform: translateY(18px) rotate(-1deg); }
+      100% { left: calc(100% + 100px); transform: translateY(0px) rotate(3deg); }
+    }
+
+    /* Koi 3 - White with orange head (Tancho) */
+    .koi-3 {
+      bottom: 8%;
+      left: -100px;
+      animation: swimKoi3 28s linear infinite 10s;
+      width: 110px;
+      height: 36px;
+    }
+
+    .koi-3::before {
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 140, 0, 0.95) 15%,
+        rgba(255, 255, 255, 0.98) 30%,
+        rgba(255, 255, 255, 0.98) 85%,
+        rgba(255, 255, 255, 0.92) 100%);
+    }
+
+    .koi-3::after {
+      border-left-color: rgba(255, 255, 255, 0.88);
+      border-width: 22px 0 22px 35px;
+    }
+
+    .koi-3 > span:nth-child(2) {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    @keyframes swimKoi3 {
+      0% { left: -100px; transform: translateY(0px) rotate(-2deg); }
+      20% { transform: translateY(-15px) rotate(3deg); }
+      50% { transform: translateY(-8px) rotate(-1deg); }
+      80% { transform: translateY(-18px) rotate(2deg); }
+      100% { left: calc(100% + 100px); transform: translateY(0px) rotate(-2deg); }
+    }
+
+    /* Koi 4 - Smaller golden koi (Yamabuki Ogon) */
+    .koi-4 {
+      bottom: 18%;
+      left: -100px;
+      animation: swimKoi4 22s linear infinite 15s;
+      width: 100px;
+      height: 34px;
+    }
+
+    .koi-4::before {
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 215, 0, 0.95) 15%,
+        rgba(255, 223, 100, 0.98) 40%,
+        rgba(255, 215, 0, 0.95) 65%,
+        rgba(218, 165, 32, 0.92) 90%,
+        rgba(255, 215, 0, 0.88) 100%);
+    }
+
+    .koi-4::after {
+      border-left-color: rgba(255, 215, 0, 0.85);
+      border-width: 20px 0 20px 32px;
+    }
+
+    .koi-4 > span:nth-child(2) {
+      background: rgba(218, 165, 32, 0.7);
+    }
+
+    @keyframes swimKoi4 {
+      0% { left: -100px; transform: translateY(0px) rotate(4deg); }
+      35% { transform: translateY(12px) rotate(-3deg); }
+      65% { transform: translateY(5px) rotate(2deg); }
+      95% { transform: translateY(15px) rotate(-1deg); }
+      100% { left: calc(100% + 100px); transform: translateY(0px) rotate(4deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      max-width: 1000px;
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.35rem;
+      font-weight: 300;
+      margin-bottom: 3rem;
+      opacity: 0.95;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-primary {
+      padding: 1.4rem 3.5rem;
+      background: linear-gradient(135deg, var(--gold), var(--brown));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: inline-block;
+      box-shadow: 0 15px 40px rgba(217, 174, 95, 0.4);
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(217, 174, 95, 0.5);
+    }
+
+    .btn-secondary {
+      padding: 1.4rem 3.5rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      display: inline-block;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: var(--transition);
+      margin-left: 1.5rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--forest-green);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--brown);
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    /* Ceremony Room Showcase */
+    .ceremony-room-showcase {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      margin: -6rem 0 4rem 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--brown) 100%);
+    }
+
+    .ceremony-room-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) perspective(1000px) rotateY(-5deg) scale(1.05);
+      width: 95%;
+      max-width: 1400px;
+      height: 90%;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 
+        0 50px 100px rgba(0, 0, 0, 0.5),
+        0 20px 60px rgba(49, 91, 58, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .ceremony-room-image:hover {
+      transform: translate(-50%, -50%) perspective(1000px) rotateY(0deg) scale(1.08);
+      box-shadow: 
+        0 60px 120px rgba(0, 0, 0, 0.6),
+        0 30px 80px rgba(49, 91, 58, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .ceremony-room-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(1.05) contrast(1.1) saturate(1.2);
+      transition: filter 0.6s ease;
+    }
+
+    .ceremony-room-image:hover img {
+      filter: brightness(1.1) contrast(1.15) saturate(1.3);
+    }
+
+    .ceremony-room-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+      z-index: 2;
+    }
+
+    .ceremony-room-text {
+      max-width: 600px;
+      color: white;
+    }
+
+    .ceremony-room-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    .ceremony-room-text p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 968px) {
+      .facilitators-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .ceremony-room-showcase {
+        height: 60vh;
+        margin: -4rem 0 3rem 0;
+      }
+
+      .ceremony-room-image {
+        width: 98%;
+        height: 85%;
+        border-radius: 25px;
+        transform: translate(-50%, -50%) perspective(1000px) rotateY(0deg) scale(1);
+      }
+
+      .ceremony-room-image:hover {
+        transform: translate(-50%, -50%) perspective(1000px) rotateY(0deg) scale(1.02);
+      }
+
+      .ceremony-room-overlay {
+        padding: 2rem 1.5rem;
+      }
+
+      .ceremony-room-text h3 {
+        font-size: 1.8rem;
+      }
+
+      .ceremony-room-text p {
+        font-size: 1rem;
+      }
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      border-radius: 25px;
+      box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
+      transition: var(--transition);
+      border: 2px solid rgba(49, 91, 58, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--forest-green), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(49, 91, 58, 0.18);
+      border-color: var(--gold);
+    }
+
+    .feature-icon {
+      font-size: 4rem;
+      margin-bottom: 1.8rem;
+      filter: drop-shadow(0 4px 10px rgba(49, 91, 58, 0.2));
+    }
+
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--forest-green);
+    }
+
+    .feature-text {
+      font-size: 1.05rem;
+      color: var(--brown);
+      line-height: 1.6;
+    }
+
+    .ceremonies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .ceremony-card {
+      background: linear-gradient(135deg, 
+        rgba(230, 217, 183, 0.95) 0%, 
+        rgba(230, 217, 183, 0.85) 100%);
+      padding: 3rem 2rem;
+      border-radius: 25px;
+      box-shadow: 0 15px 50px rgba(49, 91, 58, 0.15);
+      border: 2px solid rgba(49, 91, 58, 0.1);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+    }
+
+    .ceremony-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(217, 174, 95, 0.08) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .ceremony-card:hover::after {
+      opacity: 1;
+    }
+
+    .ceremony-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(49, 91, 58, 0.22);
+    }
+
+    .ceremony-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--forest-green);
+    }
+
+    .ceremony-text {
+      font-size: 1.05rem;
+      color: var(--brown);
+      line-height: 1.7;
+    }
+
+    .pricing-card {
+      max-width: 750px;
+      margin: 4rem auto 0;
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--brown) 100%);
+      color: white;
+      border-radius: 35px;
+      padding: 5rem 4rem;
+      text-align: center;
+      box-shadow: 0 25px 70px rgba(49, 91, 58, 0.35);
+      position: relative;
+      overflow: hidden;
+      border: 3px solid rgba(217, 174, 95, 0.3);
+      width: 100%;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(217, 174, 95, 0.15) 0%, transparent 70%);
+      animation: pulse-pricing 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse-pricing {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .pricing-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-amount {
+      font-size: 5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-period {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 3rem 0;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-features li {
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--gold);
+      color: var(--forest-green);
+      border-radius: 50%;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .video-testimonial {
+      background: white;
+      padding: 1rem;
+      border-radius: 25px;
+      box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
+      transition: var(--transition);
+      border: 2px solid rgba(49, 91, 58, 0.08);
+      overflow: hidden;
+    }
+
+    .video-testimonial:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(49, 91, 58, 0.18);
+      border-color: var(--gold);
+    }
+
+    .video-testimonial iframe {
+      width: 100%;
+      height: 280px;
+      border-radius: 15px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
+      transition: var(--transition);
+      border: 2px solid rgba(49, 91, 58, 0.08);
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(49, 91, 58, 0.18);
+      border-color: var(--gold);
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--brown);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid rgba(49, 91, 58, 0.1);
+    }
+
+    .testimonial-author strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--forest-green);
+    }
+
+    .testimonial-author span {
+      font-size: 0.95rem;
+      color: var(--brown);
+      opacity: 0.8;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(49, 91, 58, 0.1);
+      transition: var(--transition);
+      border: 2px solid rgba(49, 91, 58, 0.05);
+    }
+
+    .contact-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(49, 91, 58, 0.15);
+      border-color: var(--gold);
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--forest-green);
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--forest-green);
+    }
+
+    .contact-link {
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .contact-link:hover {
+      color: var(--gold);
+    }
+
+    footer {
+      background: var(--earth-dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 55px;
+      height: 55px;
+      background: var(--forest-green);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+      box-shadow: 0 5px 20px rgba(49, 91, 58, 0.3);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--brown);
+      transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-inner {
+        padding: 1rem 1.5rem;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .btn-secondary {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .features-grid,
+      .ceremonies-grid,
+      .testimonials-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand"><img src="FOTOS RETIRO/LOGOOFICIAL .png" alt="Sacred Rebirth" /></div>
+      <ul class="nav-links">
+        <li><a href="#about" data-en="About" data-es="Acerca">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+          <span>About</span></a></li>
+        <li><a href="#ceremonies" data-en="Medicines" data-es="Medicinas">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+          <span>Ceremonies</span></a></li>
+        <li><a href="#testimonials" data-en="Testimonials" data-es="Testimonios">
+          <svg viewBox="0 0 24 24"><path d="M21 6h-2v9H5v2c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6zm-2-2c1.1 0 2 .9 2 2v12c0 2.21-1.79 4-4 4H7c-2.21 0-4-1.79-4-4V6c0-1.1.9-2 2-2h14zm-7 7h2v2h-2zm0-4h2v2h-2z"/></svg>
+          <span>Testimonials</span></a></li>
+        <li><a href="#investment" data-en="Ceremonies" data-es="Ceremonias">
+          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>Investment</span></a></li>
+        <li><a href="gallery.html" data-en="Gallery" data-es="Galería">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <span>Gallery</span></a></li>
+        <li><a href="#contact" data-en="Contact" data-es="Contacto">
+          <svg viewBox="0 0 24 24"><path d="M21 8V7l-3 2.29V8c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1.29L21 17v-9z"/></svg>
+          <span>Contact</span></a></li>
+      </ul>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title" data-en="Embrace your Shadow with love and compassion" data-es="Abraza tu sombra con amor y compasión">
+        Embrace your Shadow with love and compassion
+      </h1>
+      <p class="hero-subtitle" data-en="Valle de Bravo, Mexico · Casa Amalahi" data-es="Valle de Bravo, México · Casa Amalahi">
+        Valle de Bravo, Mexico · Casa Amalahi
+      </p>
+      <div>
+        <a href="#investment" class="btn-primary" data-en="Join the Retreat" data-es="Únete al Retiro">Join the Retreat</a>
+        <a href="#about" class="btn-secondary" data-en="Learn More" data-es="Saber Más">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Sección About (Michelle & Brian) -->
+  <section id="about" style="padding: 5rem 0 3rem 0; background: linear-gradient(135deg, #f5f5f5 60%, #e6d9b7 100%); margin-top: 3rem;">
+      <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; justify-content: center; margin-top: 2.5rem; margin-bottom: 2.5rem;">
+        <div style="flex: 1 1 320px; max-width: 400px; text-align: center;">
+          <img src="MICHEL-BRIAN.JPG" alt="Michelle Robles & Brian Solomon" style="width: 100%; max-width: 320px; border-radius: 2rem; box-shadow: 0 8px 32px rgba(49,91,58,0.13); border: 4px solid #d9ae5f; background: #fff;" />
+        </div>
+        <div style="flex: 2 1 400px; max-width: 700px;">
+          <h2 class="section-title" style="margin-bottom: 1.2rem; color: #315B3A;">About Michelle & Brian</h2>
+          <h3 style="font-family: 'Satisfy', cursive; color: #D9AE5F; font-size: 2rem; margin-bottom: 1.2rem;">Your Retreat Facilitators</h3>
+          <p style="font-size: 1.18rem; color: #6C4F3D; margin-bottom: 1.2rem;">Michelle and Brian are experienced facilitators dedicated to the path of healing and spiritual growth. With years of training in plant medicine ceremonies and traditional healing practices, they create a safe and sacred space for transformation.</p>
+          <p style="font-size: 1.13rem; color: #2A3E2F;">Together, they guide participants through profound journeys of self-discovery, healing, and awakening, honoring sacred traditions while holding space with love and compassion.</p>
+        </div>
+      </div>
+    </section>
+      <h2 class="section-title" data-en="Ancestral Medicines" data-es="Medicina Ancestral">Ancestral Medicines</h2>
+      <p class="section-subtitle" data-en="Journey through powerful healing modalities guided by experienced facilitators." data-es="Viaja a través de poderosas modalidades de sanación guiadas por facilitadores experimentados.">
+        Journey through powerful healing modalities guided by experienced facilitators.
+      </p>
+
+      <div class="ceremonies-grid">
+      <a href="ayahuasca.html" class="ceremony-card">
+        <h3 class="ceremony-title" data-en="Ayahuasca" data-es="Ayahuasca">Ayahuasca</h3>
+        <p class="ceremony-text" data-en="Sacred plant medicine ceremony for deep healing, spiritual insight, and transformation." data-es="Ceremonia sagrada de medicina vegetal para sanación profunda, visión espiritual y transformación.">
+          Sacred plant medicine ceremony for deep healing, spiritual insight, and transformation.
+        </p>
+      </a>
+      <a href="kambo.html" class="ceremony-card">
+        <h3 class="ceremony-title" data-en="Kambo" data-es="Kambo">Kambo</h3>
+        <p class="ceremony-text" data-en="Powerful Amazonian frog medicine for physical and energetic cleansing and renewal." data-es="Poderosa medicina amazónica de rana para limpieza física y energética y renovación.">
+          Powerful Amazonian frog medicine for physical and energetic cleansing and renewal.
+        </p>
+      </a>
+      <a href="rape.html" class="ceremony-card">
+        <h3 class="ceremony-title" data-en="Rapé" data-es="Rapé">Rapé</h3>
+        <p class="ceremony-text" data-en="Sacred tobacco snuff for grounding, clearing, and connecting with ancestral wisdom." data-es="Tabaco sagrado en polvo para enraizamiento, limpieza y conexión con sabiduría ancestral.">
+          Sacred tobacco snuff for grounding, clearing, and connecting with ancestral wisdom.
+        </p>
+      </a>
+      <a href="qigong.html" class="ceremony-card">
+        <h3 class="ceremony-title" data-en="Qi Gong" data-es="Qi Gong">Qi Gong</h3>
+        <p class="ceremony-text" data-en="Ancient Chinese practice cultivating life force energy through movement and breath." data-es="Práctica china ancestral que cultiva la energía vital a través del movimiento y la respiración.">
+          Ancient Chinese practice cultivating life force energy through movement and breath.
+        </p>
+      </a>
+    </div>
+    </div>
+  </section>
+
+  <section id="testimonials" style="margin-bottom: 4.5rem;">
+    <div class="container" style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
+      <h2 class="section-title" data-en="What Others Say" data-es="Lo Que Dicen Otros">What Others Say</h2>
+      <p class="section-subtitle" data-en="Hear from those who have experienced profound transformation on this sacred journey." data-es="Escucha a quienes han experimentado una transformación profunda en este viaje sagrado.">Hear from those who have experienced profound transformation on this sacred journey.</p>
+
+      <div class="testimonials-grid">
+        <div class="video-testimonial">
+          <iframe src="https://www.youtube.com/embed/mHKqPto_2AA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-testimonial">
+          <iframe src="https://www.youtube.com/embed/Y6VkPm1p6gY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-testimonial">
+          <iframe src="https://www.youtube.com/embed/FH_Uk5sr3_Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-testimonial">
+          <iframe src="https://www.youtube.com/embed/yKWiqixUN0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="investment" style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; align-items: flex-start;">
+  <!-- Promotional box removed from Ceremonies section as requested -->
+  <div class="container" style="max-width: 700px; background: linear-gradient(135deg, #315B3A 0%, #E6D9B7 100%); border-radius: 2.5rem; box-shadow: 0 8px 32px rgba(49,91,58,0.13); padding: 3.5rem 2.5rem 2.5rem 2.5rem; text-align: center; margin-top: 2.5rem; margin-bottom: 2.5rem;">
+    <h2 class="section-title" data-en="Next Ceremony Coming Up" data-es="Próxima Ceremonia" style="font-size: 2.7rem; color: #fff; margin-bottom: 1.2rem;">Next Ceremony Coming Up</h2>
+    <h3 class="pricing-title" data-en="7-Night Retreat" data-es="Retiro de 7 Noches">7-Night Retreat</h3>
+    <div style="font-size: 2.1rem; font-weight: 700; color: #D9AE5F; margin-bottom: 1.2rem; letter-spacing: 1px; text-shadow: 0 2px 12px #315B3A99; background: #fff2; border-radius: 1rem; padding: 0.7rem 1.2rem; display: inline-block;">Next Retreat: <span style="color: #fff; background: #D9AE5F; border-radius: 0.7rem; padding: 0.3rem 0.8rem; font-size: 2.3rem; font-weight: 900; letter-spacing: 2px;">11 January 2026</span></div>
+    <ul class="pricing-features">
+      <li data-en="7 nights accommodation at Casa Amalahi" data-es="7 noches de alojamiento en Casa Amalahi">7 nights accommodation at Casa Amalahi</li>
+      <li data-en="All ceremonies and practices included" data-es="Todas las ceremonias y prácticas incluidas">All ceremonies and practices included</li>
+      <li data-en="Nutritious meals prepared daily" data-es="Comidas nutritivas preparadas diariamente">Nutritious meals prepared daily</li>
+      <li data-en="Daily Qi Gong and meditation sessions" data-es="Sesiones diarias de Qi Gong y meditación">Daily Qi Gong and meditation sessions</li>
+      <li data-en="Guidance from experienced facilitators" data-es="Guía de facilitadores experimentados">Guidance from experienced facilitators</li>
+      <li data-en="Integration support and community" data-es="Apoyo de integración y comunidad">Integration support and community</li>
+    </ul>
+    <a href="#contact" class="btn-primary" data-en="Reserve Your Spot" data-es="Reserva tu Lugar">Reserve Your Spot</a>
+  </div>
+</section>
+
+  <section id="contact">
+        <!-- La galería ahora está en gallery.html -->
+    <div class="container" style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
+      <h2 class="section-title" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</h2>
+      <p class="section-subtitle" data-en="Ready to begin your journey? Reach out to learn more and reserve your space." data-es="¿Listo para comenzar tu viaje? Contáctanos para aprender más y reservar tu espacio.">
+        Ready to begin your journey? Reach out to learn more and reserve your space.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:2.2em;height:2.2em;border-radius:0.4em;background:#25D366;box-shadow:0 2px 8px rgba(49,91,58,0.10);padding:0.2em;" />
+          </div>
+          <h3 class="contact-title">WhatsApp</h3>
+          <a href="https://wa.me/527225123413" class="contact-link" target="_blank">+52 722 512 3413</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <h3 class="contact-title">Email</h3>
+          <a href="mailto:michellemilove@hotmail.com" class="contact-link">michellemilove@hotmail.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <h3 class="contact-title">Website</h3>
+          <a href="https://www.vivirenelamor.com/" class="contact-link" target="_blank">vivirenelamor.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Michelle Robles · Valle de Bravo, Mexico</p>
+    <div class="footer-links">
+      <a href="#about" data-en="About" data-es="Acerca">About</a>
+      <a href="#ceremonies" data-en="Ceremonies" data-es="Ceremonias">Ceremonies</a>
+      <a href="#testimonials" data-en="Testimonials" data-es="Testimonios">Testimonials</a>
+      <a href="#investment" data-en="Investment" data-es="Inversión">Investment</a>
+      <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+    </div>
+  </footer>
+
+  <div class="scroll-top">↑</div>
+
+  <script>
+    // Language Toggle
+    let currentLang = localStorage.getItem('language') || 'en';
+    
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+    
+    setLanguage(currentLang);
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    // Navbar scroll effect
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Book Now button scroll
+    document.querySelector('.btn-book').addEventListener('click', () => {
+      document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

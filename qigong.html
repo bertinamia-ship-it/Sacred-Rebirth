@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Qi Gong Practice · Michelle Robles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest-green: #315B3A;
+      --beige: #E6D9B7;
+      --brown: #6C4F3D;
+      --gold: #D9AE5F;
+      --smoke-white: #F5F5F5;
+      --earth-dark: #2A3E2F;
+      --white: #FFFFFF;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--smoke-white);
+      color: var(--earth-dark);
+      line-height: 1.7;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(245, 245, 245, 0.98);
+      border-bottom: 1px solid rgba(49, 91, 58, 0.1);
+      box-shadow: 0 5px 30px rgba(49, 91, 58, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: 'Satisfy', cursive;
+      font-size: 2rem;
+      color: var(--forest-green);
+      text-decoration: none;
+    }
+
+    .back-btn {
+      padding: 0.8rem 2rem;
+      background: var(--forest-green);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .back-btn:hover {
+      background: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    .hero-medicine {
+      margin-top: 80px;
+      height: 60vh;
+      background: linear-gradient(135deg, rgba(49, 91, 58, 0.85), rgba(108, 79, 61, 0.75)),
+                  url('https://images.unsplash.com/photo-1545389336-cf090694435e?w=1920') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-medicine h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero-medicine p {
+      font-size: 1.5rem;
+      opacity: 0.95;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .content-section {
+      background: white;
+      padding: 3rem;
+      border-radius: 25px;
+      box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
+    }
+
+    .content-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--forest-green);
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--forest-green);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+    }
+
+    .content-section ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .content-section li {
+      padding: 1rem 0;
+      padding-left: 2rem;
+      position: relative;
+      font-size: 1.1rem;
+      color: var(--brown);
+    }
+
+    .content-section li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .full-width-section {
+      grid-column: 1 / -1;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--forest-green), var(--brown));
+      color: white;
+      border-radius: 35px;
+      margin-top: 4rem;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+    }
+
+    .btn-primary {
+      padding: 1.4rem 3.5rem;
+      background: var(--gold);
+      color: var(--earth-dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: inline-block;
+      box-shadow: 0 15px 40px rgba(217, 174, 95, 0.4);
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(217, 174, 95, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .nav-inner {
+        padding: 1rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Michelle Robles</a>
+      <a href="index.html#ceremonies" class="back-btn">← Back to Ceremonies</a>
+    </div>
+  </nav>
+
+  <div class="hero-medicine">
+    <div>
+      <h1>Qi Gong</h1>
+      <p>Cultivating Life Force Energy</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content-grid">
+      <div class="content-section">
+        <h2>What is Qi Gong?</h2>
+        <p>Qi Gong (pronounced "chee-gong") is an ancient Chinese practice that combines movement, breath, and meditation to cultivate and balance life force energy (Qi or Chi) within the body.</p>
+        
+        <p>With roots dating back over 4,000 years, Qi Gong has been used for healing, spiritual development, and longevity. The practice integrates slow, flowing movements with focused breathing and meditative awareness.</p>
+
+        <p>The name "Qi Gong" translates to "energy work" or "cultivating energy," reflecting its purpose of harmonizing the body's vital energy for optimal health and spiritual growth.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Benefits of Qi Gong</h2>
+        <ul>
+          <li>Increased energy and vitality</li>
+          <li>Reduced stress and anxiety</li>
+          <li>Improved flexibility and balance</li>
+          <li>Enhanced immune system function</li>
+          <li>Better sleep quality</li>
+          <li>Mental clarity and focus</li>
+          <li>Emotional balance and stability</li>
+          <li>Improved circulation and organ function</li>
+          <li>Spiritual awareness and connection</li>
+          <li>Pain relief and faster healing</li>
+        </ul>
+      </div>
+
+      <div class="content-section full-width-section">
+        <h2>What to Expect in Practice</h2>
+        
+        <h3>Daily Morning Sessions</h3>
+        <p>Each morning during the retreat, we gather for Qi Gong practice as the sun rises. This sacred time allows us to connect with nature's energy and set a positive tone for the day.</p>
+
+        <h3>During Practice</h3>
+        <p>Our Qi Gong sessions include:</p>
+        <ul>
+          <li>Gentle stretching and warm-up exercises</li>
+          <li>Standing meditation and postures</li>
+          <li>Flowing movement sequences</li>
+          <li>Breathing techniques (pranayama)</li>
+          <li>Energy cultivation exercises</li>
+          <li>Self-massage and acupressure</li>
+          <li>Meditation and visualization</li>
+        </ul>
+
+        <p>All practices are gentle and accessible to all fitness levels. Our experienced instructor guides you through each movement with attention to proper form and energy flow.</p>
+
+        <h3>Integration with Ceremonies</h3>
+        <p>Qi Gong serves as a powerful complementary practice to plant medicine ceremonies, helping to move and integrate energy, process emotions, and maintain grounding throughout the retreat.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Our Approach</h2>
+        <p>We blend traditional Chinese Qi Gong with elements of Tai Chi and meditation, creating a holistic practice that supports your transformation journey.</p>
+
+        <p>Each session includes:</p>
+        <ul>
+          <li>Mindful movement sequences</li>
+          <li>Breath awareness practices</li>
+          <li>Energy cultivation techniques</li>
+          <li>Grounding and centering exercises</li>
+          <li>Integration time and reflection</li>
+          <li>Individual guidance and adjustments</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h2>Is Qi Gong Right for You?</h2>
+        <p>Qi Gong is suitable for everyone, regardless of age or fitness level. It's particularly beneficial for:</p>
+        <ul>
+          <li>Beginners to energy practices</li>
+          <li>Those seeking gentle movement</li>
+          <li>People recovering from illness or injury</li>
+          <li>Anyone wanting to reduce stress</li>
+          <li>Those preparing for or integrating plant medicine</li>
+          <li>Anyone seeking mind-body-spirit connection</li>
+          <li>Those wanting sustainable daily practice</li>
+        </ul>
+
+        <p><strong>No experience necessary:</strong> Our practices are designed to be accessible and beneficial for complete beginners while offering depth for experienced practitioners.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to Cultivate Your Energy?</h2>
+      <p>Experience the transformative power of daily Qi Gong practice</p>
+      <a href="index.html#contact" class="btn-primary">Book Your Retreat</a>
+    </div>
+  </div>
+
+</body>
+</html>
