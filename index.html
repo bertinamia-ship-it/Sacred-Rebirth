@@ -589,6 +589,35 @@
       50% { box-shadow: 0 15px 40px rgba(217, 174, 95, 0.5), 0 0 30px rgba(217, 174, 95, 0.3); }
     }
 
+    /* Hero Main Button - Extra Large and Beautiful */
+    .btn-hero-main {
+      padding: 1.8rem 4.5rem !important;
+      font-size: 1.4rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #d4a373 0%, #c9956c 25%, #d4a373 50%, #e8c49a 75%, #d4a373 100%) !important;
+      background-size: 200% 200% !important;
+      animation: shimmer-gold 3s ease-in-out infinite, float-button 4s ease-in-out infinite !important;
+      border: 2px solid rgba(255, 255, 255, 0.3) !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes shimmer-gold {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes float-button {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .btn-hero-main:hover {
+      transform: translateY(-10px) scale(1.08) !important;
+      box-shadow: 0 30px 80px rgba(217, 174, 95, 0.7), 0 0 60px rgba(217, 174, 95, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
+      animation: none !important;
+    }
+
     .btn-primary::before {
       content: '';
       position: absolute;
@@ -1729,8 +1758,7 @@
         Valle de Bravo, Mexico · Casa Amalahi
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto;">
-        <a href="#investment" class="btn-primary" data-en="Join the Retreat" data-es="Únete al Retiro">Join the Retreat</a>
-        <a href="#about" class="btn-secondary" data-en="Learn More" data-es="Saber Más">Learn More</a>
+        <a href="#investment" class="btn-primary btn-hero-main" data-en="Join the Retreat" data-es="Únete al Retiro">✨ Join the Retreat ✨</a>
       </div>
     </div>
   </section>
