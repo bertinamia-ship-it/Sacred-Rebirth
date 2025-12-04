@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+  <meta name="keywords" content="spiritual retreat, ayahuasca, kambo, rapé, rapeh, qigong, ancestral medicine, healing, retreats Valle de Bravo, Mexico, healing retreat, ceremony, spirituality, integration, wellness, Sacred Rebirth, Michelle Robles, Casa Amalahi, ayahuasca retreat, medicine retreat, Mexico retreat, traditional medicine, testimonials, transformation, personal growth, holistic retreat, spiritual retreat Mexico, sacred plants retreat, wellness retreat, consciousness retreat, meditation retreat, yoga retreat, detox retreat, self-discovery retreat, connection retreat, nature retreat, women's retreat, mixed retreat, integration retreat, spirituality retreat, emotional healing retreat, physical healing retreat, self-knowledge retreat, consciousness expansion retreat, personal development retreat, mindfulness retreat, introspection retreat, spiritual connection retreat, alternative medicine retreat, natural medicine retreat, indigenous medicine retreat, traditional Mexican medicine retreat, sacred medicine retreat, ancestral medicine Mexico, ancestral medicine Valle de Bravo, spiritual retreat Valle de Bravo, spiritual retreat Casa Amalahi, spiritual retreat Michelle Robles, spiritual retreat Sacred Rebirth, ayahuasca spiritual retreat, kambo spiritual retreat, rapé spiritual retreat, qigong spiritual retreat, integration spiritual retreat, wellness spiritual retreat, healing spiritual retreat, transformation spiritual retreat, personal growth spiritual retreat, holistic spiritual retreat, sacred plants spiritual retreat, consciousness spiritual retreat, meditation spiritual retreat, yoga spiritual retreat, detox spiritual retreat, self-knowledge spiritual retreat, connection spiritual retreat, nature spiritual retreat, women's spiritual retreat, mixed spiritual retreat, integration spiritual retreat, spirituality spiritual retreat, emotional healing spiritual retreat, physical healing spiritual retreat, self-discovery spiritual retreat, consciousness expansion spiritual retreat, personal development spiritual retreat, mindfulness spiritual retreat, introspection spiritual retreat, spiritual connection spiritual retreat, alternative medicine spiritual retreat, natural medicine spiritual retreat, indigenous medicine spiritual retreat, traditional Mexican medicine spiritual retreat, sacred medicine spiritual retreat, ancestral medicine spiritual retreat, ancestral medicine Mexico, ancestral medicine Valle de Bravo">
 
   <style>
     :root {
@@ -47,13 +48,14 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.75);
-      border-bottom: none;
-      box-shadow: 0 8px 32px rgba(49, 91, 58, 0.10);
+      background: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(217, 174, 95, 0.3);
+      box-shadow: 0 10px 40px rgba(49, 91, 58, 0.15), 0 0 80px rgba(217, 174, 95, 0.1);
       height: 62px;
-      backdrop-filter: blur(18px) saturate(1.2);
+      backdrop-filter: blur(25px) saturate(150%);
+      -webkit-backdrop-filter: blur(25px) saturate(150%);
       animation: navFadeIn 1.2s cubic-bezier(.6,-0.28,.74,.05);
-      transition: background 0.4s, box-shadow 0.4s;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     @keyframes navFadeIn {
@@ -75,24 +77,13 @@
     .brand {
       font-family: 'Satisfy', cursive;
       font-size: 2rem;
-        display: flex;
-        align-items: center;
-        height: 100%;
-    }
-    .brand img {
-      height: 48px !important;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.10));
-      transition: transform 0.3s;
-    }
-    .brand img:hover {
-      transform: scale(1.08) rotate(-2deg);
-    }
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
 
     .brand img {
-      height: 62px;
+      height: 54px;
       width: auto;
       object-fit: contain;
       filter: drop-shadow(0 4px 16px rgba(49,91,58,0.18));
@@ -101,6 +92,11 @@
       border-radius: 50%;
       padding: 6px;
       border: 2px solid #e6d9b7;
+      transition: transform 0.3s;
+    }
+
+    .brand img:hover {
+      transform: scale(1.08) rotate(-2deg);
     }
 
     @keyframes logoPop {
@@ -154,18 +150,16 @@
 
     .nav-links a:hover {
       color: #d9ae5f;
-      font-size: 1.28rem;
-        font-size: 1.18rem;
-        background: rgba(233, 216, 183, 0.18);
-        box-shadow: 0 2px 12px rgba(49,91,58,0.08);
+      font-size: 1.18rem;
+      background: rgba(233, 216, 183, 0.18);
+      box-shadow: 0 2px 12px rgba(49,91,58,0.08);
     }
+
     .nav-links a:hover svg {
       fill: #315B3A;
     }
-    }
 
     .nav-links a:hover::after {
-      width: 100%;
       width: 80%;
     }
 
@@ -253,10 +247,16 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(49, 91, 58, 0.35), rgba(108, 79, 61, 0.25)),
+      background: linear-gradient(135deg, rgba(49, 91, 58, 0.45), rgba(108, 79, 61, 0.35)),
                   url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920') center/cover;
       z-index: 1;
-      filter: brightness(1.15) contrast(1.2) saturate(1.4) hue-rotate(-5deg);
+      filter: brightness(1.2) contrast(1.25) saturate(1.5) hue-rotate(-8deg);
+      animation: subtle-zoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes subtle-zoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
     }
 
     .hero-bg::after {
@@ -541,7 +541,19 @@
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, #ffffff 0%, #f0e68c 50%, #ffd700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      animation: gradient-flow 6s ease infinite;
+      background-size: 200% 200%;
+      filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+    }
+
+    @keyframes gradient-flow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .hero-subtitle {
@@ -554,41 +566,95 @@
 
     .btn-primary {
       padding: 1.4rem 3.5rem;
-      background: linear-gradient(135deg, var(--gold), var(--brown));
+      background: linear-gradient(135deg, var(--gold) 0%, var(--brown) 100%);
       color: white;
       text-decoration: none;
       border-radius: 50px;
       font-size: 1.15rem;
       font-weight: 700;
-      display: inline-block;
-      box-shadow: 0 15px 40px rgba(217, 174, 95, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(217, 174, 95, 0.4), 0 0 0 0 rgba(217, 174, 95, 0.4);
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 15px 40px rgba(217, 174, 95, 0.4), 0 0 20px rgba(217, 174, 95, 0.2); }
+      50% { box-shadow: 0 15px 40px rgba(217, 174, 95, 0.5), 0 0 30px rgba(217, 174, 95, 0.3); }
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
     }
 
     .btn-primary:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 20px 50px rgba(217, 174, 95, 0.5);
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 25px 60px rgba(217, 174, 95, 0.6), 0 0 40px rgba(217, 174, 95, 0.4);
+      animation: none;
     }
 
     .btn-secondary {
       padding: 1.4rem 3.5rem;
       background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px) saturate(180%);
+      -webkit-backdrop-filter: blur(15px) saturate(180%);
       color: white;
       text-decoration: none;
       border-radius: 50px;
       font-size: 1.15rem;
       font-weight: 600;
-      display: inline-block;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.4);
       transition: var(--transition);
       margin-left: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-secondary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(217, 174, 95, 0.4));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .btn-secondary:hover::after {
+      opacity: 1;
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-4px) scale(1.02);
-      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-6px) scale(1.05);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
     }
 
     section {
@@ -611,7 +677,31 @@
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       text-align: center;
       margin-bottom: 1rem;
-      color: var(--forest-green);
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--gold) 50%, var(--forest-green) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 2px;
     }
 
     .section-subtitle {
@@ -747,40 +837,55 @@
     .feature-card {
       text-align: center;
       padding: 3rem 2.5rem;
-      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-      border-radius: 25px;
-      box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
-      transition: var(--transition);
-      border: 2px solid rgba(49, 91, 58, 0.08);
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(49, 91, 58, 0.12);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
     }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    .feature-card:nth-child(4) { animation-delay: 0.4s; }
 
     .feature-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--forest-green), var(--gold));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s ease;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(217, 174, 95, 0.3) 50%, transparent 70%);
+      transform: rotate(45deg);
+      transition: all 0.6s;
     }
 
     .feature-card:hover::before {
-      transform: scaleX(1);
+      left: 100%;
     }
 
     .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 60px rgba(49, 91, 58, 0.18);
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 35px 80px rgba(49, 91, 58, 0.25), 0 0 50px rgba(217, 174, 95, 0.2);
       border-color: var(--gold);
+      background: linear-gradient(135deg, #ffffff 0%, #fffbf0 100%);
     }
 
     .feature-icon {
-      font-size: 4rem;
+      font-size: clamp(3rem, 5vw, 4rem);
       margin-bottom: 1.8rem;
       filter: drop-shadow(0 4px 10px rgba(49, 91, 58, 0.2));
     }
@@ -813,13 +918,28 @@
       border-radius: 25px;
       box-shadow: 0 15px 50px rgba(49, 91, 58, 0.15);
       border: 2px solid rgba(49, 91, 58, 0.1);
-      transition: var(--transition);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
       display: block;
       cursor: pointer;
+      transform-style: preserve-3d;
+    }
+
+    .ceremony-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, transparent, rgba(217, 174, 95, 0.3), transparent);
+      border-radius: 25px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: -1;
     }
 
     .ceremony-card::after {
@@ -829,9 +949,19 @@
       right: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(217, 174, 95, 0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(217, 174, 95, 0.12) 0%, transparent 70%);
       opacity: 0;
       transition: opacity 0.5s;
+    }
+
+    .ceremony-card:hover::before {
+      opacity: 1;
+      animation: rotate-border 3s linear infinite;
+    }
+
+    @keyframes rotate-border {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .ceremony-card:hover::after {
@@ -840,8 +970,8 @@
 
     .ceremony-card:hover {
       border-color: var(--gold);
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 60px rgba(49, 91, 58, 0.22);
+      transform: translateY(-12px) scale(1.03) rotateX(2deg);
+      box-shadow: 0 30px 70px rgba(49, 91, 58, 0.25), 0 10px 30px rgba(217, 174, 95, 0.2);
     }
 
     .ceremony-title {
@@ -860,16 +990,30 @@
     .pricing-card {
       max-width: 750px;
       margin: 4rem auto 0;
-      background: linear-gradient(135deg, var(--forest-green) 0%, var(--brown) 100%);
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--brown) 50%, var(--forest-green) 100%);
+      background-size: 200% 200%;
+      animation: gradient-rotate 10s ease infinite;
       color: white;
-      border-radius: 35px;
+      border-radius: 40px;
       padding: 5rem 4rem;
       text-align: center;
-      box-shadow: 0 25px 70px rgba(49, 91, 58, 0.35);
+      box-shadow: 0 30px 90px rgba(49, 91, 58, 0.4), 0 0 60px rgba(217, 174, 95, 0.2);
       position: relative;
       overflow: hidden;
-      border: 3px solid rgba(217, 174, 95, 0.3);
+      border: 3px solid rgba(217, 174, 95, 0.4);
       width: 100%;
+      transform: perspective(1000px) rotateX(0deg);
+      transition: transform 0.6s ease;
+    }
+
+    @keyframes gradient-rotate {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .pricing-card:hover {
+      transform: perspective(1000px) rotateX(2deg) translateY(-10px);
+      box-shadow: 0 40px 110px rgba(49, 91, 58, 0.5), 0 0 80px rgba(217, 174, 95, 0.3);
     }
 
     .pricing-card::before {
@@ -959,15 +1103,38 @@
       padding: 1rem;
       border-radius: 25px;
       box-shadow: 0 15px 45px rgba(49, 91, 58, 0.1);
-      transition: var(--transition);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       border: 2px solid rgba(49, 91, 58, 0.08);
       overflow: hidden;
+      position: relative;
+    }
+
+    .video-testimonial::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, var(--gold), var(--forest-green), var(--gold));
+      border-radius: 25px;
+      opacity: 0;
+      z-index: -1;
+      background-size: 300% 300%;
+      animation: gradient-shift 5s ease infinite;
+      transition: opacity 0.5s;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .video-testimonial:hover::before {
+      opacity: 1;
     }
 
     .video-testimonial:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 60px rgba(49, 91, 58, 0.18);
-      border-color: var(--gold);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 70px rgba(49, 91, 58, 0.2), 0 0 40px rgba(217, 174, 95, 0.15);
+      border-color: transparent;
     }
 
     .video-testimonial iframe {
@@ -1036,17 +1203,36 @@
     .contact-item {
       text-align: center;
       padding: 3rem 2rem;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(49, 91, 58, 0.1);
-      transition: var(--transition);
-      border: 2px solid rgba(49, 91, 58, 0.05);
+      background: linear-gradient(135deg, white 0%, #fafafa 100%);
+      border-radius: 25px;
+      box-shadow: 0 15px 50px rgba(49, 91, 58, 0.12);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(49, 91, 58, 0.08);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .contact-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(217, 174, 95, 0.1), transparent);
+      transition: left 0.6s;
+    }
+
+    .contact-item:hover::before {
+      left: 100%;
     }
 
     .contact-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(49, 91, 58, 0.15);
+      transform: translateY(-15px) rotateY(5deg) scale(1.05);
+      box-shadow: 0 25px 70px rgba(49, 91, 58, 0.2), 0 0 40px rgba(217, 174, 95, 0.15);
       border-color: var(--gold);
+      background: linear-gradient(135deg, white 0%, #fffef8 100%);
     }
 
     .contact-icon {
@@ -1080,12 +1266,25 @@
       text-align: center;
     }
 
+    @media (max-width: 768px) {
+      footer {
+        padding: 2rem 1.5rem;
+      }
+    }
+
     .footer-links {
       display: flex;
       justify-content: center;
       gap: 2rem;
       margin-top: 1.5rem;
       flex-wrap: wrap;
+    }
+
+    @media (max-width: 480px) {
+      .footer-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
     }
 
     .footer-links a {
@@ -1106,7 +1305,7 @@
       right: 2rem;
       width: 55px;
       height: 55px;
-      background: var(--forest-green);
+      background: linear-gradient(135deg, var(--forest-green), var(--brown));
       color: white;
       border-radius: 50%;
       display: flex;
@@ -1118,17 +1317,40 @@
       visibility: hidden;
       transition: var(--transition);
       z-index: 99;
-      box-shadow: 0 5px 20px rgba(49, 91, 58, 0.3);
+      box-shadow: 0 8px 25px rgba(49, 91, 58, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--forest-green));
+      opacity: 0;
+      transition: opacity 0.4s;
     }
 
     .scroll-top.visible {
       opacity: 1;
       visibility: visible;
+      animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes bounce-in {
+      0% { transform: scale(0) rotate(-180deg); }
+      50% { transform: scale(1.2) rotate(90deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .scroll-top:hover::before {
+      opacity: 1;
     }
 
     .scroll-top:hover {
-      background: var(--brown);
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 15px 35px rgba(49, 91, 58, 0.5), 0 0 30px rgba(217, 174, 95, 0.3);
     }
 
     @media (max-width: 768px) {
@@ -1140,17 +1362,48 @@
         padding: 1rem 1.5rem;
       }
 
-      .hero-title {
-        font-size: 3rem;
+      .brand img {
+        height: 40px !important;
       }
 
+      .hero {
+        min-height: 80vh;
+        padding: 8rem 1.5rem 4rem;
+      }
+
+      .hero-title {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+      }
+
+      .btn-primary,
       .btn-secondary {
-        margin-left: 0;
-        margin-top: 1rem;
+        width: 100%;
+        margin: 0;
       }
 
       section {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem !important;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
       }
 
       .features-grid,
@@ -1158,20 +1411,292 @@
       .testimonials-grid,
       .contact-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .feature-card,
+      .ceremony-card,
+      .contact-item {
+        padding: 2rem 1.5rem;
+      }
+
+      .pricing-card {
+        padding: 3rem 2rem;
+        margin: 2rem auto 0;
+      }
+
+      .price {
+        font-size: 3rem;
+      }
+
+      .retreat-benefit {
+        padding: 2rem 1.5rem;
+      }
+
+      .benefit-content h3 {
+        font-size: 1.5rem;
+      }
+
+      .video-testimonial {
+        padding: 1.5rem;
+      }
+
+      /* Reducir animaciones en móvil para mejor rendimiento */
+      .floating-shapes {
+        display: none;
+      }
+
+      .feature-card:hover,
+      .ceremony-card:hover,
+      .contact-item:hover {
+        transform: translateY(-5px) scale(1.02);
+      }
+    }
+
+    /* Tablets y pantallas medianas (768px - 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-title {
+        font-size: 4rem !important;
+      }
+
+      .section-title {
+        font-size: 2.8rem !important;
+      }
+
+      .features-grid,
+      .ceremonies-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .testimonials-grid,
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-card {
+        max-width: 650px;
+        padding: 4rem 3rem;
+      }
+
+      .retreat-benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 1.2rem 3rem;
+        font-size: 1.05rem;
+      }
+
+      .retreat-benefit {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .benefit-image {
+        width: 100% !important;
+        max-width: 400px;
+      }
+    }
+
+    /* Pantallas grandes (1400px+) */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1400px;
+      }
+
+      .hero-title {
+        font-size: 7rem !important;
+      }
+
+      .section-title {
+        font-size: 4rem !important;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Móviles pequeños (max 480px) */
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem !important;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        min-width: 100%;
+        margin: 0;
+      }
+
+      .section-title {
+        font-size: 1.8rem !important;
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .feature-icon svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .ceremony-image {
+        height: 200px;
+      }
+
+      .price {
+        font-size: 2.5rem !important;
+      }
+
+      .brand img {
+        height: 36px !important;
+      }
+
+      .feature-card,
+      .ceremony-card,
+      .contact-item {
+        padding: 1.5rem 1rem;
+      }
+
+      .pricing-card {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+
+    /* Tablets y pantallas medianas */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-title {
+        font-size: 4rem;
+      }
+
+      .section-title {
+        font-size: 2.8rem;
+      }
+
+      .features-grid,
+      .ceremonies-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .testimonials-grid,
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-card {
+        max-width: 650px;
+        padding: 4rem 3rem;
+      }
+
+      .retreat-benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Pantallas grandes */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1400px;
+      }
+
+      .hero-title {
+        font-size: 7rem;
+      }
+
+      .section-title {
+        font-size: 4rem;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Partículas decorativas flotantes */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .floating-shape {
+      position: absolute;
+      background: radial-gradient(circle, rgba(217, 174, 95, 0.15), transparent);
+      border-radius: 50%;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .floating-shape:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .floating-shape:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      top: 70%;
+      left: 80%;
+      animation-delay: 5s;
+      animation-duration: 20s;
+    }
+
+    .floating-shape:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      top: 40%;
+      left: 70%;
+      animation-delay: 2s;
+      animation-duration: 30s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      33% {
+        transform: translate(30px, -30px) rotate(120deg);
+      }
+      66% {
+        transform: translate(-20px, 20px) rotate(240deg);
       }
     }
   </style>
 </head>
 <body>
+  <!-- Partículas flotantes decorativas -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
 
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand"><img src="LOGO.jpg" alt="Sacred Rebirth" style="height: 54px; width: auto; border-radius: 0.6rem; box-shadow: 0 2px 8px #315B3A22; background: #fff;" /></div>
+      <div class="brand"><img src="LOGO.JPG" alt="Sacred Rebirth" style="height: 54px; width: auto; border-radius: 0.6rem; box-shadow: 0 2px 8px #315B3A22; background: #fff;" /></div>
       <ul class="nav-links">
         <li><a href="#about" data-en="About" data-es="Acerca">
           <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
           <span>About</span></a></li>
-        <li><a href="#ceremonies" data-en="Medicines" data-es="Medicinas">
+        <li><a href="#ancestral-medicines" data-en="Medicines" data-es="Medicinas">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
           <span>Ceremonies</span></a></li>
         <li><a href="#testimonials" data-en="Testimonials" data-es="Testimonios">
@@ -1203,7 +1728,7 @@
       <p class="hero-subtitle" data-en="Valle de Bravo, Mexico · Casa Amalahi" data-es="Valle de Bravo, México · Casa Amalahi">
         Valle de Bravo, Mexico · Casa Amalahi
       </p>
-      <div>
+      <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; max-width: 600px; margin: 0 auto;">
         <a href="#investment" class="btn-primary" data-en="Join the Retreat" data-es="Únete al Retiro">Join the Retreat</a>
         <a href="#about" class="btn-secondary" data-en="Learn More" data-es="Saber Más">Learn More</a>
       </div>
@@ -1212,7 +1737,7 @@
 
   <!-- Retreat Benefits Section (directly below hero) -->
   <section id="retreat-benefits" style="padding: 4.5rem 2rem 3rem 2rem; background: #fff; max-width: 1200px; margin: 0 auto;">
-    <h2 style="color: #315B3A; font-family: 'Playfair Display', serif; font-size: 2.16rem; text-align: center; margin-bottom: 1.76rem;">This retreat is for you if:</h2>
+    <h2 style="color: #315B3A; font-family: 'Playfair Display', serif; font-size: 2.16rem; text-align: center; margin-bottom: 1.76rem;" data-en="This retreat is for you if:" data-es="Este retiro es para ti si:">This retreat is for you if:</h2>
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: flex-start; margin-bottom: 1.76rem;">
       <div style="flex: 0 0 208px; display: flex; flex-direction: column; gap: 1.6rem; align-items: flex-start;">
         <img src="PERSONA FRUSTRADA.jpg" alt="Retreat Example 1" style="width: 230px; height: 170px; border-radius: 1.2rem; box-shadow: 0 5px 22px #315B3A22; object-fit: cover; margin-bottom: 0.96rem;" />
@@ -1221,22 +1746,22 @@
       <div style="flex: 1 1 400px; display: flex; flex-direction: column; gap: 1.6rem; justify-content: flex-start; align-self: flex-start; margin-top: 0;">
         <div style="display: flex; gap: 2.4rem;">
           <ul style="flex: 1 1 176px; min-width: 112px; list-style: none; padding: 0; font-size: 1.16rem; color: #2A3E2F; line-height: 1.36;">
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You’re exhausted from battling physical or emotional health issues, or struggling with addictions.</li>
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You feel drained, unmotivated, or weighed down by depression.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="You're exhausted from battling physical or emotional health issues, or struggling with addictions." data-es="Estás agotado de luchar contra problemas de salud física o emocional, o luchando con adicciones."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You’re exhausted from battling physical or emotional health issues, or struggling with addictions.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="You feel drained, unmotivated, or weighed down by depression." data-es="Te sientes agotado, desmotivado o abrumado por la depresión."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You feel drained, unmotivated, or weighed down by depression.</li>
           </ul>
           <ul style="flex: 1 1 176px; min-width: 112px; list-style: none; padding: 0; font-size: 1.16rem; color: #2A3E2F; line-height: 1.36;">
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> Anxiety has become a constant companion in your life.</li>
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You long to forgive, release the past, and find peace within yourself.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="Anxiety has become a constant companion in your life." data-es="La ansiedad se ha convertido en una compañera constante en tu vida."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> Anxiety has become a constant companion in your life.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="You long to forgive, release the past, and find peace within yourself." data-es="Anhelas perdonar, soltar el pasado y encontrar paz dentro de ti."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You long to forgive, release the past, and find peace within yourself.</li>
           </ul>
         </div>
         <div style="display: flex; gap: 2.4rem;">
           <ul style="flex: 1 1 176px; min-width: 112px; list-style: none; padding: 0; font-size: 1.16rem; color: #2A3E2F; line-height: 1.36;">
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You desire healthier relationships and better overall well-being.</li>
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You’re ready to open the doors to light, abundance, and new possibilities.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="You desire healthier relationships and better overall well-being." data-es="Deseas relaciones más saludables y un mejor bienestar general."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You desire healthier relationships and better overall well-being.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="You're ready to open the doors to light, abundance, and new possibilities." data-es="Estás listo para abrir las puertas a la luz, la abundancia y nuevas posibilidades."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You’re ready to open the doors to light, abundance, and new possibilities.</li>
           </ul>
           <ul style="flex: 1 1 176px; min-width: 112px; list-style: none; padding: 0; font-size: 1.16rem; color: #2A3E2F; line-height: 1.36;">
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You seek to expand your consciousness and embrace a happier, more fulfilling life.</li>
-            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;"><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You want to find your place in a spiritual community that feels like family.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="You seek to expand your consciousness and embrace a happier, more fulfilling life." data-es="Buscas expandir tu conciencia y abrazar una vida más feliz y plena."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You seek to expand your consciousness and embrace a happier, more fulfilling life.</li>
+            <li style="margin-bottom: 2.1rem; position: relative; padding-left: 1.84rem;" data-en="You want to find your place in a spiritual community that feels like family." data-es="Quieres encontrar tu lugar en una comunidad espiritual que se sienta como familia."><span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> You want to find your place in a spiritual community that feels like family.</li>
           </ul>
         </div>
       </div>
@@ -1252,14 +1777,14 @@
           <img src="michel-brian.jpg" alt="Michelle Robles & Brian Solomon" style="width: 100%; max-width: 320px; border-radius: 2rem; box-shadow: 0 8px 32px rgba(49,91,58,0.13); border: 4px solid #d9ae5f; background: #fff;" />
         </div>
         <div style="flex: 2 1 400px; max-width: 700px;">
-          <h2 class="section-title" style="margin-bottom: 1.2rem; color: #315B3A;">About Michelle & Brian</h2>
-          <h3 style="font-family: 'Satisfy', cursive; color: #D9AE5F; font-size: 2rem; margin-bottom: 1.2rem;">Your Retreat Facilitators</h3>
-          <p style="font-size: 1.18rem; color: #6C4F3D; margin-bottom: 1.2rem;">Michelle and Brian are experienced facilitators dedicated to the path of healing and spiritual growth. With years of training in plant medicine ceremonies and traditional healing practices, they create a safe and sacred space for transformation.</p>
-          <p style="font-size: 1.13rem; color: #2A3E2F;">Together, they guide participants through profound journeys of self-discovery, healing, and awakening, honoring sacred traditions while holding space with love and compassion.</p>
+          <h2 class="section-title" style="margin-bottom: 1.2rem; color: #315B3A;" data-en="About Michelle & Brian" data-es="Acerca de Michelle y Brian">About Michelle & Brian</h2>
+          <h3 style="font-family: 'Satisfy', cursive; color: #D9AE5F; font-size: 2rem; margin-bottom: 1.2rem;" data-en="Your Retreat Facilitators" data-es="Tus Facilitadores del Retiro">Your Retreat Facilitators</h3>
+          <p style="font-size: 1.18rem; color: #6C4F3D; margin-bottom: 1.2rem;" data-en="Michelle and Brian are experienced facilitators dedicated to the path of healing and spiritual growth. With years of training in plant medicine ceremonies and traditional healing practices, they create a safe and sacred space for transformation." data-es="Michelle y Brian son facilitadores experimentados dedicados al camino de la sanación y el crecimiento espiritual. Con años de entrenamiento en ceremonias de medicina vegetal y prácticas de sanación tradicionales, crean un espacio seguro y sagrado para la transformación.">Michelle and Brian are experienced facilitators dedicated to the path of healing and spiritual growth. With years of training in plant medicine ceremonies and traditional healing practices, they create a safe and sacred space for transformation.</p>
+          <p style="font-size: 1.13rem; color: #2A3E2F;" data-en="Together, they guide participants through profound journeys of self-discovery, healing, and awakening, honoring sacred traditions while holding space with love and compassion." data-es="Juntos, guían a los participantes a través de profundos viajes de autodescubrimiento, sanación y despertar, honrando las tradiciones sagradas mientras mantienen el espacio con amor y compasión.">Together, they guide participants through profound journeys of self-discovery, healing, and awakening, honoring sacred traditions while holding space with love and compassion.</p>
         </div>
       </div>
     </section>
-      <h2 class="section-title" data-en="Ancestral Medicines" data-es="Medicina Ancestral" style="margin-top: 5rem;">Ancestral Medicines</h2>
+      <h2 class="section-title" id="ancestral-medicines" data-en="Ancestral Medicines" data-es="Medicina Ancestral" style="margin-top: 5rem;">Ancestral Medicines</h2>
       <p class="section-subtitle" data-en="Journey through powerful healing modalities guided by experienced facilitators." data-es="Viaja a través de poderosas modalidades de sanación guiadas por facilitadores experimentados.">
         Journey through powerful healing modalities guided by experienced facilitators.
       </p>
@@ -1300,19 +1825,26 @@
 
       <div class="testimonials-grid">
         <div class="video-testimonial">
-          <iframe src="https://www.youtube.com/embed/mHKqPto_2AA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/mHKqPto_2AA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <div class="video-testimonial">
-          <iframe src="https://www.youtube.com/embed/Y6VkPm1p6gY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/Y6VkPm1p6gY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <div class="video-testimonial">
-          <iframe src="https://www.youtube.com/embed/FH_Uk5sr3_Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/FH_Uk5sr3_Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <div class="video-testimonial">
-          <iframe src="https://www.youtube.com/embed/yKWiqixUN0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/yKWiqixUN0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-testimonial">
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/G_vAqg1I6FQ" title="Testimonio 5" frameborder="0" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="video-testimonial">
+          <iframe width="100%" height="280" src="https://www.youtube.com/embed/_mCHK-wULHQ" title="Testimonio 6" frameborder="0" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
       </div>
     </div>
@@ -1323,7 +1855,7 @@
   <h2 class="section-title" data-en="Next Ceremony Coming Up" data-es="Próxima Ceremonia" style="font-size: 2.7rem; color: #315B3A; margin-bottom: 1.2rem; text-align: center; width: 100%;">Next Ceremony Coming Up</h2>
   <div class="container" style="max-width: 700px; background: linear-gradient(135deg, #315B3A 0%, #E6D9B7 100%); border-radius: 2.5rem; box-shadow: 0 8px 32px rgba(49,91,58,0.13); padding: 3rem 2.5rem 2rem 2.5rem; text-align: center; margin-top: 0; margin-bottom: 0.2rem;">
     <h3 class="pricing-title" data-en="7-Night Retreat" data-es="Retiro de 7 Noches">7-Night Retreat</h3>
-    <div style="font-size: 2.1rem; font-weight: 700; color: #D9AE5F; margin-bottom: 1.2rem; letter-spacing: 1px; text-shadow: 0 2px 12px #315B3A99; background: #fff2; border-radius: 1rem; padding: 0.7rem 1.2rem; display: inline-block;">Next Retreat: <span style="color: #fff; background: #D9AE5F; border-radius: 0.7rem; padding: 0.3rem 0.8rem; font-size: 2.3rem; font-weight: 900; letter-spacing: 2px;">11 January 2026</span></div>
+    <div style="font-size: 2.1rem; font-weight: 700; color: #D9AE5F; margin-bottom: 1.2rem; letter-spacing: 1px; text-shadow: 0 2px 12px #315B3A99; background: #fff2; border-radius: 1rem; padding: 0.7rem 1.2rem; display: inline-block;"><span data-en="Next Retreat:" data-es="Próximo Retiro:">Next Retreat:</span> <span style="color: #fff; background: #D9AE5F; border-radius: 0.7rem; padding: 0.3rem 0.8rem; font-size: 2.3rem; font-weight: 900; letter-spacing: 2px;">11 January 2026</span></div>
     <ul class="pricing-features">
       <li data-en="7 nights accommodation at Casa Amalahi" data-es="7 noches de alojamiento en Casa Amalahi">7 nights accommodation at Casa Amalahi</li>
       <li data-en="All ceremonies and practices included" data-es="Todas las ceremonias y prácticas incluidas">All ceremonies and practices included</li>
@@ -1332,17 +1864,9 @@
       <li data-en="Guidance from experienced facilitators" data-es="Guía de facilitadores experimentados">Guidance from experienced facilitators</li>
       <li data-en="Integration support and community" data-es="Apoyo de integración y comunidad">Integration support and community</li>
     </ul>
-    <a href="#contact" class="btn-primary" data-en="Reserve Your Spot" data-es="Reserva tu Lugar">Reserve Your Spot</a>
+    <a href="appointment.html" class="btn-primary" data-en="Reserve Your Spot" data-es="Reserva tu Lugar">Reserve Your Spot</a>
   </div>
 </section>
-
-<div style="height: 6rem;"></div>
-<!-- Retreat Benefits Section (below hero, above About) -->
-
-
-
-<!-- Retreat Benefits Section (below hero, above About) -->
-<section id="retreat-benefits" style="padding: 3rem 2rem 2rem 2rem; background: #fff; max-width: 1200px; margin: 0 auto;">
 
   <section id="contact">
         <!-- La galería ahora está en gallery.html -->
@@ -1357,17 +1881,17 @@
           <div class="contact-icon">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:2.2em;height:2.2em;border-radius:0.4em;background:#25D366;box-shadow:0 2px 8px rgba(49,91,58,0.10);padding:0.2em;" />
           </div>
-          <h3 class="contact-title">WhatsApp</h3>
+          <h3 class="contact-title" data-en="WhatsApp" data-es="WhatsApp">WhatsApp</h3>
           <a href="https://wa.me/527225123413" class="contact-link" target="_blank">+52 722 512 3413</a>
         </div>
         <div class="contact-item">
           <div class="contact-icon">✉️</div>
-          <h3 class="contact-title">Email</h3>
+          <h3 class="contact-title" data-en="Email" data-es="Correo">Email</h3>
           <a href="mailto:michellemilove@hotmail.com" class="contact-link">michellemilove@hotmail.com</a>
         </div>
         <div class="contact-item">
           <div class="contact-icon">🌐</div>
-          <h3 class="contact-title">Website</h3>
+          <h3 class="contact-title" data-en="Website" data-es="Sitio Web">Website</h3>
           <a href="https://www.vivirenelamor.com/" class="contact-link" target="_blank">vivirenelamor.com</a>
         </div>
       </div>
@@ -1396,7 +1920,14 @@
       localStorage.setItem('language', lang);
       
       document.querySelectorAll('[data-en]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+        // Solo agregar checkmark a elementos li dentro de retreat-benefits
+        const isRetreatBenefitItem = el.closest('#retreat-benefits') && el.tagName === 'LI';
+        if (isRetreatBenefitItem) {
+          const checkmarkHTML = '<span style="position: absolute; left: 0; color: #4CAF50; font-size: 1.36rem;">&#10003;</span> ';
+          el.innerHTML = checkmarkHTML + el.getAttribute(`data-${lang}`);
+        } else {
+          el.textContent = el.getAttribute(`data-${lang}`);
+        }
       });
       
       document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1414,9 +1945,11 @@
 
     // Navbar scroll effect
     const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+      });
+    }
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1431,18 +1964,26 @@
 
     // Scroll to top button
     const scrollTopBtn = document.querySelector('.scroll-top');
-    window.addEventListener('scroll', () => {
-      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
-    });
+    if (scrollTopBtn) {
+      window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+      });
 
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
 
-    // Book Now button scroll
-    document.querySelector('.btn-book').addEventListener('click', () => {
-      document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
-    });
+    // Book Now button scroll (if exists)
+    const btnBook = document.querySelector('.btn-book');
+    if (btnBook) {
+      btnBook.addEventListener('click', () => {
+        const contactSection = document.querySelector('#contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
   </script>
 
 </body>
