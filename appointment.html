@@ -984,26 +984,16 @@
                     <span data-en="Your Information" data-es="Tu Información">Your Information</span>
                 </h3>
 
-                <form id="appointmentForm" action="https://formsubmit.co/michellemilove@hotmail.com" method="POST">
-                    <!-- Hidden fields for FormSubmit -->
-                    <input type="hidden" name="_subject" value="New Discovery Call Booking - Sacred Rebirth">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://bertinamia-ship-it.github.io/Sacred-Rebirth/appointment.html?confirmed=true">
-                    <!-- CC: Send copy to the person who booked -->
-                    <input type="hidden" name="_cc" id="hiddenCC">
-                    <!-- Auto-response to client -->
-                    <input type="hidden" name="_autoresponse" value="Thank you for booking your Discovery Call with Sacred Rebirth! 🙏
-
-Michelle will contact you at your scheduled time via WhatsApp or phone.
-
-Your booking details have been confirmed. If you need to reschedule, please reply to this email.
-
-We look forward to connecting with you on your healing journey.
-
-With love and light,
-Sacred Rebirth Team
-Costa Rica 🌿">
+                <form id="appointmentForm" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Access Key - Get yours free at https://web3forms.com -->
+                    <input type="hidden" name="access_key" value="48c046de-428c-47a4-b633-c0080a63fa0a">
+                    <input type="hidden" name="subject" value="🌿 New Discovery Call Booking - Sacred Rebirth">
+                    <input type="hidden" name="from_name" value="Sacred Rebirth Website">
+                    <input type="hidden" name="redirect" value="https://bertinamia-ship-it.github.io/Sacred-Rebirth/appointment.html?confirmed=true">
+                    <!-- Confirmation message for client (auto-response) -->
+                    <input type="hidden" name="message" value="Thank you for booking your Discovery Call with Sacred Rebirth!\n\nMichelle will contact you at your scheduled time via WhatsApp or phone.\n\nYour booking details have been confirmed. If you need to reschedule, please reply to this email.\n\nWe look forward to connecting with you on your healing journey.\n\nWith love and light,\nSacred Rebirth Team\nCosta Rica 🌿">
+                    <!-- Send copy to client -->
+                    <input type="hidden" name="ccemail" id="hiddenCC">
                     <input type="hidden" name="Selected Date" id="hiddenDate">
                     <input type="hidden" name="Selected Time" id="hiddenTime">
                     <input type="hidden" name="Question 1 - Healing Journey" id="hiddenQ1">
@@ -1037,10 +1027,10 @@ Costa Rica 🌿">
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M19 12H5M12 19l-7-7 7-7"/>
                     </svg>
-                    <span data-en="Back" data-es="Atrás">Back</span>
+                    <span>Back</span>
                 </button>
                 <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">
-                    <span data-en="Book My Call" data-es="Reservar Mi Llamada">Book My Call</span>
+                    <span>Book My Call</span>
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                         <path d="M22 4L12 14.01l-3-3"/>
