@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valle de Bravo · Pueblo Mágico · Sacred Rebirth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1a2e1a;
+      color: #2A3E2F;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(217, 174, 95, 0.3);
+      box-shadow: 0 10px 40px rgba(49, 91, 58, 0.15), 0 0 80px rgba(217, 174, 95, 0.1);
+      height: 62px;
+      backdrop-filter: blur(25px) saturate(150%);
+      -webkit-backdrop-filter: blur(25px) saturate(150%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+      gap: 1.2rem;
+    }
+
+    .brand {
+      font-family: 'Satisfy', cursive;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .brand img {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 16px rgba(49,91,58,0.18));
+      background: #fff;
+      border-radius: 50%;
+      padding: 6px;
+      border: 2px solid #e6d9b7;
+      transition: transform 0.3s;
+    }
+
+    .brand img:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3.2rem;
+      list-style: none;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,0.45);
+      border-radius: 2rem;
+      box-shadow: 0 2px 12px rgba(49,91,58,0.07);
+      padding: 0.2rem 1.2rem;
+      margin: 0 0.5rem;
+      border: 1.5px solid #e6d9b7;
+    }
+
+    .nav-links a {
+      color: #315B3A;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.13rem;
+      letter-spacing: 0.01em;
+      position: relative;
+      transition: color 0.3s, font-size 0.3s, background 0.3s, box-shadow 0.3s;
+      padding: 0.35rem 1.1rem 0.35rem 2.1rem;
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .nav-links a svg {
+      position: absolute;
+      left: 0.5rem;
+      fill: #315B3A;
+      transition: fill 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 1.1rem;
+      bottom: 0.3rem;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #d9ae5f 0%, #315B3A 100%);
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #d9ae5f;
+      font-size: 1.18rem;
+      background: rgba(233, 216, 183, 0.18);
+      box-shadow: 0 2px 12px rgba(49,91,58,0.08);
+    }
+
+    .nav-links a:hover svg {
+      fill: #d9ae5f;
+    }
+
+    .nav-links a:hover::after {
+      width: 80%;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      background: rgba(255,255,255,0.7);
+      border-radius: 2rem;
+      padding: 0.18rem 0.5rem;
+      box-shadow: 0 2px 8px rgba(49,91,58,0.07);
+      border: 1.5px solid #e6d9b7;
+      transition: background 0.3s;
+    }
+
+    .lang-btn {
+      padding: 0.3rem 0.9rem;
+      border: none;
+      background: transparent;
+      color: #315B3A;
+      font-weight: 600;
+      font-size: 1.05rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .lang-btn.active {
+      background: #e6d9b7;
+      color: #315B3A;
+      box-shadow: 0 1px 6px rgba(49,91,58,0.08);
+      border: 1px solid #d9ae5f;
+    }
+
+    /* Hero Section */
+    .hero-video-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      filter: brightness(0.6);
+    }
+
+    .hero-bg-img.active {
+      opacity: 1;
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(49, 91, 58, 0.6), rgba(108, 79, 61, 0.4));
+      z-index: 2;
+    }
+
+    .hero-video-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-video-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f0e68c 50%, #ffd700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-flow 6s ease infinite;
+      background-size: 200% 200%;
+      filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+    }
+
+    @keyframes gradient-flow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-video-content p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Main Content */
+    .content-wrapper {
+      background: linear-gradient(to bottom, #1a2e1a 0%, #2d4a2d 50%, #e6d9b7 100%);
+      position: relative;
+      padding-top: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section {
+      background: rgba(255,255,255,0.98);
+      border-radius: 2rem;
+      padding: 3rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border: 3px solid rgba(217,174,95,0.3);
+      transition: all 0.5s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      border-color: rgba(217,174,95,0.6);
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #315B3A;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #D9AE5F, transparent);
+      border-radius: 2px;
+    }
+
+    .info-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2A3E2F;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, rgba(230,217,183,0.4) 0%, rgba(217,174,95,0.3) 100%);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border-left: 5px solid #D9AE5F;
+      margin: 1.5rem 0;
+      box-shadow: 0 10px 30px rgba(49,91,58,0.15);
+    }
+
+    .info-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #315B3A;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .info-box p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #2A3E2F;
+      text-align: center;
+    }
+
+    .info-box ul {
+      margin: 1rem 0 0 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #2A3E2F;
+    }
+
+    /* Activities Grid */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .activity-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(49,91,58,0.15);
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+      text-align: center;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(49,91,58,0.3);
+      border-color: #D9AE5F;
+    }
+
+    .activity-icon {
+      font-size: 3rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .activity-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #315B3A;
+      margin-bottom: 0.6rem;
+    }
+
+    .activity-card p {
+      font-size: 0.95rem;
+      color: #6C4F3D;
+      line-height: 1.5;
+    }
+
+    /* Address Section */
+    .address-box {
+      background: linear-gradient(135deg, #315B3A 0%, #6C4F3D 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      text-align: center;
+      margin: 1.5rem 0;
+      box-shadow: 0 15px 40px rgba(49,91,58,0.3);
+    }
+
+    .address-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .address-box p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* Map */
+    .map-container {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+      margin: 1.5rem 0;
+      border: 4px solid #D9AE5F;
+    }
+
+    .map {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    /* Back Button */
+    .back-link {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #315B3A, #6C4F3D);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      box-shadow: 0 15px 40px rgba(49,91,58,0.4);
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .back-link:hover {
+      transform: translateY(-5px) scale(1.08);
+      box-shadow: 0 20px 50px rgba(49,91,58,0.5);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      animation: bounce 2s infinite;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-15px); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        padding: 0.2rem 1rem;
+      }
+      .nav-links {
+        gap: 1.5rem;
+        padding: 0.2rem 0.8rem;
+      }
+      .nav-links a {
+        font-size: 0.95rem;
+        padding: 0.3rem 0.8rem 0.3rem 1.8rem;
+      }
+      .nav-links a svg {
+        width: 16px;
+        height: 16px;
+      }
+      .brand img {
+        height: 45px;
+        padding: 4px;
+      }
+      .lang-toggle {
+        padding: 0.15rem 0.4rem;
+      }
+      .lang-btn {
+        padding: 0.25rem 0.7rem;
+        font-size: 0.9rem;
+      }
+      .hero-video-content h1 {
+        font-size: 2.5rem;
+      }
+      .section {
+        padding: 2rem 1.5rem;
+      }
+      .map {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand"><a href="index.html"><img src="LOGO.JPG" alt="Sacred Rebirth" style="height: 54px; width: auto; border-radius: 0.6rem; box-shadow: 0 2px 8px #315B3A22; background: #fff;" /></a></div>
+      <ul class="nav-links">
+        <li><a href="index.html#about">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#315B3A"><path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+          <span>About</span></a></li>
+        <li><a href="index.html#ancestral-medicines">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#315B3A"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+          <span>Ceremonies</span></a></li>
+        <li><a href="index.html#testimonials">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#315B3A"><path d="M21 6h-2v9H5v2c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6zm-2-2c1.1 0 2 .9 2 2v12c0 2.21-1.79 4-4 4H7c-2.21 0-4-1.79-4-4V6c0-1.1.9-2 2-2h14zm-7 7h2v2h-2zm0-4h2v2h-2z"/></svg>
+          <span>Testimonials</span></a></li>
+        <li><a href="index.html#investment">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#315B3A"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>Investment</span></a></li>
+        <li><a href="gallery.html">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#315B3A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <span>Gallery</span></a></li>
+        <li><a href="index.html#contact">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#315B3A"><path d="M21 8V7l-3 2.29V8c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1.29L21 17v-9z"/></svg>
+          <span>Contact</span></a></li>
+      </ul>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-video-section">
+    <div class="hero-video-bg">
+      <img class="hero-bg-img active" src="valle de bravo 1 .webp" alt="Valle de Bravo 1">
+      <img class="hero-bg-img" src="valle bravo 2.jpg" alt="Valle de Bravo 2">
+      <img class="hero-bg-img" src="VALLE DE BRAVO 3.webp" alt="Valle de Bravo 3">
+    </div>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-video-content">
+      <h1>Valle de Bravo</h1>
+      <p>✨ Pueblo Mágico de México ✨</p>
+    </div>
+    <div class="scroll-indicator">↓</div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <div class="container">
+      
+      <!-- Welcome Section -->
+      <div class="section">
+        <h2>🏔️ Welcome to Valle de Bravo</h2>
+        <p class="info-text">
+          Valle de Bravo is a stunning <strong>Pueblo Mágico</strong> nestled in the mountains of Estado de México, just 2.5 hours from Mexico City. Known for its crystal-clear lake, lush forests, and vibrant spiritual community, this magical town is the perfect sanctuary for transformation and healing.
+        </p>
+        
+        <div class="info-box">
+          <h3>Casa Amalahi</h3>
+          <p>
+            Our retreat center is located in the peaceful area of <strong>Cerro Colorado</strong>, surrounded by nature and mountains. Here, you'll experience deep healing and spiritual growth in the magic of Valle de Bravo.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pueblo Mágico Section -->
+      <div class="section">
+        <h2>🌟 What is a "Pueblo Mágico"?</h2>
+        <div class="info-box">
+          <p>
+            <strong>Pueblo Mágico</strong> is a designation by Mexico's Secretariat of Tourism for towns offering exceptional natural beauty, cultural heritage, and unique traditions.
+          </p>
+          <p style="margin-top: 1rem;">
+            Valle de Bravo earned this honor for its breathtaking landscapes, pristine lake, colonial architecture, and commitment to sustainable tourism and spiritual wellness.
+          </p>
+        </div>
+      </div>
+
+      <!-- Location Section -->
+      <div class="section">
+        <h2>📍 How to Find Us</h2>
+        
+        <div class="address-box">
+          <h3>Casa Amalahi</h3>
+          <p>
+            CERRO COLORADO S/N<br>
+            51220 VALLE DE BRAVO, MÉXICO
+          </p>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            class="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.5!2d-100.1!3d19.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDEyJzAwLjAiTiAxMDDCsDA2JzAwLjAiVw!5e0!3m2!1sen!2smx!4v1234567890" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="info-box">
+          <h3>🚗 Getting Here from Mexico City Airport</h3>
+          <ul>
+            <li><strong>By Bus:</strong> Direct bus from Terminal Observatorio to Valle de Bravo (2.5-3 hours)</li>
+            <li><strong>By Private Car:</strong> Book private transport for comfort and flexibility (2-3 hours)</li>
+            <li><strong>From Valle Town:</strong> We'll provide detailed directions upon booking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="index.html" class="back-link">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Hero background slideshow
+    const heroBgImgs = document.querySelectorAll('.hero-bg-img');
+    let currentBgIndex = 0;
+
+    function nextBgSlide() {
+      heroBgImgs[currentBgIndex].classList.remove('active');
+      currentBgIndex = (currentBgIndex + 1) % heroBgImgs.length;
+      heroBgImgs[currentBgIndex].classList.add('active');
+    }
+
+    setInterval(nextBgSlide, 4000);
+
+    // Smooth scroll for scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+      scrollIndicator.addEventListener('click', () => {
+        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>
