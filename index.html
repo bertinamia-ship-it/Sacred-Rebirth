@@ -1913,6 +1913,11 @@
     }
 
     /* Social box hover animations */
+    .social-box {
+      cursor: pointer;
+      z-index: 1;
+    }
+    
     .social-box::before {
       content: '';
       position: absolute;
@@ -1924,6 +1929,7 @@
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
+      z-index: -1;
     }
 
     .social-box:hover::before {
