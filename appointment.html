@@ -1309,35 +1309,42 @@
             document.getElementById('calendarLink').value = calendarUrl;
             
             // Auto-response message to client
-            const autoResponseText = `Dear ${fullName},
+            const autoResponseText = `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        ✨ DISCOVERY CALL CONFIRMED ✨
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✨ Your Discovery Call is Confirmed! ✨
+Dear ${fullName},
 
-Thank you for booking with Sacred Rebirth. We're excited to connect with you!
+Your Sacred Rebirth Discovery Call is scheduled!
 
-📅 Date: ${dateStr}
-🕐 Time: ${selectedTime} (CST - Central Standard Time)
-📞 Method: WhatsApp or Phone Call
+📅 ${dateStr}
+🕐 ${selectedTime} (CST)
+📞 WhatsApp/Phone
 
-Michelle will reach out to you at the scheduled time using the phone number you provided: ${phone}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🔗 Add to Your Calendar:
+🔗 ADD TO YOUR CALENDAR
 ${calendarUrl}
 
-📌 What to Expect:
-During this 20-30 minute call, we'll discuss your healing journey, answer your questions about our retreats, and explore how Sacred Rebirth can support your transformation.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💚 Need to Reschedule?
-Simply reply to this email and we'll find a new time that works for you.
+Michelle will contact you at ${phone} at the scheduled time.
 
-We look forward to speaking with you!
+📌 Need to reschedule? Simply reply to this email.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 With love and light,
-Michelle & The Sacred Rebirth Team
+Michelle & Sacred Rebirth Team
 Valle de Bravo, Mexico 🌿
 
-WhatsApp: +52 722 512 3413
-Website: https://sacred-rebirth.com`;
+📧 rebirthsecred@gmail.com
+💬 +52 722 512 3413
+🌐 sacred-rebirth.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            `.trim();
 
             document.getElementById('autoresponseMessage').value = autoResponseText;
 
