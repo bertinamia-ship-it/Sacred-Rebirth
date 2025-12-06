@@ -2239,7 +2239,7 @@
           <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">WhatsApp</h3>
           <p style="font-size: 1rem; opacity: 0.9;">+52 722 512 3413</p>
         </a>
-        <a href="mailto:rebirthsecred@gmail.com" onclick="window.location.href='mailto:rebirthsecred@gmail.com'; return true;" class="social-box" style="background: linear-gradient(135deg, #D9AE5F, #C49A4A); color: white; padding: 2.5rem 2rem; border-radius: 2rem; text-align: center; text-decoration: none; box-shadow: 0 15px 40px rgba(217,174,95,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; border: 3px solid rgba(255,255,255,0.3);">
+        <a href="mailto:rebirthsecred@gmail.com" class="social-box" style="background: linear-gradient(135deg, #D9AE5F, #C49A4A); color: white; padding: 2.5rem 2rem; border-radius: 2rem; text-align: center; text-decoration: none; box-shadow: 0 15px 40px rgba(217,174,95,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; border: 3px solid rgba(255,255,255,0.3);">
           <div style="margin-bottom: 1rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
             <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
               <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -2293,18 +2293,6 @@
   <div class="scroll-top">↑</div>
 
   <script>
-    // Email button handler
-    document.addEventListener('DOMContentLoaded', function() {
-      const emailButtons = document.querySelectorAll('a[href^="mailto:"]');
-      emailButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const email = this.getAttribute('href');
-          window.open(email, '_blank');
-        });
-      });
-    });
-    
     // Language Toggle
     let currentLang = localStorage.getItem('language') || 'en';
     
