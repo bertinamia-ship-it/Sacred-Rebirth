@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Rebirth - Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #315B3A 0%, #2A4E2F 50%, #1a3a24 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .business-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(230,217,183,0.9));
+      border-radius: 2rem;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.5), 0 0 60px rgba(217,174,95,0.4);
+      padding: 3rem;
+      max-width: 800px;
+      width: 100%;
+      border: 4px solid #D9AE5F;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .business-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(217,174,95,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 3px solid #D9AE5F;
+    }
+
+    .logo-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #315B3A, #D9AE5F);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: #6C4F3D;
+      font-style: italic;
+    }
+
+    .credentials-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .credential-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 2px solid #E6D9B7;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .credential-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(49,91,58,0.2);
+      border-color: #D9AE5F;
+    }
+
+    .credential-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #315B3A;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .credential-value {
+      font-size: 1.1rem;
+      color: #2A3E2F;
+      font-weight: 600;
+      word-break: break-all;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .copy-btn {
+      background: linear-gradient(135deg, #315B3A, #2A4E2F);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(49,91,58,0.4);
+    }
+
+    .copy-btn.copied {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+    }
+
+    .icon {
+      font-size: 1.3rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 3px solid #D9AE5F;
+      color: #6C4F3D;
+      font-size: 0.9rem;
+    }
+
+    .footer-note strong {
+      color: #315B3A;
+    }
+
+    @media (max-width: 600px) {
+      .business-card {
+        padding: 2rem;
+      }
+
+      .logo-section h1 {
+        font-size: 2rem;
+      }
+
+      .credential-value {
+        font-size: 0.95rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .copy-btn {
+        align-self: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="business-card">
+    <div class="card-content">
+      <div class="logo-section">
+        <h1>SACRED REBIRTH</h1>
+        <p class="tagline">Healing Retreat · Valle de Bravo, Mexico</p>
+      </div>
+
+      <div class="credentials-grid">
+        <div class="credential-item" onclick="copyToClipboard('website-url', this)">
+          <div class="credential-label">
+            <span class="icon">🌐</span>
+            Website URL
+          </div>
+          <div class="credential-value">
+            <span id="website-url">https://sacred-rebirth.com/</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('github-pages', this)">
+          <div class="credential-label">
+            <span class="icon">📄</span>
+            GitHub Pages (Live Site)
+          </div>
+          <div class="credential-value">
+            <span id="github-pages">https://bertinamia-ship-it.github.io/Sacred-Rebirth/</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('email', this)">
+          <div class="credential-label">
+            <span class="icon">📧</span>
+            Email
+          </div>
+          <div class="credential-value">
+            <span id="email">rebirthsecred@gmail.com</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('whatsapp', this)">
+          <div class="credential-label">
+            <span class="icon">💬</span>
+            WhatsApp
+          </div>
+          <div class="credential-value">
+            <span id="whatsapp">+52 722 512 3413</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('facebook', this)">
+          <div class="credential-label">
+            <span class="icon">👥</span>
+            Facebook
+          </div>
+          <div class="credential-value">
+            <span id="facebook">https://www.facebook.com/sacredbirthretreats?locale=es_LA</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('instagram', this)">
+          <div class="credential-label">
+            <span class="icon">📸</span>
+            Instagram
+          </div>
+          <div class="credential-value">
+            <span id="instagram">@sacredrebirthvalle</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('instagram-url', this)">
+          <div class="credential-label">
+            <span class="icon">🔗</span>
+            Instagram URL
+          </div>
+          <div class="credential-value">
+            <span id="instagram-url">https://www.instagram.com/sacredrebirthvalle</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('website-alt', this)">
+          <div class="credential-label">
+            <span class="icon">🌍</span>
+            Alternative Website
+          </div>
+          <div class="credential-value">
+            <span id="website-alt">https://www.vivirenelamor.com/</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('location', this)">
+          <div class="credential-label">
+            <span class="icon">📍</span>
+            Location
+          </div>
+          <div class="credential-value">
+            <span id="location">Valle de Bravo, Mexico · Casa Amalahi</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+
+        <div class="credential-item" onclick="copyToClipboard('github-repo', this)">
+          <div class="credential-label">
+            <span class="icon">💻</span>
+            GitHub Repository
+          </div>
+          <div class="credential-value">
+            <span id="github-repo">https://github.com/bertinamia-ship-it/Sacred-Rebirth</span>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <p><strong>Next Retreat:</strong> January 11, 2026</p>
+        <p style="margin-top: 0.5rem;">7-Night Sacred Healing Retreat</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">Click any item to copy to clipboard</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard(elementId, item) {
+      const text = document.getElementById(elementId).textContent;
+      const button = item.querySelector('.copy-btn');
+      
+      navigator.clipboard.writeText(text).then(() => {
+        // Change button text
+        const originalText = button.textContent;
+        button.textContent = '✓ Copied!';
+        button.classList.add('copied');
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy:', err);
+        alert('Failed to copy. Please try again.');
+      });
+    }
+  </script>
+</body>
+</html>
