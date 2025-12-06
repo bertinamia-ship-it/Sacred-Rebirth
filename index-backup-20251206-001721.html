@@ -976,8 +976,6 @@
       background: linear-gradient(135deg, 
         rgba(230, 217, 183, 0.95) 0%, 
         rgba(230, 217, 183, 0.85) 100%);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       padding: 3rem 2rem;
       border-radius: 25px;
       box-shadow: 0 15px 50px rgba(49, 91, 58, 0.15);
@@ -999,18 +997,11 @@
       left: -2px;
       right: -2px;
       bottom: -2px;
-      background: linear-gradient(45deg, #315B3A, #D9AE5F, #6C4F3D, #315B3A);
-      background-size: 400% 400%;
+      background: linear-gradient(45deg, transparent, rgba(217, 174, 95, 0.3), transparent);
       border-radius: 25px;
       opacity: 0;
       transition: opacity 0.5s;
       z-index: -1;
-      animation: gradient-rotate 8s ease infinite;
-    }
-
-    @keyframes gradient-rotate {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
     }
 
     .ceremony-card::after {
@@ -1020,27 +1011,29 @@
       right: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(217, 174, 95, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(217, 174, 95, 0.12) 0%, transparent 70%);
       opacity: 0;
-      transition: opacity 0.5s, transform 0.6s;
-      pointer-events: none;
+      transition: opacity 0.5s;
     }
 
     .ceremony-card:hover::before {
       opacity: 1;
+      animation: rotate-border 3s linear infinite;
+    }
+
+    @keyframes rotate-border {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .ceremony-card:hover::after {
       opacity: 1;
-      transform: scale(1.1) rotate(30deg);
     }
 
     .ceremony-card:hover {
       border-color: var(--gold);
       transform: translateY(-12px) scale(1.03) rotateX(2deg);
-      box-shadow: 0 30px 70px rgba(49, 91, 58, 0.25), 
-                  0 10px 30px rgba(217, 174, 95, 0.2),
-                  inset 0 0 30px rgba(217, 174, 95, 0.1);
+      box-shadow: 0 30px 70px rgba(49, 91, 58, 0.25), 0 10px 30px rgba(217, 174, 95, 0.2);
     }
 
     .ceremony-title {
@@ -1048,16 +1041,12 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--forest-green);
-      position: relative;
-      z-index: 1;
     }
 
     .ceremony-text {
       font-size: 1.05rem;
       color: var(--brown);
       line-height: 1.7;
-      position: relative;
-      z-index: 1;
     }
 
     .pricing-card {
@@ -1741,33 +1730,6 @@
       animation-duration: 30s;
     }
 
-    .floating-shape:nth-child(4) {
-      width: 120px;
-      height: 120px;
-      top: 20%;
-      right: 15%;
-      animation-delay: 3s;
-      animation-duration: 28s;
-    }
-
-    .floating-shape:nth-child(5) {
-      width: 70px;
-      height: 70px;
-      bottom: 20%;
-      left: 20%;
-      animation-delay: 6s;
-      animation-duration: 22s;
-    }
-
-    .floating-shape:nth-child(6) {
-      width: 90px;
-      height: 90px;
-      top: 60%;
-      left: 50%;
-      animation-delay: 4s;
-      animation-duration: 26s;
-    }
-
     @keyframes float {
       0%, 100% {
         transform: translate(0, 0) rotate(0deg);
@@ -1779,109 +1741,11 @@
         transform: translate(-20px, 20px) rotate(240deg);
       }
     }
-
-    /* Scroll Reveal Animation */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .scroll-reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Retreat box animations */
-    @keyframes float-retreat {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-
-    @keyframes rotate-glow {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes pulse-date {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 20px rgba(255,255,255,0.3);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 40px rgba(255,255,255,0.5);
-      }
-    }
-
-    @keyframes pulse-button {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 15px 50px rgba(255,215,0,0.4), 0 0 40px rgba(255,215,0,0.3);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 20px 60px rgba(255,215,0,0.6), 0 0 60px rgba(255,215,0,0.5);
-      }
-    }
-
-    /* Social box hover animations */
-    .social-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .social-box:hover::before {
-      opacity: 1;
-      animation: rotate-glow 3s linear infinite;
-    }
-
-    .social-box:hover {
-      transform: translateY(-15px) scale(1.05);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-    }
-
-    /* Gradient text animation */
-    @keyframes gradient-shift {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-    }
-
-    .animated-gradient-text {
-      background: linear-gradient(90deg, #315B3A, #D9AE5F, #6C4F3D, #315B3A);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 8s ease infinite;
-    }
   </style>
 </head>
 <body>
   <!-- Partículas flotantes decorativas -->
   <div class="floating-shapes">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
     <div class="floating-shape"></div>
     <div class="floating-shape"></div>
     <div class="floating-shape"></div>
@@ -2054,77 +1918,50 @@
     </div>
   </section>
 
-  <section id="investment" style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; align-items: flex-start; padding: 4rem 2rem;">
-  <h2 class="section-title animated-gradient-text" data-en="Next Ceremony Coming Up" data-es="Próxima Ceremonia" style="font-size: 3rem; margin-bottom: 2rem; text-align: center; width: 100%;">Next Ceremony Coming Up</h2>
-  <div class="retreat-box" style="max-width: 750px; background: linear-gradient(135deg, rgba(49,91,58,0.95) 0%, rgba(108,79,61,0.9) 50%, rgba(217,174,95,0.85) 100%); backdrop-filter: blur(15px); border-radius: 3rem; box-shadow: 0 20px 60px rgba(49,91,58,0.3), 0 0 100px rgba(217,174,95,0.2), inset 0 0 80px rgba(255,255,255,0.1); padding: 3.5rem 3rem; text-align: center; margin-top: 0; margin-bottom: 0.5rem; border: 3px solid rgba(217,174,95,0.4); position: relative; overflow: hidden; animation: float-retreat 6s ease-in-out infinite;">
-    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(217,174,95,0.2) 0%, transparent 70%); animation: rotate-glow 10s linear infinite; pointer-events: none;"></div>
-    <h3 class="pricing-title" data-en="✨ 7-Night Sacred Retreat ✨" data-es="✨ Retiro Sagrado de 7 Noches ✨" style="position: relative; z-index: 1; font-size: 2.5rem; color: #fff; text-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 30px rgba(217,174,95,0.6);">✨ 7-Night Sacred Retreat ✨</h3>
-    <div style="position: relative; z-index: 1; font-size: 1.8rem; font-weight: 700; color: #fff; margin: 2rem 0 2.5rem; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(0,0,0,0.5); background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 1.5rem; padding: 1.5rem; display: inline-block; border: 2px solid rgba(255,255,255,0.3); animation: pulse-date 3s ease-in-out infinite;"><span data-en="Next Retreat:" data-es="Próximo Retiro:">Next Retreat:</span><br><span style="color: #FFD700; font-size: 3rem; font-weight: 900; letter-spacing: 3px; text-shadow: 0 0 20px rgba(255,215,0,0.5), 0 4px 15px rgba(0,0,0,0.5); display: block; margin-top: 0.5rem;">11 January 2026</span></div>
-    <ul class="pricing-features" style="position: relative; z-index: 1; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 1.5rem; padding: 2rem; border: 2px solid rgba(255,255,255,0.2); margin-bottom: 2rem;">
-      <li data-en="🏡 7 nights accommodation at Casa Amalahi" data-es="🏡 7 noches de alojamiento en Casa Amalahi" style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">🏡 7 nights accommodation at Casa Amalahi</li>
-      <li data-en="🌿 All ceremonies and practices included" data-es="🌿 Todas las ceremonias y prácticas incluidas" style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">🌿 All ceremonies and practices included</li>
-      <li data-en="🍽️ Nutritious meals prepared daily" data-es="🍽️ Comidas nutritivas preparadas diariamente" style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">🍽️ Nutritious meals prepared daily</li>
-      <li data-en="🧘 Daily Qi Gong and meditation sessions" data-es="🧘 Sesiones diarias de Qi Gong y meditación" style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">🧘 Daily Qi Gong and meditation sessions</li>
-      <li data-en="💫 Guidance from experienced facilitators" data-es="💫 Guía de facilitadores experimentados" style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">💫 Guidance from experienced facilitators</li>
-      <li data-en="❤️ Integration support and community" data-es="❤️ Apoyo de integración y comunidad" style="font-size: 1.1rem; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">❤️ Integration support and community</li>
+  <section id="investment" style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; align-items: flex-start;">
+  <!-- Promotional box removed from Ceremonies section as requested -->
+  <h2 class="section-title" data-en="Next Ceremony Coming Up" data-es="Próxima Ceremonia" style="font-size: 2.7rem; color: #315B3A; margin-bottom: 1.2rem; text-align: center; width: 100%;">Next Ceremony Coming Up</h2>
+  <div class="container" style="max-width: 700px; background: linear-gradient(135deg, #315B3A 0%, #E6D9B7 100%); border-radius: 2.5rem; box-shadow: 0 8px 32px rgba(49,91,58,0.13); padding: 3rem 2.5rem 2rem 2.5rem; text-align: center; margin-top: 0; margin-bottom: 0.2rem;">
+    <h3 class="pricing-title" data-en="7-Night Retreat" data-es="Retiro de 7 Noches">7-Night Retreat</h3>
+    <div style="font-size: 2.1rem; font-weight: 700; color: #D9AE5F; margin-bottom: 1.2rem; letter-spacing: 1px; text-shadow: 0 2px 12px #315B3A99; background: #fff2; border-radius: 1rem; padding: 0.7rem 1.2rem; display: inline-block;"><span data-en="Next Retreat:" data-es="Próximo Retiro:">Next Retreat:</span> <span style="color: #fff; background: #D9AE5F; border-radius: 0.7rem; padding: 0.3rem 0.8rem; font-size: 2.3rem; font-weight: 900; letter-spacing: 2px;">11 January 2026</span></div>
+    <ul class="pricing-features">
+      <li data-en="7 nights accommodation at Casa Amalahi" data-es="7 noches de alojamiento en Casa Amalahi">7 nights accommodation at Casa Amalahi</li>
+      <li data-en="All ceremonies and practices included" data-es="Todas las ceremonias y prácticas incluidas">All ceremonies and practices included</li>
+      <li data-en="Nutritious meals prepared daily" data-es="Comidas nutritivas preparadas diariamente">Nutritious meals prepared daily</li>
+      <li data-en="Daily Qi Gong and meditation sessions" data-es="Sesiones diarias de Qi Gong y meditación">Daily Qi Gong and meditation sessions</li>
+      <li data-en="Guidance from experienced facilitators" data-es="Guía de facilitadores experimentados">Guidance from experienced facilitators</li>
+      <li data-en="Integration support and community" data-es="Apoyo de integración y comunidad">Integration support and community</li>
     </ul>
-    <a href="appointment.html" class="btn-primary" data-en="✨ Reserve Your Spot Now ✨" data-es="✨ Reserva tu Lugar Ahora ✨" style="position: relative; z-index: 1; font-size: 1.3rem; padding: 1.5rem 3.5rem; background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700); color: #315B3A; font-weight: 900; box-shadow: 0 15px 50px rgba(255,215,0,0.4), 0 0 40px rgba(255,215,0,0.3); animation: pulse-button 2s ease-in-out infinite;">✨ Reserve Your Spot Now ✨</a>
+    <a href="appointment.html" class="btn-primary" data-en="Reserve Your Spot" data-es="Reserva tu Lugar">Reserve Your Spot</a>
   </div>
 </section>
 
-  <section id="contact" style="padding: 5rem 2rem; background: linear-gradient(135deg, #f5f5f5 0%, #e6d9b7 100%);">
+  <section id="contact">
+        <!-- La galería ahora está en gallery.html -->
       <div class="container" style="margin-top: 0.5rem; margin-bottom: 2.5rem;">
-      <h2 class="section-title animated-gradient-text" data-en="Get in Touch" data-es="Contáctanos" style="font-size: 3rem;">Get in Touch</h2>
-      <p class="section-subtitle" data-en="Ready to begin your journey? Reach out to learn more and reserve your space." data-es="¿Listo para comenzar tu viaje? Contáctanos para aprender más y reservar tu espacio." style="font-size: 1.2rem; margin-bottom: 3rem;">
+      <h2 class="section-title" data-en="Get in Touch" data-es="Contáctanos">Get in Touch</h2>
+      <p class="section-subtitle" data-en="Ready to begin your journey? Reach out to learn more and reserve your space." data-es="¿Listo para comenzar tu viaje? Contáctanos para aprender más y reservar tu espacio.">
         Ready to begin your journey? Reach out to learn more and reserve your space.
       </p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-        <a href="https://wa.me/527225123413" target="_blank" class="social-box" style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 2.5rem 2rem; border-radius: 2rem; text-align: center; text-decoration: none; box-shadow: 0 15px 40px rgba(37,211,102,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; border: 3px solid rgba(255,255,255,0.3);">
-          <div style="margin-bottom: 1rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:2.2em;height:2.2em;border-radius:0.4em;background:#25D366;box-shadow:0 2px 8px rgba(49,91,58,0.10);padding:0.2em;" />
           </div>
-          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">WhatsApp</h3>
-          <p style="font-size: 1rem; opacity: 0.9;">+52 722 512 3413</p>
-        </a>
-        <a href="mailto:michellemilove@hotmail.com" class="social-box" style="background: linear-gradient(135deg, #D9AE5F, #C49A4A); color: white; padding: 2.5rem 2rem; border-radius: 2rem; text-align: center; text-decoration: none; box-shadow: 0 15px 40px rgba(217,174,95,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; border: 3px solid rgba(255,255,255,0.3);">
-          <div style="margin-bottom: 1rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-          </div>
-          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">Email</h3>
-          <p style="font-size: 0.95rem; opacity: 0.9;">michellemilove@hotmail.com</p>
-        </a>
-        <a href="https://www.vivirenelamor.com/" target="_blank" class="social-box" style="background: linear-gradient(135deg, #315B3A, #2A4E2F); color: white; padding: 2.5rem 2rem; border-radius: 2rem; text-align: center; text-decoration: none; box-shadow: 0 15px 40px rgba(49,91,58,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; border: 3px solid rgba(255,255,255,0.3);">
-          <div style="margin-bottom: 1rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-            </svg>
-          </div>
-          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">Website</h3>
-          <p style="font-size: 1rem; opacity: 0.9;">vivirenelamor.com</p>
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=61570726436093" target="_blank" class="social-box" style="background: linear-gradient(135deg, #1877F2, #0C63D4); color: white; padding: 2.5rem 2rem; border-radius: 2rem; text-align: center; text-decoration: none; box-shadow: 0 15px 40px rgba(24,119,242,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; border: 3px solid rgba(255,255,255,0.3);">
-          <div style="margin-bottom: 1rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-          </div>
-          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">Facebook</h3>
-          <p style="font-size: 1rem; opacity: 0.9;">Sacred Rebirth</p>
-        </a>
-        <a href="https://www.instagram.com/sacred.rebirth.mx/" target="_blank" class="social-box" style="background: linear-gradient(135deg, #E4405F, #C13584, #833AB4); color: white; padding: 2.5rem 2rem; border-radius: 2rem; text-align: center; text-decoration: none; box-shadow: 0 15px 40px rgba(228,64,95,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; border: 3px solid rgba(255,255,255,0.3);">
-          <div style="margin-bottom: 1rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </div>
-          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">Instagram</h3>
-          <p style="font-size: 1rem; opacity: 0.9;">@sacred.rebirth.mx</p>
-        </a>
+          <h3 class="contact-title" data-en="WhatsApp" data-es="WhatsApp">WhatsApp</h3>
+          <a href="https://wa.me/527225123413" class="contact-link" target="_blank">+52 722 512 3413</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <h3 class="contact-title" data-en="Email" data-es="Correo">Email</h3>
+          <a href="mailto:michellemilove@hotmail.com" class="contact-link">michellemilove@hotmail.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <h3 class="contact-title" data-en="Website" data-es="Sitio Web">Website</h3>
+          <a href="https://www.vivirenelamor.com/" class="contact-link" target="_blank">vivirenelamor.com</a>
+        </div>
       </div>
     </div>
   </section>
@@ -2230,39 +2067,6 @@
     if (slideshowImages.length > 0) {
       setInterval(nextSlide, 3000);
     }
-
-    // Scroll Reveal Animation
-    const scrollReveal = () => {
-      const reveals = document.querySelectorAll('.ceremony-card, .section-title, .testimony-card, .info-card');
-      
-      reveals.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('scroll-reveal', 'active');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', scrollReveal);
-    scrollReveal(); // Initial check
-
-    // Parallax effect for hero
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrolled = window.pageYOffset;
-          const hero = document.querySelector('.hero-bg');
-          if (hero && scrolled < window.innerHeight) {
-            hero.style.transform = `translateY(${scrolled * 0.4}px)`;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
   </script>
 
 </body>
