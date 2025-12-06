@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sacred Rebirth - Project Credentials</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Sacred Rebirth - Business Card</title>
   <style>
     * {
       margin: 0;
@@ -15,30 +12,42 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1a3a24 0%, #0d1f13 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 1.5rem;
+      justify-content: center;
+      padding: 1rem;
     }
 
     .container {
-      max-width: 900px;
       width: 100%;
+      max-width: 480px;
     }
 
     .business-card {
       background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       overflow: hidden;
+      animation: slideIn 0.6s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .header {
-      background: linear-gradient(135deg, #315B3A 0%, #2A4E2F 100%);
-      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, #8B6F47 0%, #6C4F3D 100%);
+      padding: 2rem 1.5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -51,13 +60,13 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(217,174,95,0.15) 0%, transparent 70%);
-      animation: rotate 30s linear infinite;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
     }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.6; }
     }
 
     .header-content {
@@ -66,200 +75,288 @@
     }
 
     .header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #FFD700;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
       margin-bottom: 0.5rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     .header p {
-      color: rgba(255,255,255,0.9);
-      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    .website-preview {
+      margin: 1.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .website-preview:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .website-preview:active {
+      transform: scale(0.98);
+    }
+
+    .website-img {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #8B6F47 0%, #6C4F3D 50%, #D4AF37 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .website-img::before {
+      content: '🌿';
+      font-size: 5rem;
+      opacity: 0.15;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -50%) rotate(-15deg); }
+      50% { transform: translate(-50%, -55%) rotate(-12deg); }
+    }
+
+    .website-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+    }
+
+    .website-text h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .website-text p {
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.2);
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      display: inline-block;
+      backdrop-filter: blur(10px);
       font-weight: 500;
     }
 
-    .actions-bar {
-      background: #f8f9fa;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #E6D9B7;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .share-btn, .download-btn {
-      background: linear-gradient(135deg, #D9AE5F, #C49A4A);
-      color: white;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 0.7rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .share-btn:hover, .download-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(217,174,95,0.4);
-    }
-
     .card-content {
-      padding: 2rem;
+      padding: 1.5rem;
     }
 
     .section-title {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: #315B3A;
+      color: #8B6F47;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #E6D9B7;
+      margin: 1.5rem 0 0.8rem 0;
+      padding-left: 0.3rem;
+      border-left: 3px solid #8B6F47;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
     }
 
     .credentials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
     }
 
     .credential-item {
-      background: #f8f9fa;
-      padding: 0.9rem 1rem;
-      border-radius: 0.7rem;
-      border: 1px solid #E6D9B7;
-      transition: all 0.2s ease;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 10px;
+      padding: 0.8rem;
       cursor: pointer;
+      transition: all 0.2s ease;
       position: relative;
+      border: 2px solid transparent;
     }
 
     .credential-item:hover {
-      background: white;
-      border-color: #D9AE5F;
-      box-shadow: 0 4px 12px rgba(49,91,58,0.1);
+      border-color: #8B6F47;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(139, 111, 71, 0.2);
+    }
+
+    .credential-item:active {
+      transform: scale(0.98);
     }
 
     .credential-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #6C4F3D;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #6C4F3D;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .icon {
-      font-size: 1rem;
+      font-size: 1.1rem;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
     }
 
     .credential-value {
-      font-size: 0.85rem;
-      color: #2A3E2F;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #2c3e50;
       font-weight: 500;
       word-break: break-all;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.7rem;
     }
 
     .copy-icon {
+      font-size: 1rem;
       opacity: 0.5;
-      transition: opacity 0.2s;
-      font-size: 1.1rem;
+      transition: all 0.2s ease;
       flex-shrink: 0;
     }
 
     .credential-item:hover .copy-icon {
       opacity: 1;
+      transform: scale(1.2);
     }
 
     .copied-indicator {
       position: absolute;
       top: 50%;
-      right: 1rem;
-      transform: translateY(-50%);
-      background: #4CAF50;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #28a745;
       color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
       font-size: 0.75rem;
       font-weight: 600;
-      opacity: 0;
+      white-space: nowrap;
       pointer-events: none;
-      transition: opacity 0.3s;
+      transition: all 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
     }
 
     .copied-indicator.show {
-      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-top: 1px solid rgba(139, 111, 71, 0.1);
+    }
+
+    .actions-bar button {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .share-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .share-btn:active {
+      transform: scale(0.95);
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, #8B6F47 0%, #6C4F3D 100%);
+      color: white;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 111, 71, 0.4);
+    }
+
+    .download-btn:active {
+      transform: scale(0.95);
     }
 
     .footer {
-      background: #f8f9fa;
-      padding: 1.5rem 2rem;
       text-align: center;
-      border-top: 2px solid #E6D9B7;
+      padding: 1rem 1.5rem;
+      background: white;
+      border-top: 1px solid rgba(139, 111, 71, 0.1);
     }
 
     .footer-info {
+      font-size: 0.75rem;
       color: #6C4F3D;
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-info strong {
-      color: #315B3A;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
     }
 
     .footer-hint {
+      font-size: 0.65rem;
       color: #999;
-      font-size: 0.75rem;
-      font-style: italic;
     }
 
     @media print {
       body {
         background: white;
-        padding: 0;
       }
-      
-      .actions-bar, .copy-icon {
-        display: none !important;
-      }
-
       .business-card {
         box-shadow: none;
+      }
+      .actions-bar, .footer-hint {
+        display: none;
       }
     }
 
     @media (max-width: 600px) {
       .header h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
       }
-
       .credentials-grid {
         grid-template-columns: 1fr;
       }
-
-      .actions-bar {
-        padding: 1rem;
-      }
-
-      .card-content {
-        padding: 1.5rem;
+      .website-img {
+        height: 150px;
       }
     }
   </style>
@@ -274,9 +371,18 @@
         </div>
       </div>
 
+      <div class="website-preview" onclick="window.open('https://sacred-rebirth.com/', '_blank')">
+        <div class="website-img">
+          <div class="website-text">
+            <h2>Sacred Rebirth</h2>
+            <p>sacred-rebirth.com</p>
+          </div>
+        </div>
+      </div>
+
       <div class="actions-bar">
-        <div style="font-size: 0.85rem; color: #6C4F3D; font-weight: 600;">
-          📋 Project Credentials
+        <div style="font-size: 0.8rem; color: #6C4F3D; font-weight: 600;">
+          📋 Credentials
         </div>
         <div style="display: flex; gap: 0.7rem;">
           <button class="share-btn" onclick="shareCredentials()">
@@ -285,7 +391,7 @@
           </button>
           <button class="download-btn" onclick="window.print()">
             <span>💾</span>
-            <span>Download PDF</span>
+            <span>PDF</span>
           </button>
         </div>
       </div>
@@ -296,10 +402,10 @@
           <div class="credential-item" onclick="copyToClipboard('website-url', this)">
             <div class="credential-label">
               <span class="icon">🌐</span>
-              URL
+              Primary
             </div>
             <div class="credential-value">
-              <span id="website-url">https://sacred-rebirth.com/</span>
+              <span id="website-url">sacred-rebirth.com</span>
               <span class="copy-icon">📋</span>
             </div>
             <div class="copied-indicator">✓ Copied</div>
@@ -311,7 +417,7 @@
               Alternative
             </div>
             <div class="credential-value">
-              <span id="website-alt">https://www.vivirenelamor.com/</span>
+              <span id="website-alt">vivirenelamor.com</span>
               <span class="copy-icon">📋</span>
             </div>
             <div class="copied-indicator">✓ Copied</div>
@@ -387,10 +493,10 @@
 
       <div class="footer">
         <div class="footer-info">
-          <strong>Next Retreat:</strong> January 11, 2026 · 7-Night Sacred Healing Retreat
+          <strong>Next Retreat:</strong> January 11, 2026 · 7-Night Healing Experience
         </div>
         <div class="footer-hint">
-          Click any credential to copy · Use Share button to send via email/WhatsApp
+          Click any credential to copy · Use Share button to send
         </div>
       </div>
     </div>
@@ -417,8 +523,8 @@
 🌟 SACRED REBIRTH - Credentials 🌟
 
 🌐 WEBSITE:
-• https://sacred-rebirth.com/
-• Alt: https://www.vivirenelamor.com/
+• sacred-rebirth.com
+• vivirenelamor.com
 
 📞 CONTACT:
 • Email: rebirthsecred@gmail.com
