@@ -2293,6 +2293,18 @@
   <div class="scroll-top">↑</div>
 
   <script>
+    // Email button handler
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailButtons = document.querySelectorAll('a[href^="mailto:"]');
+      emailButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const email = this.getAttribute('href');
+          window.open(email, '_blank');
+        });
+      });
+    });
+    
     // Language Toggle
     let currentLang = localStorage.getItem('language') || 'en';
     
