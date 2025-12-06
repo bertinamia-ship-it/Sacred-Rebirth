@@ -274,6 +274,15 @@
       transform: scale(1.15);
     }
 
+    video.slideshow-img {
+      filter: brightness(0.75) contrast(1.1);
+      transform: scale(1);
+    }
+
+    video.slideshow-img.active {
+      transform: scale(1);
+    }
+
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -1992,7 +2001,10 @@
 
   <section class="hero">
     <div class="hero-bg">
-      <img class="slideshow-img active" src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1920&q=95" alt="Forest lake">
+      <video class="slideshow-img active" autoplay muted loop playsinline style="object-fit: cover; filter: brightness(0.75) contrast(1.1);">
+        <source src="video-photos/slideshow.mp4" type="video/mp4">
+      </video>
+      <img class="slideshow-img" src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1920&q=95" alt="Forest lake">
       <img class="slideshow-img" src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=95" alt="Starry night mountains">
       <img class="slideshow-img" src="https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?w=1920&q=95" alt="Forest starry sky">
     </div>
