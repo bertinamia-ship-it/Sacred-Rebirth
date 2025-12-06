@@ -550,14 +550,14 @@
       
       <!-- Welcome Section -->
       <div class="section">
-        <h2>🏔️ Welcome to Valle de Bravo</h2>
-        <p class="info-text">
+        <h2 data-en="🏔️ Welcome to Valle de Bravo" data-es="🏔️ Bienvenido a Valle de Bravo">🏔️ Welcome to Valle de Bravo</h2>
+        <p class="info-text" data-en="Valle de Bravo is a stunning Pueblo Mágico nestled in the mountains of Estado de México, just 2.5 hours from Mexico City. Known for its crystal-clear lake, lush forests, and vibrant spiritual community, this magical town is the perfect sanctuary for transformation and healing." data-es="Valle de Bravo es un hermoso Pueblo Mágico ubicado en las montañas del Estado de México, a solo 2.5 horas de la Ciudad de México. Conocido por su lago cristalino, bosques exuberantes y vibrante comunidad espiritual, este pueblo mágico es el santuario perfecto para la transformación y la sanación.">
           Valle de Bravo is a stunning <strong>Pueblo Mágico</strong> nestled in the mountains of Estado de México, just 2.5 hours from Mexico City. Known for its crystal-clear lake, lush forests, and vibrant spiritual community, this magical town is the perfect sanctuary for transformation and healing.
         </p>
         
         <div class="info-box">
-          <h3>Casa Amalahi</h3>
-          <p>
+          <h3 data-en="Casa Amalahi" data-es="Casa Amalahi">Casa Amalahi</h3>
+          <p data-en="Our retreat center is located in the peaceful area of Cerro Colorado, surrounded by nature and mountains. Here, you'll experience deep healing and spiritual growth in the magic of Valle de Bravo." data-es="Nuestro centro de retiro está ubicado en la tranquila área de Cerro Colorado, rodeado de naturaleza y montañas. Aquí experimentarás una profunda sanación y crecimiento espiritual en la magia de Valle de Bravo.">
             Our retreat center is located in the peaceful area of <strong>Cerro Colorado</strong>, surrounded by nature and mountains. Here, you'll experience deep healing and spiritual growth in the magic of Valle de Bravo.
           </p>
         </div>
@@ -565,12 +565,12 @@
 
       <!-- Pueblo Mágico Section -->
       <div class="section">
-        <h2>🌟 What is a "Pueblo Mágico"?</h2>
+        <h2 data-en="🌟 What is a 'Pueblo Mágico'?" data-es="🌟 ¿Qué es un 'Pueblo Mágico'?">🌟 What is a "Pueblo Mágico"?</h2>
         <div class="info-box">
-          <p>
+          <p data-en="Pueblo Mágico is a designation by Mexico's Secretariat of Tourism for towns offering exceptional natural beauty, cultural heritage, and unique traditions." data-es="Pueblo Mágico es una designación de la Secretaría de Turismo de México para pueblos que ofrecen una belleza natural excepcional, patrimonio cultural y tradiciones únicas.">
             <strong>Pueblo Mágico</strong> is a designation by Mexico's Secretariat of Tourism for towns offering exceptional natural beauty, cultural heritage, and unique traditions.
           </p>
-          <p style="margin-top: 1rem;">
+          <p style="margin-top: 1rem;" data-en="Valle de Bravo earned this honor for its breathtaking landscapes, pristine lake, colonial architecture, and commitment to sustainable tourism and spiritual wellness." data-es="Valle de Bravo obtuvo este honor por sus impresionantes paisajes, lago prístino, arquitectura colonial y compromiso con el turismo sostenible y el bienestar espiritual.">
             Valle de Bravo earned this honor for its breathtaking landscapes, pristine lake, colonial architecture, and commitment to sustainable tourism and spiritual wellness.
           </p>
         </div>
@@ -578,10 +578,10 @@
 
       <!-- Location Section -->
       <div class="section">
-        <h2>📍 How to Find Us</h2>
+        <h2 data-en="📍 How to Find Us" data-es="📍 Cómo Encontrarnos">📍 How to Find Us</h2>
         
         <div class="address-box">
-          <h3>Casa Amalahi</h3>
+          <h3 data-en="Casa Amalahi" data-es="Casa Amalahi">Casa Amalahi</h3>
           <p>
             CERRO COLORADO S/N<br>
             51220 VALLE DE BRAVO, MÉXICO
@@ -599,17 +599,17 @@
         </div>
 
         <div class="info-box">
-          <h3>🚗 Getting Here from Mexico City Airport</h3>
+          <h3 data-en="🚗 Getting Here from Mexico City Airport" data-es="🚗 Cómo Llegar desde el Aeropuerto de la Ciudad de México">🚗 Getting Here from Mexico City Airport</h3>
           <ul>
-            <li><strong>By Bus:</strong> Direct bus from Terminal Observatorio to Valle de Bravo (2.5-3 hours)</li>
-            <li><strong>By Private Car:</strong> Book private transport for comfort and flexibility (2-3 hours)</li>
-            <li><strong>From Valle Town:</strong> We'll provide detailed directions upon booking</li>
+            <li data-en="By Bus: Direct bus from Terminal Observatorio to Valle de Bravo (2.5-3 hours)" data-es="En Autobús: Autobús directo desde Terminal Observatorio a Valle de Bravo (2.5-3 horas)"><strong>By Bus:</strong> Direct bus from Terminal Observatorio to Valle de Bravo (2.5-3 hours)</li>
+            <li data-en="By Private Car: Book private transport for comfort and flexibility (2-3 hours)" data-es="En Auto Privado: Reserva transporte privado para comodidad y flexibilidad (2-3 horas)"><strong>By Private Car:</strong> Book private transport for comfort and flexibility (2-3 hours)</li>
+            <li data-en="From Valle Town: We'll provide detailed directions upon booking" data-es="Desde el Pueblo de Valle: Proporcionaremos instrucciones detalladas al reservar"><strong>From Valle Town:</strong> We'll provide detailed directions upon booking</li>
           </ul>
         </div>
       </div>
 
       <div style="text-align: center;">
-        <a href="index.html" class="back-link">← Back to Home</a>
+        <a href="index.html" class="back-link" data-en="← Back to Home" data-es="← Volver al Inicio">← Back to Home</a>
       </div>
     </div>
   </div>
@@ -634,6 +634,31 @@
         window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
       });
     }
+
+    // Language toggle functionality
+    const langBtns = document.querySelectorAll('.lang-btn');
+    let currentLang = 'en';
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang');
+        if (lang === currentLang) return;
+        
+        currentLang = lang;
+        
+        // Update active button
+        langBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Update all elements with data-lang attributes
+        document.querySelectorAll('[data-en][data-es]').forEach(el => {
+          const text = el.getAttribute('data-' + lang);
+          if (text) {
+            el.textContent = text;
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
