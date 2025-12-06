@@ -291,12 +291,12 @@
       </div>
 
       <div class="card-content">
-        <div class="section-title">🌐 Website & Platform</div>
+        <div class="section-title">🌐 Website</div>
         <div class="credentials-grid">
           <div class="credential-item" onclick="copyToClipboard('website-url', this)">
             <div class="credential-label">
               <span class="icon">🌐</span>
-              Primary URL
+              URL
             </div>
             <div class="credential-value">
               <span id="website-url">https://sacred-rebirth.com/</span>
@@ -305,32 +305,20 @@
             <div class="copied-indicator">✓ Copied</div>
           </div>
 
-          <div class="credential-item" onclick="copyToClipboard('github-pages', this)">
+          <div class="credential-item" onclick="copyToClipboard('website-alt', this)">
             <div class="credential-label">
-              <span class="icon">📄</span>
-              Live Site (GitHub Pages)
+              <span class="icon">🌍</span>
+              Alternative
             </div>
             <div class="credential-value">
-              <span id="github-pages">https://bertinamia-ship-it.github.io/Sacred-Rebirth/</span>
-              <span class="copy-icon">📋</span>
-            </div>
-            <div class="copied-indicator">✓ Copied</div>
-          </div>
-
-          <div class="credential-item" onclick="copyToClipboard('github-repo', this)">
-            <div class="credential-label">
-              <span class="icon">💻</span>
-              Repository
-            </div>
-            <div class="credential-value">
-              <span id="github-repo">https://github.com/bertinamia-ship-it/Sacred-Rebirth</span>
+              <span id="website-alt">https://www.vivirenelamor.com/</span>
               <span class="copy-icon">📋</span>
             </div>
             <div class="copied-indicator">✓ Copied</div>
           </div>
         </div>
 
-        <div class="section-title">📞 Contact Information</div>
+        <div class="section-title">📞 Contact</div>
         <div class="credentials-grid">
           <div class="credential-item" onclick="copyToClipboard('email', this)">
             <div class="credential-label">
@@ -362,7 +350,7 @@
               Location
             </div>
             <div class="credential-value">
-              <span id="location">Valle de Bravo, Mexico · Casa Amalahi</span>
+              <span id="location">Valle de Bravo, Mexico</span>
               <span class="copy-icon">📋</span>
             </div>
             <div class="copied-indicator">✓ Copied</div>
@@ -377,7 +365,7 @@
               Facebook
             </div>
             <div class="credential-value">
-              <span id="facebook">https://www.facebook.com/sacredbirthretreats</span>
+              <span id="facebook">sacredbirthretreats</span>
               <span class="copy-icon">📋</span>
             </div>
             <div class="copied-indicator">✓ Copied</div>
@@ -390,30 +378,6 @@
             </div>
             <div class="credential-value">
               <span id="instagram">@sacredrebirthvalle</span>
-              <span class="copy-icon">📋</span>
-            </div>
-            <div class="copied-indicator">✓ Copied</div>
-          </div>
-
-          <div class="credential-item" onclick="copyToClipboard('instagram-url', this)">
-            <div class="credential-label">
-              <span class="icon">🔗</span>
-              Instagram URL
-            </div>
-            <div class="credential-value">
-              <span id="instagram-url">https://www.instagram.com/sacredrebirthvalle</span>
-              <span class="copy-icon">📋</span>
-            </div>
-            <div class="copied-indicator">✓ Copied</div>
-          </div>
-
-          <div class="credential-item" onclick="copyToClipboard('website-alt', this)">
-            <div class="credential-label">
-              <span class="icon">🌍</span>
-              Alternative Website
-            </div>
-            <div class="credential-value">
-              <span id="website-alt">https://www.vivirenelamor.com/</span>
               <span class="copy-icon">📋</span>
             </div>
             <div class="copied-indicator">✓ Copied</div>
@@ -450,31 +414,27 @@
 
     function shareCredentials() {
       const credentials = `
-🌟 SACRED REBIRTH - Project Credentials 🌟
+🌟 SACRED REBIRTH - Credentials 🌟
 
-🌐 WEBSITE & PLATFORM:
-• Primary URL: https://sacred-rebirth.com/
-• Live Site: https://bertinamia-ship-it.github.io/Sacred-Rebirth/
-• Repository: https://github.com/bertinamia-ship-it/Sacred-Rebirth
+🌐 WEBSITE:
+• https://sacred-rebirth.com/
+• Alt: https://www.vivirenelamor.com/
 
 📞 CONTACT:
 • Email: rebirthsecred@gmail.com
 • WhatsApp: +52 722 512 3413
-• Location: Valle de Bravo, Mexico · Casa Amalahi
+• Location: Valle de Bravo, Mexico
 
 📱 SOCIAL MEDIA:
-• Facebook: https://www.facebook.com/sacredbirthretreats
+• Facebook: sacredbirthretreats
 • Instagram: @sacredrebirthvalle
-• Instagram URL: https://www.instagram.com/sacredrebirthvalle
-• Alternative Website: https://www.vivirenelamor.com/
 
 📅 Next Retreat: January 11, 2026
-✨ 7-Night Sacred Healing Retreat
       `.trim();
 
       if (navigator.share) {
         navigator.share({
-          title: 'Sacred Rebirth - Project Credentials',
+          title: 'Sacred Rebirth - Credentials',
           text: credentials
         }).catch(err => console.log('Error sharing:', err));
       } else {
