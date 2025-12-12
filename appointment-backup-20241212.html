@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Your Free Discovery Call - Sacred Rebirth</title>
+    <meta name="description" content="Book your free 15-minute discovery call with Sacred Rebirth. Learn about our transformative Ayahuasca, Kambo, and Qigong retreats in Costa Rica.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --color-gold: #d4a373;
+            --color-cream: #f5f0e8;
+            --color-forest: #2d4a3e;
+            --color-sage: #87a96b;
+            --color-earth: #8b7355;
+            --color-white: #ffffff;
+            --color-dark: #1a1a1a;
+            --color-forest-dark: #1e3328;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-dark) 50%, #0d1f17 100%);
+            min-height: 100vh;
+            color: var(--color-cream);
+            overflow-x: hidden;
+        }
+
+        /* Floating Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 15s infinite ease-in-out;
+        }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Header */
+        .header {
+            background: rgba(45, 74, 62, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .back-link {
+            color: var(--color-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--color-cream);
+            transform: translateX(-5px);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--color-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            color: var(--color-cream);
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            background: rgba(212, 163, 115, 0.2);
+            border-color: var(--color-gold);
+        }
+
+        .step-indicator.completed {
+            background: rgba(135, 169, 107, 0.2);
+            border-color: var(--color-sage);
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .step-indicator.active .step-number {
+            background: var(--color-gold);
+            color: var(--color-forest);
+        }
+
+        .step-indicator.completed .step-number {
+            background: var(--color-sage);
+            color: var(--color-white);
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: var(--color-cream);
+        }
+
+        /* Step Content */
+        .step-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Step 1: Calendar and What to Expect */
+        .step1-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .calendar {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-nav {
+            background: rgba(212, 163, 115, 0.2);
+            border: none;
+            color: var(--color-gold);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav:hover {
+            background: var(--color-gold);
+            color: var(--color-forest);
+        }
+
+        .calendar-month {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--color-cream);
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weekday {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--color-gold);
+            font-weight: 600;
+            padding: 0.5rem;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+        }
+
+        .calendar-day:hover:not(.disabled):not(.empty) {
+            background: rgba(212, 163, 115, 0.2);
+            border-color: rgba(212, 163, 115, 0.3);
+        }
+
+        .calendar-day.selected {
+            background: var(--color-gold);
+            color: var(--color-forest);
+            font-weight: 600;
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.empty {
+            cursor: default;
+        }
+
+        .calendar-day.today {
+            border: 2px solid var(--color-sage);
+        }
+
+        /* Time Slots */
+        .time-slots-section {
+            margin-top: 1.5rem;
+        }
+
+        .time-slots-title {
+            font-size: 1rem;
+            color: var(--color-cream);
+            margin-bottom: 1rem;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .time-slot {
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .time-slot:hover {
+            background: rgba(212, 163, 115, 0.2);
+            border-color: var(--color-gold);
+        }
+
+        .time-slot.selected {
+            background: var(--color-gold);
+            color: var(--color-forest);
+            font-weight: 600;
+        }
+
+        /* What to Expect Section */
+        .expect-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .expect-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .expect-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border-left: 3px solid var(--color-gold);
+        }
+
+        .expect-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 163, 115, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .expect-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-gold);
+        }
+
+        .expect-text h4 {
+            font-size: 0.95rem;
+            color: var(--color-gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .expect-text p {
+            font-size: 0.85rem;
+            color: var(--color-cream);
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .call-duration {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(135, 169, 107, 0.1);
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(135, 169, 107, 0.3);
+        }
+
+        .call-duration svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-sage);
+            margin-bottom: 0.5rem;
+        }
+
+        .call-duration p {
+            font-size: 0.9rem;
+            color: var(--color-cream);
+        }
+
+        .call-duration strong {
+            color: var(--color-sage);
+        }
+
+        /* Step 2: Questions */
+        .questions-section {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .question-group {
+            margin-bottom: 2rem;
+        }
+
+        .question-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-label {
+            display: block;
+            font-size: 1rem;
+            color: var(--color-gold);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .question-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--color-gold);
+            color: var(--color-forest);
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .question-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            border-radius: 12px;
+            color: var(--color-cream);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .question-input:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(212, 163, 115, 0.1);
+        }
+
+        .question-input::placeholder {
+            color: rgba(245, 240, 232, 0.4);
+        }
+
+        /* Step 3: Your Information */
+        .info-section {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            border-radius: 12px;
+            color: var(--color-cream);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(212, 163, 115, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(245, 240, 232, 0.4);
+        }
+
+        /* Step 4: Confirmation */
+        .confirmation-section {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .confirmation-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(135, 169, 107, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: pulse-success 2s infinite;
+        }
+
+        @keyframes pulse-success {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(135, 169, 107, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(135, 169, 107, 0.3); }
+        }
+
+        .confirmation-icon svg {
+            width: 50px;
+            height: 50px;
+            color: var(--color-sage);
+        }
+
+        .confirmation-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-message {
+            color: var(--color-cream);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .booking-summary {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .summary-title {
+            font-size: 1.1rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: rgba(245, 240, 232, 0.7);
+        }
+
+        .summary-value {
+            color: var(--color-cream);
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-earth) 100%);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-cream);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 163, 115, 0.1);
+            border-color: var(--color-gold);
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-forest) 100%);
+            color: var(--color-white);
+        }
+
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(135, 169, 107, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .step1-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-steps {
+                gap: 0.5rem;
+            }
+
+            .step-indicator {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .step-label {
+                display: none;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .main-container {
+                padding: 100px 1.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .back-link {
+                font-size: 0.85rem;
+                gap: 0.3rem;
+            }
+            
+            .main-container {
+                padding: 90px 0.75rem 1.5rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 0.5rem;
+            }
+            
+            .page-title p {
+                font-size: 0.9rem;
+            }
+            
+            .progress-steps {
+                padding: 0.5rem;
+                gap: 0.3rem;
+                overflow-x: auto;
+            }
+            
+            .step-indicator {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+                min-width: 60px;
+            }
+
+            .calendar-section,
+            .expect-section,
+            .questions-section,
+            .info-section {
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            
+            .calendar-header {
+                margin-bottom: 1rem;
+            }
+            
+            .calendar-month {
+                font-size: 1.1rem;
+            }
+            
+            .calendar-nav {
+                width: 32px;
+                height: 32px;
+                font-size: 1.2rem;
+            }
+            
+            .calendar-weekdays,
+            .calendar-days {
+                gap: 0.25rem;
+            }
+            
+            .calendar-day {
+                height: 36px;
+                font-size: 0.85rem;
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .time-slot {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1.25rem;
+            }
+            
+            .form-label {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .form-input,
+            .form-textarea {
+                padding: 0.875rem;
+                font-size: 0.95rem;
+            }
+            
+            .expect-list li,
+            .questions-list li {
+                font-size: 0.95rem;
+                padding-left: 2rem;
+            }
+            
+            .expect-list li::before,
+            .questions-list li::before {
+                font-size: 1rem;
+            }
+            
+            .confirmation-icon svg {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .confirmation-title {
+                font-size: 1.75rem;
+            }
+            
+            .confirmation-message {
+                font-size: 0.95rem;
+            }
+            
+            .booking-summary {
+                padding: 1.25rem;
+            }
+            
+            .summary-title {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .main-container {
+                padding: 85px 0.5rem 1rem;
+            }
+            
+            .page-title h1 {
+                font-size: 1.3rem;
+            }
+            
+            .calendar-section,
+            .expect-section,
+            .questions-section,
+            .info-section {
+                padding: 1rem;
+            }
+            
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-day {
+                height: 32px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo-link">
+                <img src="https://i.imgur.com/YourLogo.png" alt="Sacred Rebirth Logo" class="logo-img" onerror="this.style.display='none'">
+            </a>
+            <a href="index.html" class="back-link">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span data-en="Back to Home" data-es="Volver al Inicio">Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="page-title">
+            <h1 data-en="Schedule Your Free Discovery Call" data-es="Agenda Tu Llamada de Descubrimiento Gratis">Schedule Your Free Discovery Call</h1>
+            <p data-en="Let's explore if Sacred Rebirth is right for your journey" data-es="Exploremos si Sacred Rebirth es adecuado para tu viaje">Let's explore if Sacred Rebirth is right for your journey</p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step-indicator active" id="step-ind-1">
+                <span class="step-number">1</span>
+                <span class="step-label" data-en="Select Date & Time" data-es="Seleccionar Fecha y Hora">Select Date & Time</span>
+            </div>
+            <div class="step-indicator" id="step-ind-2">
+                <span class="step-number">2</span>
+                <span class="step-label" data-en="Quick Questions" data-es="Preguntas Rápidas">Quick Questions</span>
+            </div>
+            <div class="step-indicator" id="step-ind-3">
+                <span class="step-number">3</span>
+                <span class="step-label" data-en="Your Information" data-es="Tu Información">Your Information</span>
+            </div>
+            <div class="step-indicator" id="step-ind-4">
+                <span class="step-number">4</span>
+                <span class="step-label" data-en="Confirmation" data-es="Confirmación">Confirmation</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Calendar + What to Expect -->
+        <div class="step-content active" id="step1">
+            <div class="step1-layout">
+                <!-- Calendar -->
+                <div class="calendar-section">
+                    <h3 class="section-title">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span data-en="Choose a Date" data-es="Elige una Fecha">Choose a Date</span>
+                    </h3>
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" id="prevMonth">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M15 18l-6-6 6-6"/>
+                                </svg>
+                            </button>
+                            <span class="calendar-month" id="currentMonth">January 2025</span>
+                            <button class="calendar-nav" id="nextMonth">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <div class="weekday">Sun</div>
+                            <div class="weekday">Mon</div>
+                            <div class="weekday">Tue</div>
+                            <div class="weekday">Wed</div>
+                            <div class="weekday">Thu</div>
+                            <div class="weekday">Fri</div>
+                            <div class="weekday">Sat</div>
+                        </div>
+                        <div class="calendar-days" id="calendarDays"></div>
+                    </div>
+
+                    <!-- Time Slots -->
+                    <div class="time-slots-section" id="timeSlotsSection" style="display: none;">
+                        <h4 class="time-slots-title" data-en="Available Times (CST)" data-es="Horarios Disponibles (CST)">Available Times (CST)</h4>
+                        <div class="time-slots" id="timeSlots"></div>
+                    </div>
+                </div>
+
+                <!-- What to Expect -->
+                <div class="expect-section">
+                    <h3 class="section-title">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span data-en="What to Expect" data-es="Qué Esperar">What to Expect</span>
+                    </h3>
+                    <div class="expect-items">
+                        <div class="expect-item">
+                            <div class="expect-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <div class="expect-text">
+                                <h4 data-en="Personal Introduction" data-es="Introducción Personal">Personal Introduction</h4>
+                                <p data-en="Get to know Michelle and learn about her journey with plant medicine" data-es="Conoce a Michelle y aprende sobre su viaje con la medicina de plantas">Get to know Michelle and learn about her journey with plant medicine</p>
+                            </div>
+                        </div>
+                        <div class="expect-item">
+                            <div class="expect-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4"/>
+                                    <circle cx="12" cy="12" r="10"/>
+                                </svg>
+                            </div>
+                            <div class="expect-text">
+                                <h4 data-en="Your Goals & Intentions" data-es="Tus Metas e Intenciones">Your Goals & Intentions</h4>
+                                <p data-en="Share what you're hoping to heal or transform in your life" data-es="Comparte lo que esperas sanar o transformar en tu vida">Share what you're hoping to heal or transform in your life</p>
+                            </div>
+                        </div>
+                        <div class="expect-item">
+                            <div class="expect-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                            </div>
+                            <div class="expect-text">
+                                <h4 data-en="Q&A Session" data-es="Sesión de Preguntas">Q&A Session</h4>
+                                <p data-en="Ask any questions about our retreats, ceremonies, or preparation" data-es="Haz cualquier pregunta sobre nuestros retiros, ceremonias o preparación">Ask any questions about our retreats, ceremonies, or preparation</p>
+                            </div>
+                        </div>
+                        <div class="expect-item">
+                            <div class="expect-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <path d="M22 4L12 14.01l-3-3"/>
+                                </svg>
+                            </div>
+                            <div class="expect-text">
+                                <h4 data-en="Personalized Guidance" data-es="Orientación Personalizada">Personalized Guidance</h4>
+                                <p data-en="Receive recommendations on which retreat best fits your needs" data-es="Recibe recomendaciones sobre qué retiro se adapta mejor a tus necesidades">Receive recommendations on which retreat best fits your needs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="call-duration">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <p data-en="Call Duration: " data-es="Duración de la Llamada: "><span data-en="Call Duration: " data-es="Duración de la Llamada: ">Call Duration: </span><strong>15 minutes</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-primary" id="nextBtn1" onclick="goToStep(2)" disabled>
+                    <span data-en="Continue" data-es="Continuar">Continue</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Quick Questions -->
+        <div class="step-content" id="step2">
+            <div class="questions-section">
+                <h3 class="section-title" style="justify-content: center; margin-bottom: 2rem;">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                    </svg>
+                    <span data-en="A Few Quick Questions" data-es="Algunas Preguntas Rápidas">A Few Quick Questions</span>
+                </h3>
+
+                <div class="question-group">
+                    <label class="question-label">
+                        <span class="question-number">1</span>
+                        <span data-en="What brings you to seek this healing journey?" data-es="¿Qué te trae a buscar este viaje de sanación?">What brings you to seek this healing journey?</span>
+                    </label>
+                    <textarea class="question-input" id="question1" placeholder="Share what's calling you to explore plant medicine..." data-placeholder-en="Share what's calling you to explore plant medicine..." data-placeholder-es="Comparte qué te llama a explorar la medicina de plantas..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">
+                        <span class="question-number">2</span>
+                        <span data-en="Have you had any previous experience with plant medicine or spiritual practices?" data-es="¿Has tenido experiencia previa con medicina de plantas o prácticas espirituales?">Have you had any previous experience with plant medicine or spiritual practices?</span>
+                    </label>
+                    <textarea class="question-input" id="question2" placeholder="Tell us about your background with healing practices..." data-placeholder-en="Tell us about your background with healing practices..." data-placeholder-es="Cuéntanos sobre tu experiencia con prácticas de sanación..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">
+                        <span class="question-number">3</span>
+                        <span data-en="What is your main intention or goal for this retreat?" data-es="¿Cuál es tu intención u objetivo principal para este retiro?">What is your main intention or goal for this retreat?</span>
+                    </label>
+                    <textarea class="question-input" id="question3" placeholder="Describe what you hope to achieve or heal..." data-placeholder-en="Describe what you hope to achieve or heal..." data-placeholder-es="Describe lo que esperas lograr o sanar..."></textarea>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="goToStep(1)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span data-en="Back" data-es="Atrás">Back</span>
+                </button>
+                <button class="btn btn-primary" id="nextBtn2" onclick="goToStep(3)">
+                    <span data-en="Continue" data-es="Continuar">Continue</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Your Information -->
+        <div class="step-content" id="step3">
+            <div class="info-section">
+                <h3 class="section-title" style="justify-content: center; margin-bottom: 2rem;">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span data-en="Your Information" data-es="Tu Información">Your Information</span>
+                </h3>
+
+                <form id="appointmentForm">
+
+                    <div class="form-group">
+                        <label class="form-label" data-en="Full Name" data-es="Nombre Completo">Full Name</label>
+                        <input type="text" class="form-input" name="Full Name" id="fullName" required placeholder="Your full name" data-placeholder-en="Your full name" data-placeholder-es="Tu nombre completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-en="Email Address" data-es="Correo Electrónico">Email Address</label>
+                        <input type="email" class="form-input" name="Email" id="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-en="Phone Number (WhatsApp preferred)" data-es="Número de Teléfono (WhatsApp preferido)">Phone Number (WhatsApp preferred)</label>
+                        <input type="tel" class="form-input" name="Phone" id="phone" required placeholder="+1 234 567 8900">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" data-en="Country" data-es="País">Country</label>
+                        <input type="text" class="form-input" name="Country" id="country" required placeholder="Your country" data-placeholder-en="Your country" data-placeholder-es="Tu país">
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="goToStep(2)">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Back</span>
+                </button>
+                <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">
+                    <span>Book My Call</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <path d="M22 4L12 14.01l-3-3"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 4: Confirmation -->
+        <div class="step-content" id="step4">
+            <div class="confirmation-section">
+                <div class="confirmation-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <path d="M22 4L12 14.01l-3-3"/>
+                    </svg>
+                </div>
+                <h2 class="confirmation-title" data-en="Your Call is Booked!" data-es="¡Tu Llamada Está Reservada!">Your Call is Booked!</h2>
+                <p class="confirmation-message" data-en="Thank you for taking this sacred step. Michelle will reach out to you at the scheduled time via WhatsApp or phone. Check your email for a confirmation with all the details." data-es="Gracias por dar este paso sagrado. Michelle se comunicará contigo a la hora programada por WhatsApp o teléfono. Revisa tu correo para una confirmación con todos los detalles.">Thank you for taking this sacred step. Michelle will reach out to you at the scheduled time via WhatsApp or phone. Check your email for a confirmation with all the details.</p>
+
+                <div class="booking-summary">
+                    <h4 class="summary-title" data-en="Booking Summary" data-es="Resumen de la Reserva">Booking Summary</h4>
+                    <div class="summary-item">
+                        <span class="summary-label" data-en="Date" data-es="Fecha">Date</span>
+                        <span class="summary-value" id="summaryDate">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label" data-en="Time" data-es="Hora">Time</span>
+                        <span class="summary-value" id="summaryTime">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label" data-en="Name" data-es="Nombre">Name</span>
+                        <span class="summary-value" id="summaryName">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label" data-en="Email" data-es="Correo">Email</span>
+                        <span class="summary-value" id="summaryEmail">-</span>
+                    </div>
+                </div>
+
+                <a href="#" id="addToCalendarBtn" class="btn btn-primary" style="margin-bottom: 1rem; display: none;">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span data-en="📅 Add to Google Calendar" data-es="📅 Agregar a Google Calendar">📅 Add to Google Calendar</span>
+                </a>
+
+                <a href="index.html" class="btn btn-home">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                    <span data-en="Return to Home" data-es="Volver al Inicio">Return to Home</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Calendar State
+        let currentDate = new Date();
+        let selectedDate = null;
+        let selectedTime = null;
+
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const mesesEs = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+        const timeSlots = [
+            '9:00 AM', '10:00 AM', '11:00 AM',
+            '12:00 PM', '2:00 PM', '3:00 PM',
+            '4:00 PM', '5:00 PM', '6:00 PM'
+        ];
+
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const lang = localStorage.getItem('language') || 'en';
+            
+            const monthNames = lang === 'es' ? mesesEs : months;
+            document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const calendarDays = document.getElementById('calendarDays');
+            calendarDays.innerHTML = '';
+
+            // Empty cells for days before first day
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                calendarDays.appendChild(emptyDay);
+            }
+
+            // Days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+
+                const thisDate = new Date(year, month, day);
+                thisDate.setHours(0, 0, 0, 0);
+
+                if (thisDate < today) {
+                    dayElement.classList.add('disabled');
+                } else if (thisDate.getTime() === today.getTime()) {
+                    dayElement.classList.add('today');
+                }
+
+                if (selectedDate && thisDate.getTime() === selectedDate.getTime()) {
+                    dayElement.classList.add('selected');
+                }
+
+                if (!dayElement.classList.contains('disabled')) {
+                    dayElement.addEventListener('click', () => selectDate(thisDate, dayElement));
+                }
+
+                calendarDays.appendChild(dayElement);
+            }
+        }
+
+        function selectDate(date, element) {
+            selectedDate = date;
+            selectedTime = null;
+
+            // Update calendar UI
+            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+            element.classList.add('selected');
+
+            // Show time slots
+            renderTimeSlots();
+            document.getElementById('timeSlotsSection').style.display = 'block';
+
+            updateNextButton();
+        }
+
+        function renderTimeSlots() {
+            const container = document.getElementById('timeSlots');
+            container.innerHTML = '';
+
+            timeSlots.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                slot.textContent = time;
+                
+                if (selectedTime === time) {
+                    slot.classList.add('selected');
+                }
+
+                slot.addEventListener('click', () => selectTime(time, slot));
+                container.appendChild(slot);
+            });
+        }
+
+        function selectTime(time, element) {
+            selectedTime = time;
+
+            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            element.classList.add('selected');
+
+            updateNextButton();
+        }
+
+        function updateNextButton() {
+            const nextBtn = document.getElementById('nextBtn1');
+            nextBtn.disabled = !(selectedDate && selectedTime);
+        }
+
+        // Navigation
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Step Navigation
+        function goToStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.step-indicator').forEach(s => {
+                s.classList.remove('active');
+                s.classList.remove('completed');
+            });
+
+            // Show current step
+            document.getElementById('step' + step).classList.add('active');
+            document.getElementById('step-ind-' + step).classList.add('active');
+
+            // Mark previous steps as completed
+            for (let i = 1; i < step; i++) {
+                document.getElementById('step-ind-' + i).classList.add('completed');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize EmailJS
+        (function() {
+            emailjs.init('13oZ3D1_BHon_KVJ6');
+        })();
+
+        // Form Submission with EmailJS
+        async function submitForm() {
+            const form = document.getElementById('appointmentForm');
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const country = document.getElementById('country').value;
+
+            if (!fullName || !email || !phone || !country) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (!selectedDate || !selectedTime) {
+                alert('Please select a date and time');
+                return;
+            }
+
+            // Disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending...</span>';
+
+            // Format date
+            const lang = localStorage.getItem('language') || 'en';
+            const monthNames = lang === 'es' ? mesesEs : months;
+            const dateStr = `${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
+
+            // Get questionnaire responses
+            const question1 = document.getElementById('question1').value || 'Not answered';
+            const question2 = document.getElementById('question2').value || 'Not answered';
+            const question3 = document.getElementById('question3').value || 'Not answered';
+            
+            // Create Google Calendar Link
+            const timeHour = selectedTime.split(':')[0];
+            const timePeriod = selectedTime.includes('AM') ? 'AM' : 'PM';
+            let hour24 = parseInt(timeHour);
+            if (timePeriod === 'PM' && hour24 !== 12) hour24 += 12;
+            if (timePeriod === 'AM' && hour24 === 12) hour24 = 0;
+            
+            const startDateTime = new Date(selectedDate);
+            startDateTime.setHours(hour24, 0, 0);
+            const endDateTime = new Date(startDateTime);
+            endDateTime.setMinutes(endDateTime.getMinutes() + 30);
+            
+            const formatGoogleDate = (date) => {
+                return date.toISOString().replace(/-|:|\.\d+/g, '');
+            };
+            
+            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Discovery+Call+-+${encodeURIComponent(fullName)}&dates=${formatGoogleDate(startDateTime)}/${formatGoogleDate(endDateTime)}&details=Discovery+Call+with+${encodeURIComponent(fullName)}%0AEmail:+${encodeURIComponent(email)}%0APhone:+${encodeURIComponent(phone)}%0ACountry:+${encodeURIComponent(country)}&location=WhatsApp+Call&sf=true&output=xml`;
+
+            // Template parameters for EmailJS
+            const templateParams = {
+                fullName: fullName,
+                email: email,
+                phone: phone,
+                country: country,
+                selectedDate: dateStr,
+                selectedTime: selectedTime + ' (CST)',
+                question1: question1,
+                question2: question2,
+                question3: question3,
+                calendarUrl: calendarUrl
+            };
+
+            try {
+                // Send client confirmation email (beautiful HTML template)
+                await emailjs.send(
+                    'service_b1kkmu4',
+                    'template_kdscwmo',
+                    templateParams
+                );
+
+                // Send admin notification email (with client details)
+                await emailjs.send(
+                    'service_b1kkmu4',
+                    'template_xn973nt',
+                    templateParams
+                );
+
+                // Save summary to localStorage for confirmation page
+                localStorage.setItem('bookingSummary', JSON.stringify({
+                    date: dateStr,
+                    time: selectedTime + ' (CST)',
+                    name: fullName,
+                    email: email,
+                    calendarUrl: calendarUrl
+                }));
+
+                // Redirect to confirmation
+                window.location.href = 'appointment.html?confirmed=true';
+
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                alert('There was an error sending your booking. Please try again or contact us directly at rebirthsecred@gmail.com');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Book My Call</span><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+            }
+        }
+
+        // Language Support
+        function setLanguage(lang) {
+            localStorage.setItem('language', lang);
+            
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = lang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+                if (text) el.textContent = text;
+            });
+
+            document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+                const placeholder = lang === 'es' ? el.getAttribute('data-placeholder-es') : el.getAttribute('data-placeholder-en');
+                if (placeholder) el.placeholder = placeholder;
+            });
+
+            renderCalendar();
+        }
+
+        // Check for URL parameter for confirmation and load summary
+        if (window.location.search.includes('confirmed=true')) {
+            const summary = JSON.parse(localStorage.getItem('bookingSummary') || '{}');
+            if (summary.date) {
+                document.getElementById('summaryDate').textContent = summary.date;
+                document.getElementById('summaryTime').textContent = summary.time;
+                document.getElementById('summaryName').textContent = summary.name;
+                document.getElementById('summaryEmail').textContent = summary.email;
+                
+                // Show and configure Google Calendar button
+                if (summary.calendarUrl) {
+                    const calBtn = document.getElementById('addToCalendarBtn');
+                    calBtn.href = summary.calendarUrl;
+                    calBtn.target = '_blank';
+                    calBtn.style.display = 'flex';
+                }
+            }
+            goToStep(4);
+            // Clear the summary after showing
+            localStorage.removeItem('bookingSummary');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCalendar();
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
