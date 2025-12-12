@@ -2415,5 +2415,512 @@
     });
   </script>
 
+  <!-- Chatbot Personalizado -->
+  <style>
+    .chatbot-container {
+      position: fixed;
+      bottom: 120px;
+      right: 40px;
+      z-index: 98;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .chatbot-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      animation: pulse-bot 2s infinite;
+      position: relative;
+    }
+    
+    .chatbot-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(139, 92, 246, 0.6);
+    }
+    
+    .chatbot-button svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+    
+    .chatbot-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ef4444;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      animation: bounce 0.5s ease infinite alternate;
+    }
+    
+    @keyframes pulse-bot {
+      0% { box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
+      70% { box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4), 0 0 0 15px rgba(139, 92, 246, 0); }
+      100% { box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
+    }
+    
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-3px); }
+    }
+    
+    .chatbot-window {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 380px;
+      height: 550px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideUp 0.3s ease;
+    }
+    
+    .chatbot-window.active {
+      display: flex;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .chatbot-header {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .chatbot-header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .chatbot-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    
+    .chatbot-header-text h3 {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 600;
+    }
+    
+    .chatbot-header-text p {
+      font-size: 12px;
+      margin: 0;
+      opacity: 0.9;
+    }
+    
+    .chatbot-close {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    
+    .chatbot-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .chatbot-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .chatbot-message {
+      display: flex;
+      gap: 10px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .chatbot-message.user {
+      flex-direction: row-reverse;
+    }
+    
+    .chatbot-message-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    .chatbot-message.user .chatbot-message-avatar {
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--earth-dark) 100%);
+    }
+    
+    .chatbot-message-content {
+      max-width: 70%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .chatbot-message.user .chatbot-message-content {
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--earth-dark) 100%);
+      color: white;
+    }
+    
+    .chatbot-quick-replies {
+      padding: 15px 20px;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .chatbot-quick-reply {
+      padding: 10px 15px;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 13px;
+      text-align: left;
+      color: #374151;
+    }
+    
+    .chatbot-quick-reply:hover {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+      border-color: #8b5cf6;
+      transform: translateX(3px);
+    }
+    
+    .chatbot-typing {
+      display: none;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 16px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: fit-content;
+    }
+    
+    .chatbot-typing.active {
+      display: flex;
+    }
+    
+    .chatbot-typing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #9ca3af;
+      animation: typing 1.4s infinite;
+    }
+    
+    .chatbot-typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .chatbot-typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-10px); }
+    }
+    
+    @media (max-width: 768px) {
+      .chatbot-container {
+        bottom: 90px;
+        right: 20px;
+      }
+      
+      .chatbot-button {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .chatbot-button svg {
+        width: 24px;
+        height: 24px;
+      }
+      
+      .chatbot-window {
+        width: calc(100vw - 40px);
+        height: 500px;
+        right: -10px;
+      }
+    }
+  </style>
+
+  <div class="chatbot-container">
+    <button class="chatbot-button" id="chatbotButton" onclick="toggleChatbot()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        <path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
+      </svg>
+      <span class="chatbot-badge">1</span>
+    </button>
+    
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">
+        <div class="chatbot-header-info">
+          <div class="chatbot-avatar">🌿</div>
+          <div class="chatbot-header-text">
+            <h3>Sacred Rebirth Bot</h3>
+            <p>Always available</p>
+          </div>
+        </div>
+        <button class="chatbot-close" onclick="toggleChatbot()">✕</button>
+      </div>
+      
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chatbot-message">
+          <div class="chatbot-message-avatar">🌿</div>
+          <div class="chatbot-message-content">
+            Hello! I'm the Sacred Rebirth virtual assistant. I'm here to help you learn about our spiritual retreats. How can I help you?
+          </div>
+        </div>
+        
+        <div class="chatbot-typing" id="chatbotTyping">
+          <div class="chatbot-typing-dot"></div>
+          <div class="chatbot-typing-dot"></div>
+          <div class="chatbot-typing-dot"></div>
+        </div>
+      </div>
+      
+      <div class="chatbot-quick-replies" id="chatbotReplies">
+        <button class="chatbot-quick-reply" onclick="sendMessage('What services do you offer?')">🌟 What services do you offer?</button>
+        <button class="chatbot-quick-reply" onclick="sendMessage('How much does it cost?')">💰 How much does it cost?</button>
+        <button class="chatbot-quick-reply" onclick="sendMessage('Where are you located?')">📍 Where are you located?</button>
+        <button class="chatbot-quick-reply" onclick="sendMessage('How do I book a call?')">📞 How do I book a call?</button>
+        <button class="chatbot-quick-reply" onclick="sendMessage('Tell me about Ayahuasca')">🌿 Tell me about Ayahuasca</button>
+        <button class="chatbot-quick-reply" onclick="sendMessage('Tell me about Kambo')">🐸 Tell me about Kambo</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatbotResponses = {
+      'services': {
+        keywords: ['services', 'offer', 'do you do', 'treatments', 'medicine', 'what', 'ceremonies'],
+        response: 'We offer transformative ceremonies:\n\n🌿 Ayahuasca - Sacred plant medicine for deep healing, spiritual insight, and transformation\n🐸 Kambo - Amazonian frog medicine for physical and energetic cleansing\n🌬️ Rapé - Sacred tobacco snuff for grounding and connecting with ancestral wisdom\n☯️ Qigong - Energy balance and meditation sessions\n\nAll ceremonies include experienced facilitators, integration support, and a safe sacred environment.\n\nWould you like to know more about any specific one?',
+        replies: ['Tell me about Ayahuasca', 'Tell me about Kambo', 'Tell me about Rapé', 'Book Discovery Call']
+      },
+      'retreat': {
+        keywords: ['retreat', '7 days', 'week', 'program', 'schedule', 'stay', 'accommodation', 'includes', 'package'],
+        response: '🏡 7-NIGHT RETREAT AT CASA AMALAHI\n\nIncludes:\n• 7 nights accommodation at Casa Amalahi\n• All sacred ceremonies with experienced facilitators\n• Nutritious meals prepared daily\n• Daily Qigong and meditation sessions\n• Integration support and community\n• Small groups (max 8-12 people)\n\nLocated in Valle de Bravo, Mexico - a magical place surrounded by nature.\n\nLet\'s discuss details on a Discovery Call!',
+        replies: ['Book Discovery Call', 'Tell me about ceremonies', 'Where is Valle de Bravo?']
+      },
+      'pricing': {
+        keywords: ['cost', 'price', 'pricing', 'how much', 'pay', 'payment', 'investment', 'expensive', 'money'],
+        response: '💰 Investment details vary based on ceremony type and retreat duration.\n\nI\'d love to discuss this with you personally on a Discovery Call where I can understand your needs and provide detailed pricing information tailored to you.\n\n✨ The Discovery Call is FREE and lasts 15 minutes.\n\nWould you like to schedule it now?',
+        replies: ['Book Discovery Call', 'Tell me about the retreat', 'What\'s included?']
+      },
+      'location': {
+        keywords: ['located', 'where', 'location', 'place', 'address', 'valle', 'bravo', 'mexico', 'casa', 'amalahi'],
+        response: '📍 We\'re located in Valle de Bravo, Mexico\n\n🏡 Casa Amalahi is our ceremonial center - a sacred space nestled in nature, designed for deep transformation and healing.\n\nValle de Bravo is a beautiful town 2 hours from Mexico City, known for its lake, mountains, and spiritual energy.\n\nPerfect for retreat and introspection!',
+        replies: ['Book Discovery Call', 'How do I get there?', 'Tell me about the retreat']
+      },
+      'booking': {
+        keywords: ['book', 'schedule', 'call', 'discovery', 'appointment', 'speak', 'contact', 'reserve', 'talk', 'meet'],
+        response: '📞 BOOK YOUR FREE DISCOVERY CALL\n\nIt\'s super easy! Just click the button below and you\'ll be taken to our scheduling page where you can:\n\n✓ Choose your preferred date and time\n✓ Fill in your contact details\n✓ Receive instant confirmation via email\n✓ Michelle will reach out at the scheduled time\n\n✨ It\'s FREE, takes 15 minutes, and there\'s no commitment required.\n\nReady to take this sacred step?',
+        replies: ['Book Now']
+      },
+      'ayahuasca': {
+        keywords: ['ayahuasca', 'yage', 'plant medicine', 'vine', 'soul'],
+        response: '🌿 AYAHUASCA - "Vine of the Soul"\n\nA sacred Amazonian plant medicine that facilitates:\n• Deep emotional and psychological healing\n• Release of trauma and past wounds\n• Spiritual awakening and connection\n• Increased self-awareness and clarity\n• Connection with ancestral wisdom\n• Profound insights into life purpose\n• Breaking addictive patterns\n\nWhat to expect:\n• Ceremony lasts 4-6 hours in the evening\n• Traditional icaros (healing songs)\n• Safe, comfortable setting\n• Experienced facilitators trained by indigenous shamans\n• Pre and post-ceremony integration support\n\nMedical screening required.',
+        replies: ['Is it safe?', 'Book Discovery Call', 'Tell me about Kambo']
+      },
+      'kambo': {
+        keywords: ['kambo', 'frog', 'purification', 'cleanse', 'detox', 'immune'],
+        response: '🐸 KAMBO - Frog Medicine\n\nPowerful Amazonian purification medicine from the Phyllomedusa bicolor frog.\n\nBenefits:\n• Deep physical detoxification\n• Immune system strengthening\n• Mental clarity and focus\n• Emotional release and balance\n• Increased energy and vitality\n• Pain relief and anti-inflammatory effects\n• Breaking addictive patterns\n• Energetic cleansing and protection\n\nWhat to expect:\n• Ceremony lasts 1-2 hours\n• Quick onset (within minutes)\n• Intense purging phase (15-40 minutes)\n• Followed by deep calm, clarity, and renewal\n• Applied by certified facilitators\n\nHealth screening required.',
+        replies: ['Is it safe?', 'Book Discovery Call', 'Tell me about Ayahuasca']
+      },
+      'rape': {
+        keywords: ['rape', 'rapé', 'tobacco', 'snuff', 'hapé'],
+        response: '🌬️ RAPÉ - Sacred Medicine\n\nSacred tobacco snuff used by indigenous peoples of the Amazon for:\n• Grounding and centering\n• Clearing mental fog\n• Connecting with ancestral wisdom\n• Opening spiritual pathways\n• Focusing intention\n\nAdministered through the nose in ceremony with sacred prayers and intentions.\n\nA beautiful complement to other medicines!',
+        replies: ['Book Discovery Call', 'Tell me about other ceremonies', 'What\'s Qigong?']
+      },
+      'qigong': {
+        keywords: ['qigong', 'qi gong', 'chi', 'energy', 'meditation', 'yoga'],
+        response: '☯️ QIGONG - Energy Balance\n\nAncient Chinese practice for cultivating life force energy (Qi).\n\nBenefits:\n• Energy balance and flow\n• Mental clarity and peace\n• Physical flexibility and strength\n• Stress reduction\n• Spiritual connection\n\nDaily sessions included in our retreats to complement the medicine work and support integration.',
+        replies: ['Tell me about the retreat', 'Book Discovery Call', 'What else is included?']
+      },
+      'facilitators': {
+        keywords: ['facilitator', 'guide', 'michelle', 'brian', 'who', 'leader', 'teacher', 'shaman'],
+        response: '👥 MICHELLE & BRIAN - Your Retreat Facilitators\n\nExperienced facilitators dedicated to healing and spiritual growth.\n\n✓ Years of training in plant medicine ceremonies\n✓ Studied extensively with indigenous shamans\n✓ Traditional healing practices expertise\n✓ Create safe and sacred space for transformation\n✓ Provide integration support with love and compassion\n\nThey guide participants through profound journeys of self-discovery, healing, and awakening.\n\nMeet them on a Discovery Call!',
+        replies: ['Book Discovery Call', 'Tell me about safety', 'What services do you offer?']
+      },
+      'safety': {
+        keywords: ['safe', 'safety', 'risks', 'danger', 'contraindications', 'secure', 'medical'],
+        response: '🛡️ SAFETY IS OUR TOP PRIORITY\n\n✓ Facilitators with years of experience\n✓ Trained by indigenous shamans\n✓ Thorough medical screening required beforehand\n✓ Safe, controlled, and sacred environment\n✓ Individual attention and care\n✓ Post-ceremony integration support\n✓ Small groups (max 8-12 people)\n✓ Comfortable recovery time\n\nNote: These medicines are not suitable for everyone. Certain medical conditions and medications are contraindications.\n\nWe\'ll discuss your specific situation on the Discovery Call!',
+        replies: ['Book Discovery Call', 'What are contraindications?', 'Tell me about facilitators']
+      },
+      'preparation': {
+        keywords: ['prepare', 'preparation', 'diet', 'dieta', 'before', 'ready'],
+        response: '📋 PREPARATION FOR CEREMONIES\n\nProper preparation is essential:\n\nBefore Ayahuasca:\n• Follow special diet (dieta)\n• Avoid certain foods, alcohol, medications\n• Mental and spiritual preparation\n\nBefore Kambo:\n• Fast for 8 hours\n• Hydrate well\n• Empty stomach required\n\nWe provide detailed preparation guidelines after booking.\n\nLet\'s discuss your specific needs on a Discovery Call!',
+        replies: ['Book Discovery Call', 'What is the dieta?', 'Tell me about Ayahuasca']
+      },
+      'integration': {
+        keywords: ['integration', 'after', 'support', 'follow', 'post'],
+        response: '🔄 INTEGRATION SUPPORT\n\nThe journey continues after ceremony!\n\nWe provide:\n• Ongoing integration support\n• Understanding your experience\n• Incorporating insights into daily life\n• Community support\n• Follow-up guidance\n\nIntegration is crucial for lasting transformation. The days and weeks following ceremony are when the real work begins.\n\nWe\'re here to support you!',
+        replies: ['Book Discovery Call', 'Tell me about the retreat', 'What\'s included?']
+      },
+      'testimonials': {
+        keywords: ['testimonial', 'review', 'experience', 'feedback', 'others', 'people'],
+        response: '⭐ WHAT OTHERS SAY\n\nOur guests have experienced profound transformations:\n\n• Deep emotional healing\n• Life-changing insights\n• Release from trauma\n• Spiritual awakening\n• Breaking free from addiction\n• Finding life purpose\n• Renewed energy and vitality\n\nEach journey is unique and sacred.\n\nWould you like to hear more on a Discovery Call?',
+        replies: ['Book Discovery Call', 'Tell me about ceremonies', 'Is it safe?']
+      },
+      'default': {
+        response: 'Thank you for your question! I\'m here to help you learn about Sacred Rebirth retreats.\n\nYou can ask me about:\n• Ceremonies (Ayahuasca, Kambo, Rapé, Qigong)\n• 7-night retreat details\n• Location (Valle de Bravo, Mexico)\n• Facilitators (Michelle & Brian)\n• Safety and preparation\n• How to book a FREE Discovery Call\n\nOr simply book a call to discuss everything personally!\n\nWhat would you like to know?',
+        replies: ['Book Discovery Call', 'Tell me about services', 'Tell me about Ayahuasca', 'Where are you located?']
+      }
+    };
+
+    function toggleChatbot() {
+      const window = document.getElementById('chatbotWindow');
+      const badge = document.querySelector('.chatbot-badge');
+      window.classList.toggle('active');
+      if (window.classList.contains('active')) {
+        badge.style.display = 'none';
+      }
+    }
+
+    function sendMessage(message) {
+      const messagesContainer = document.getElementById('chatbotMessages');
+      const repliesContainer = document.getElementById('chatbotReplies');
+      const typing = document.getElementById('chatbotTyping');
+      
+      // Add user message
+      const userMessage = document.createElement('div');
+      userMessage.className = 'chatbot-message user';
+      userMessage.innerHTML = `
+        <div class="chatbot-message-avatar">👤</div>
+        <div class="chatbot-message-content">${message}</div>
+      `;
+      messagesContainer.insertBefore(userMessage, typing);
+      
+      // Show typing indicator
+      typing.classList.add('active');
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // Clear quick replies temporarily
+      repliesContainer.innerHTML = '';
+      
+      // Find response
+      setTimeout(() => {
+        typing.classList.remove('active');
+        
+        let responseData = chatbotResponses.default;
+        const messageLower = message.toLowerCase();
+        
+        for (let key in chatbotResponses) {
+          if (chatbotResponses[key].keywords) {
+            if (chatbotResponses[key].keywords.some(keyword => messageLower.includes(keyword))) {
+              responseData = chatbotResponses[key];
+              break;
+            }
+          }
+        }
+        
+        // Add bot response
+        const botMessage = document.createElement('div');
+        botMessage.className = 'chatbot-message';
+        botMessage.innerHTML = `
+          <div class="chatbot-message-avatar">🌿</div>
+          <div class="chatbot-message-content">${responseData.response.replace(/\n/g, '<br>')}</div>
+        `;
+        messagesContainer.insertBefore(botMessage, typing);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        
+        // Add new quick replies
+        if (responseData.replies) {
+          responseData.replies.forEach(reply => {
+            const button = document.createElement('button');
+            button.className = 'chatbot-quick-reply';
+            button.textContent = reply;
+            button.onclick = () => {
+              if (reply.includes('Book') || reply.includes('call')) {
+                window.location.href = 'appointment.html';
+              } else {
+                sendMessage(reply);
+              }
+            };
+            repliesContainer.appendChild(button);
+          });
+        }
+      }, 1500);
+    }
+    
+    // Show initial badge animation
+    setTimeout(() => {
+      const badge = document.querySelector('.chatbot-badge');
+      if (badge && !document.getElementById('chatbotWindow').classList.contains('active')) {
+        badge.style.display = 'flex';
+      }
+    }, 3000);
+  </script>
+
 </body>
 </html>
