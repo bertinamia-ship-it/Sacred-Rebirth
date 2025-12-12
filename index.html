@@ -272,15 +272,62 @@
       object-position: center;
       opacity: 0;
       transition: opacity 1.5s ease-in-out, transform 20s ease-in-out;
-      filter: brightness(0.85) contrast(1.2) saturate(1.3);
+      filter: brightness(0.82) contrast(1.25) saturate(1.35) sharpen(1.2);
       transform: scale(1.05);
       image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      image-rendering: -moz-crisp-edges;
       image-rendering: crisp-edges;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      will-change: transform, opacity;
     }
 
     .slideshow-img.active {
       opacity: 1;
       transform: scale(1.15);
+    }
+
+    /* Desktop: mejor calidad y efecto zoom */
+    @media (min-width: 769px) {
+      .slideshow-img {
+        object-position: center center;
+        filter: brightness(0.85) contrast(1.3) saturate(1.4);
+        transform: scale(1.08);
+      }
+      
+      .slideshow-img.active {
+        transform: scale(1.2);
+      }
+    }
+
+    /* Mobile: optimizado para pantallas pequeñas */
+    @media (max-width: 768px) {
+      .slideshow-img {
+        object-position: center 40%;
+        object-fit: cover;
+        filter: brightness(0.78) contrast(1.2) saturate(1.3);
+        transform: scale(1.1);
+        height: 100%;
+        width: 100%;
+      }
+      
+      .slideshow-img.active {
+        transform: scale(1.15);
+      }
+    }
+
+    /* Mobile pequeño: iPhone SE y similares */
+    @media (max-width: 430px) {
+      .slideshow-img {
+        object-position: center 35%;
+        filter: brightness(0.75) contrast(1.15) saturate(1.25);
+        transform: scale(1.12);
+      }
+      
+      .slideshow-img.active {
+        transform: scale(1.18);
+      }
     }
 
     video.slideshow-img {
