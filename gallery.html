@@ -96,15 +96,62 @@
       text-align: center;
       font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       color: var(--forest-green);
       letter-spacing: 1px;
       text-shadow: 0 2px 12px #d9ae5f33;
     }
     
+    /* Gallery Navigation Tabs */
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+    
+    .gallery-nav-btn {
+      padding: 0.8rem 1.8rem;
+      background: white;
+      border: 2px solid var(--gold);
+      color: var(--forest-green);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(49, 91, 58, 0.1);
+    }
+    
+    .gallery-nav-btn:hover {
+      background: var(--beige);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(49, 91, 58, 0.2);
+    }
+    
+    .gallery-nav-btn.active {
+      background: var(--gold);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(217, 174, 95, 0.4);
+    }
+    
     /* Category Sections */
     .gallery-section {
-      margin-bottom: 4rem;
+      display: none;
+    }
+    
+    .gallery-section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .section-title {
@@ -114,7 +161,7 @@
       margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
       border-bottom: 3px solid var(--gold);
-      text-align: left;
+      text-align: center;
     }
     
     .gallery-grid {
@@ -286,6 +333,15 @@
       }
       h1 {
         font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      .gallery-nav {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .gallery-nav-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
       }
       .section-title {
         font-size: 1.5rem;
@@ -319,8 +375,17 @@
   <div class="gallery-container">
     <h1>Gallery</h1>
     
+    <!-- Gallery Navigation -->
+    <div class="gallery-nav">
+      <button class="gallery-nav-btn active" data-section="rooms">🏠 Rooms</button>
+      <button class="gallery-nav-btn" data-section="common-areas">🛋️ Common Areas</button>
+      <button class="gallery-nav-btn" data-section="garden">🌿 Garden</button>
+      <button class="gallery-nav-btn" data-section="ceremony-room">✨ Ceremony Room</button>
+      <button class="gallery-nav-btn" data-section="previous-ceremonies">📸 Previous Ceremonies</button>
+    </div>
+    
     <!-- Rooms Section -->
-    <div class="gallery-section">
+    <div class="gallery-section active" id="rooms">
       <h2 class="section-title">🏠 Rooms</h2>
       <div class="gallery-grid" id="rooms-gallery">
         <div class="gallery-item"><img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765519927/room2_u1egly.jpg" alt="Room 1" /></div>
@@ -337,7 +402,7 @@
     </div>
     
     <!-- Common Areas Section -->
-    <div class="gallery-section">
+    <div class="gallery-section" id="common-areas">
       <h2 class="section-title">🛋️ Common Areas</h2>
       <div class="gallery-grid" id="common-areas-gallery">
         <div class="gallery-item upload-placeholder"><span>Upload Common Area Photos</span></div>
@@ -345,7 +410,7 @@
     </div>
     
     <!-- Garden Section -->
-    <div class="gallery-section">
+    <div class="gallery-section" id="garden">
       <h2 class="section-title">🌿 Garden</h2>
       <div class="gallery-grid" id="garden-gallery">
         <div class="gallery-item upload-placeholder"><span>Upload Garden Photos</span></div>
@@ -353,7 +418,7 @@
     </div>
     
     <!-- Ceremony Room Section -->
-    <div class="gallery-section">
+    <div class="gallery-section" id="ceremony-room">
       <h2 class="section-title">✨ Ceremony Room</h2>
       <div class="gallery-grid" id="ceremony-room-gallery">
         <div class="gallery-item upload-placeholder"><span>Upload Ceremony Room Photos</span></div>
@@ -361,7 +426,7 @@
     </div>
     
     <!-- Previous Ceremonies Section -->
-    <div class="gallery-section">
+    <div class="gallery-section" id="previous-ceremonies">
       <h2 class="section-title">📸 Previous Ceremonies</h2>
       <div class="gallery-grid" id="previous-ceremonies-gallery">
         <div class="gallery-item"><img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765519844/retio_1_ip7qwa.jpg" alt="Previous Ceremony 1" /></div>
@@ -464,6 +529,29 @@
       e.stopPropagation();
       const prevIndex = (currentIndex - 1 + allImages.length) % allImages.length;
       showLightbox(prevIndex);
+    });
+    
+    // Gallery Navigation
+    const navButtons = document.querySelectorAll('.gallery-nav-btn');
+    const gallerySections = document.querySelectorAll('.gallery-section');
+    
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Hide all sections
+        gallerySections.forEach(section => section.classList.remove('active'));
+        
+        // Show selected section
+        const sectionId = button.getAttribute('data-section');
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
