@@ -87,28 +87,45 @@
       color: var(--white);
     }
     .gallery-container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 6.5rem 1rem 2rem 1rem;
+      padding: 6.5rem 2rem 3rem 2rem;
       min-height: 100vh;
     }
     h1 {
       text-align: center;
       font-family: 'Playfair Display', serif;
-      font-size: 2.7rem;
-      margin-bottom: 2rem;
+      font-size: 3.5rem;
+      margin-bottom: 3rem;
       color: var(--forest-green);
       letter-spacing: 1px;
       text-shadow: 0 2px 12px #d9ae5f33;
     }
+    
+    /* Category Sections */
+    .gallery-section {
+      margin-bottom: 4rem;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--gold);
+      text-align: left;
+    }
+    
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
       margin-bottom: 2.5rem;
     }
+    
     .gallery-item {
-      aspect-ratio: 1/1;
+      aspect-ratio: 4/3;
       width: 100%;
       background: linear-gradient(135deg, #e6d9b7 60%, #f5f5f5 100%);
       border-radius: 1.2rem;
@@ -118,14 +135,17 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s, box-shadow 0.3s;
       border: 2.5px solid var(--gold);
+      position: relative;
     }
+    
     .gallery-item:hover {
-      transform: scale(1.04) rotate(-1deg);
-      box-shadow: 0 8px 32px #315B3A33;
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 12px 40px #315B3A44;
       border-color: var(--forest-green);
     }
+    
     .gallery-item img {
       width: 100%;
       height: 100%;
@@ -134,13 +154,32 @@
       transition: opacity 0.2s;
       display: block;
     }
+    
+    .upload-placeholder {
+      background: rgba(217, 174, 95, 0.1);
+      border: 3px dashed var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--brown);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .upload-placeholder::before {
+      content: "📸";
+      font-size: 3rem;
+    }
+    
     /* Lightbox styles */
     .lightbox {
       display: none;
       position: fixed;
       z-index: 9999;
       left: 0; top: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.9);
       align-items: center;
       justify-content: center;
       transition: opacity 0.2s;
@@ -200,29 +239,61 @@
       background: #D9AE5F;
       color: #315B3A;
     }
-    .gallery-note {
-      text-align: center;
-      margin-top: 2rem;
-      color: var(--brown);
-      font-size: 1.1rem;
-    }
-    .back-link {
-      display: block;
-      text-align: center;
-      margin: 2rem auto 0 auto;
-      font-size: 1.1rem;
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .back-link:hover {
-      text-decoration: underline;
-      color: var(--forest-green);
-    }
+    
+    /* Mobile Responsive */
     @media (max-width: 768px) {
-      .nav-inner { padding: 1rem 1.5rem; }
-      .gallery-container { padding: 6.5rem 0.2rem 2rem 0.2rem; }
-      .gallery-grid { gap: 0.7rem; }
+      .nav-inner { 
+        padding: 0.5rem 1rem; 
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        display: none;
+      }
+      .gallery-container { 
+        padding: 5rem 1rem 2rem 1rem; 
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      .gallery-grid { 
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem; 
+      }
+      .gallery-item {
+        aspect-ratio: 1/1;
+      }
+      .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+      }
+      .lightbox-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.8rem;
+        margin: 0 0.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery-container {
+        padding: 4.5rem 0.5rem 1.5rem 0.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -231,7 +302,7 @@
     <div class="nav-inner">
       <div class="brand">
         <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-          <img src="LOGO.JPG" alt="Sacred Rebirth Logo" style="height: 54px; width: auto; border-radius: 1.5rem; box-shadow: 0 4px 16px #315B3A22; background: #fff; margin-right: 0.7rem; transition: transform 0.2s;" />
+          <img src="LOGO.JPG" alt="Sacred Rebirth Logo" />
         </a>
       </div>
       <ul class="nav-links">
@@ -244,74 +315,128 @@
       </ul>
     </div>
   </nav>
+  
   <div class="gallery-container">
     <h1>Gallery</h1>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="GALLERY1.jpg" alt="Gallery 1" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY2.jpg" alt="Gallery 2" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY3.jpg" alt="Gallery 3" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY4.jpg" alt="Gallery 4" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY5.jpg" alt="Gallery 5" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY12.jpg"Gallery 6" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY7.jpg" alt="Gallery 7" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY8.jpg" alt="Gallery 8" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY 9.jpg" alt="Gallery 9" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY 6.jpg" alt="Gallery 10" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY10.jpg" alt="Gallery 10" loading="lazy" /></div>
-      <div class="gallery-item"><img src="GALLERY11.jgp.JPG" alt="Gallery 10" loading="lazy" /></div>
-     
-    </div>
-    <div class="lightbox" id="lightbox">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">&times;</button>
-      <div class="lightbox-nav">
-        <button class="lightbox-btn" id="lightboxPrev" aria-label="Anterior">&#8592;</button>
-        <button class="lightbox-btn" id="lightboxNext" aria-label="Siguiente">&#8594;</button>
+    
+    <!-- Rooms Section -->
+    <div class="gallery-section">
+      <h2 class="section-title">🏠 Rooms</h2>
+      <div class="gallery-grid" id="rooms-gallery">
+        <div class="gallery-item upload-placeholder"><span>Upload Room Photos</span></div>
       </div>
-      <img src="" alt="Imagen grande" id="lightboxImg" />
     </div>
-    <script>
-      // Lightbox functionality
-      const galleryItems = document.querySelectorAll('.gallery-item img');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      const lightboxClose = document.getElementById('lightboxClose');
-      const lightboxPrev = document.getElementById('lightboxPrev');
-      const lightboxNext = document.getElementById('lightboxNext');
-      let currentIndex = 0;
-      function showLightbox(index) {
-        currentIndex = index;
-        lightbox.classList.add('active');
-        lightboxImg.src = galleryItems[index].src;
-        lightboxImg.alt = galleryItems[index].alt;
-      }
-      galleryItems.forEach((img, idx) => {
-        img.addEventListener('click', () => {
-          showLightbox(idx);
-        });
-      });
-      function closeLightbox() {
-        lightbox.classList.remove('active');
-        lightboxImg.src = '';
-      }
-      lightboxClose.addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') showLightbox((currentIndex + 1) % galleryItems.length);
-        if (e.key === 'ArrowLeft') showLightbox((currentIndex - 1 + galleryItems.length) % galleryItems.length);
-      });
-      lightboxNext.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showLightbox((currentIndex + 1) % galleryItems.length);
-      });
-      lightboxPrev.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showLightbox((currentIndex - 1 + galleryItems.length) % galleryItems.length);
-      });
-    </script>
+    
+    <!-- Common Areas Section -->
+    <div class="gallery-section">
+      <h2 class="section-title">🛋️ Common Areas</h2>
+      <div class="gallery-grid" id="common-areas-gallery">
+        <div class="gallery-item upload-placeholder"><span>Upload Common Area Photos</span></div>
+      </div>
+    </div>
+    
+    <!-- Garden Section -->
+    <div class="gallery-section">
+      <h2 class="section-title">🌿 Garden</h2>
+      <div class="gallery-grid" id="garden-gallery">
+        <div class="gallery-item upload-placeholder"><span>Upload Garden Photos</span></div>
+      </div>
+    </div>
+    
+    <!-- Ceremony Room Section -->
+    <div class="gallery-section">
+      <h2 class="section-title">✨ Ceremony Room</h2>
+      <div class="gallery-grid" id="ceremony-room-gallery">
+        <div class="gallery-item upload-placeholder"><span>Upload Ceremony Room Photos</span></div>
+      </div>
+    </div>
+    
+    <!-- Previous Ceremonies Section -->
+    <div class="gallery-section">
+      <h2 class="section-title">📸 Previous Ceremonies</h2>
+      <div class="gallery-grid" id="previous-ceremonies-gallery">
+        <div class="gallery-item upload-placeholder"><span>Upload Previous Ceremony Photos</span></div>
+      </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+      <div class="lightbox-nav">
+        <button class="lightbox-btn" id="lightboxPrev" aria-label="Previous">&#8592;</button>
+        <button class="lightbox-btn" id="lightboxNext" aria-label="Next">&#8594;</button>
+      </div>
+      <img src="" alt="Large image" id="lightboxImg" />
+    </div>
   </div>
+  
+  <script>
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    let currentIndex = 0;
+    let allImages = [];
+    
+    function updateImagesList() {
+      allImages = Array.from(document.querySelectorAll('.gallery-item img:not(.placeholder)'));
+    }
+    
+    function showLightbox(index) {
+      updateImagesList();
+      if (allImages.length === 0) return;
+      currentIndex = index;
+      lightbox.classList.add('active');
+      lightboxImg.src = allImages[index].src;
+      lightboxImg.alt = allImages[index].alt;
+    }
+    
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+    
+    // Event delegation for gallery items
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.gallery-item img:not(.placeholder)')) {
+        updateImagesList();
+        const img = e.target;
+        const index = allImages.indexOf(img);
+        if (index !== -1) showLightbox(index);
+      }
+    });
+    
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') {
+        const nextIndex = (currentIndex + 1) % allImages.length;
+        showLightbox(nextIndex);
+      }
+      if (e.key === 'ArrowLeft') {
+        const prevIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+        showLightbox(prevIndex);
+      }
+    });
+    
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const nextIndex = (currentIndex + 1) % allImages.length;
+      showLightbox(nextIndex);
+    });
+    
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const prevIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+      showLightbox(prevIndex);
+    });
+  </script>
 </body>
 </html>
