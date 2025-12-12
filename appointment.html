@@ -1155,7 +1155,7 @@
                     <input type="hidden" name="autoresponse_from" value="Sacred Rebirth">
                     <input type="hidden" name="autoresponse_replyto" value="rebirthsecred@gmail.com">
                     <input type="hidden" name="autoresponse_subject" value="✨ Your Discovery Call is Confirmed - Sacred Rebirth">
-                    <input type="hidden" name="autoresponse_format" value="html">
+                    <input type="hidden" name="autoresponse_format" value="text">
                     <input type="hidden" name="autoresponse_message" id="autoresponseMessage">
                     
                     <!-- Hidden fields for booking details -->
@@ -1467,52 +1467,43 @@
             
             document.getElementById('calendarLink').value = calendarUrl;
             
-            // Auto-response message to client (simplified HTML for better compatibility)
-            const autoResponseText = `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
-  <div style="background-color: #315B3A; padding: 30px; text-align: center;">
-    <h1 style="color: #ffffff; margin: 0; font-size: 24px;">✨ Discovery Call Confirmed ✨</h1>
-    <p style="color: #E6F4EA; margin: 10px 0 0 0;">Sacred Rebirth Retreat</p>
-  </div>
-  
-  <div style="padding: 30px; background-color: #ffffff;">
-    <p style="font-size: 16px; color: #2A3E2F; margin: 0 0 20px 0;">Dear <strong>${fullName}</strong>,</p>
-    
-    <p style="font-size: 15px; color: #2A3E2F; line-height: 1.6; margin: 0 0 25px 0;">Your Sacred Rebirth Discovery Call is confirmed! We're excited to connect with you on this transformative journey.</p>
-    
-    <div style="background-color: #F0F7F1; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
-      <p style="margin: 0 0 10px 0; color: #315B3A; font-size: 14px;"><strong>📅 DATE:</strong></p>
-      <p style="margin: 0 0 15px 0; color: #2A3E2F; font-size: 16px; font-weight: bold;">${dateStr}</p>
-      
-      <p style="margin: 0 0 10px 0; color: #315B3A; font-size: 14px;"><strong>🕐 TIME:</strong></p>
-      <p style="margin: 0 0 15px 0; color: #2A3E2F; font-size: 16px; font-weight: bold;">${selectedTime} (CST)</p>
-      
-      <p style="margin: 0 0 10px 0; color: #315B3A; font-size: 14px;"><strong>📞 CONTACT:</strong></p>
-      <p style="margin: 0; color: #2A3E2F; font-size: 16px; font-weight: bold;">WhatsApp/Phone</p>
-    </div>
-    
-    <div style="text-align: center; margin-bottom: 25px;">
-      <a href="${calendarUrl}" style="display: inline-block; background-color: #4CAF50; color: #ffffff; text-decoration: none; padding: 15px 35px; border-radius: 25px; font-size: 16px; font-weight: bold;">📅 Add to Google Calendar</a>
-    </div>
-    
-    <div style="background-color: #FFF9E6; border-left: 4px solid #D9AE5F; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
-      <p style="margin: 0; color: #6C4F3D; font-size: 14px; line-height: 1.6;"><strong>📌 Important:</strong> Michelle will contact you at <strong>${phone}</strong> at the scheduled time. Please make sure your phone is available.</p>
-    </div>
-    
-    <p style="text-align: center; color: #6C757D; font-size: 14px; margin: 0 0 20px 0;">Need to reschedule? Simply reply to this email and we'll arrange a new time.</p>
-  </div>
-  
-  <div style="background-color: #F8F9FA; padding: 25px; text-align: center; border-top: 1px solid #E9ECEF;">
-    <p style="margin: 0 0 10px 0; color: #2A3E2F; font-size: 15px;">With love and light 🌿</p>
-    <p style="margin: 0 0 15px 0; color: #315B3A; font-size: 17px; font-weight: bold;">Michelle & Sacred Rebirth Team</p>
-    <p style="margin: 0 0 20px 0; color: #6C757D; font-size: 13px;">Valle de Bravo, Mexico</p>
-    
-    <div style="margin-top: 15px;">
-      <a href="mailto:rebirthsecred@gmail.com" style="display: inline-block; background-color: #D9AE5F; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-size: 13px; margin: 5px;">📧 Email</a>
-      <a href="https://wa.me/527225123413" style="display: inline-block; background-color: #25D366; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-size: 13px; margin: 5px;">💬 WhatsApp</a>
-      <a href="https://sacred-rebirth.com" style="display: inline-block; background-color: #315B3A; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-size: 13px; margin: 5px;">🌐 Website</a>
-    </div>
-  </div>
-</div>`.trim();
+            // Auto-response message to client (plain text - best compatibility with Web3Forms)
+            const autoResponseText = `✨ DISCOVERY CALL CONFIRMED ✨
+Sacred Rebirth Retreat
+
+Dear ${fullName},
+
+Your Sacred Rebirth Discovery Call is confirmed! We're excited to connect with you on this transformative journey.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 DATE: ${dateStr}
+
+🕐 TIME: ${selectedTime} (CST)
+
+📞 CONTACT: WhatsApp/Phone
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 ADD TO GOOGLE CALENDAR:
+${calendarUrl}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 IMPORTANT: Michelle will contact you at ${phone} at the scheduled time. Please make sure your phone is available.
+
+Need to reschedule? Simply reply to this email and we'll arrange a new time.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+With love and light 🌿
+
+Michelle & Sacred Rebirth Team
+Valle de Bravo, Mexico
+
+📧 Email: rebirthsecred@gmail.com
+💬 WhatsApp: +52 722 512 3413
+🌐 Website: https://sacred-rebirth.com`;
 
             document.getElementById('autoresponseMessage').value = autoResponseText;
 
