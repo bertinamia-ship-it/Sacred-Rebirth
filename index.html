@@ -1544,6 +1544,16 @@
         font-size: 1.1rem;
       }
 
+      .nav-links a:active {
+        background: rgba(217, 174, 95, 0.25);
+        transform: scale(0.98);
+      }
+
+      .nav-links svg {
+        width: 22px;
+        height: 22px;
+      }
+
       .nav-inner {
         padding: 1rem 1.5rem;
       }
@@ -1555,46 +1565,65 @@
       .hero {
         min-height: 100vh;
         min-height: -webkit-fill-available;
-        padding: 8rem 1.5rem 4rem;
+        padding: 7rem 1.2rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .hero-title {
-        font-size: 2.5rem !important;
-        line-height: 1.2;
+        font-size: 2.8rem !important;
+        line-height: 1.15;
+        margin-bottom: 1.2rem;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       }
 
       .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        line-height: 1.5;
+        font-size: 1.15rem;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
 
       .hero-buttons {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
         width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
       }
 
       .btn-primary,
       .btn-secondary {
         width: 100%;
         margin: 0;
-        min-height: 48px;
+        min-height: 52px;
+        font-size: 1.1rem;
+        padding: 1.2rem 2rem;
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
+        box-shadow: 0 8px 20px rgba(49, 91, 58, 0.3);
+      }
+
+      .btn-primary:active,
+      .btn-secondary:active {
+        transform: scale(0.98);
       }
 
       section {
-        padding: 3rem 1.5rem;
+        padding: 3.5rem 1.2rem;
       }
 
       .section-title {
-        font-size: 2rem !important;
-        margin-bottom: 1.5rem;
+        font-size: 2.2rem !important;
+        margin-bottom: 1.8rem;
+        line-height: 1.25;
       }
 
       .section-subtitle {
-        font-size: 1rem;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
       }
 
       .features-grid,
@@ -1602,34 +1631,81 @@
       .testimonials-grid,
       .contact-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
       }
 
       .feature-card,
       .ceremony-card,
       .contact-item {
-        padding: 2rem 1.5rem;
+        padding: 2.2rem 1.8rem;
+        border-radius: 20px;
+      }
+
+      .feature-card h3,
+      .ceremony-card h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card p,
+      .ceremony-card p {
+        font-size: 1.05rem;
+        line-height: 1.7;
       }
 
       .pricing-card {
-        padding: 3rem 2rem;
-        margin: 2rem auto 0;
+        padding: 3.5rem 2.2rem;
+        margin: 2.5rem auto 0;
+        border-radius: 25px;
       }
 
       .price {
-        font-size: 3rem;
+        font-size: 3.2rem;
+        margin: 1.5rem 0;
+      }
+
+      .pricing-card h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .pricing-card p,
+      .pricing-card li {
+        font-size: 1.05rem;
+        line-height: 1.8;
       }
 
       .retreat-benefit {
-        padding: 2rem 1.5rem;
+        padding: 2.2rem 1.5rem;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .benefit-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 1.5rem;
+        border-radius: 15px;
       }
 
       .benefit-content h3 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .benefit-content p {
+        font-size: 1.05rem;
+        line-height: 1.7;
       }
 
       .video-testimonial {
-        padding: 1.5rem;
+        padding: 1.8rem;
+      }
+
+      .video-testimonial iframe,
+      .video-testimonial video {
+        border-radius: 15px;
+        max-height: 300px;
       }
 
       /* Reducir animaciones en móvil para mejor rendimiento */
@@ -1637,10 +1713,32 @@
         display: none;
       }
 
-      .feature-card:hover,
-      .ceremony-card:hover,
-      .contact-item:hover {
-        transform: translateY(-5px) scale(1.02);
+      .btn-primary,
+      .btn-secondary,
+      .feature-card,
+      .ceremony-card {
+        animation: none !important;
+      }
+
+      .feature-card:active,
+      .ceremony-card:active,
+      .contact-item:active {
+        transform: scale(0.98);
+      }
+
+      /* Mejorar formularios en móvil */
+      input,
+      textarea,
+      select {
+        font-size: 16px !important;
+        padding: 1rem !important;
+        border-radius: 12px !important;
+      }
+
+      /* Mejorar espaciado general */
+      .container {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
       }
     }
 
@@ -1751,57 +1849,78 @@
       .hero {
         min-height: 100vh;
         min-height: -webkit-fill-available;
-        padding: 6rem 1rem 3rem;
+        padding: 6rem 1rem 2.5rem;
       }
 
       .hero-title {
-        font-size: 1.8rem !important;
+        font-size: 2rem !important;
         line-height: 1.15;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
       }
 
       .hero-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.4;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+      }
+
+      .hero-buttons {
+        gap: 1rem;
       }
 
       .section-title {
-        font-size: 1.6rem !important;
+        font-size: 1.8rem !important;
         line-height: 1.2;
+        margin-bottom: 1.5rem;
       }
 
       .section-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
       }
 
       .btn-primary,
       .btn-secondary {
-        padding: 0.9rem 1.5rem;
-        font-size: 0.95rem;
-        min-height: 48px;
+        padding: 1rem 1.8rem;
+        font-size: 1rem;
+        min-height: 50px;
       }
 
       .brand img {
-        height: 32px !important;
+        height: 34px !important;
       }
 
       .feature-card,
       .ceremony-card,
       .contact-item {
-        padding: 1.2rem 0.8rem;
+        padding: 1.8rem 1.2rem;
+      }
+
+      .feature-card h3,
+      .ceremony-card h3 {
+        font-size: 1.4rem;
+      }
+
+      .feature-card p,
+      .ceremony-card p {
+        font-size: 0.95rem;
       }
 
       .pricing-card {
-        padding: 2rem 1.2rem;
+        padding: 2.5rem 1.5rem;
       }
 
       .price {
-        font-size: 2.2rem !important;
+        font-size: 2.5rem !important;
       }
 
       .ceremony-image {
-        height: 180px;
+        height: 200px;
+      }
+
+      section {
+        padding: 3rem 1rem;
       }
     }
 
@@ -2957,24 +3076,67 @@
     
     @media (max-width: 768px) {
       .chatbot-container {
-        bottom: 90px;
-        right: 20px;
+        bottom: 85px;
+        right: 15px;
+        left: 15px;
       }
       
       .chatbot-button {
-        width: 50px;
-        height: 50px;
+        width: 56px;
+        height: 56px;
+        box-shadow: 0 6px 20px rgba(49, 91, 58, 0.4);
       }
       
       .chatbot-button svg {
-        width: 24px;
-        height: 24px;
+        width: 26px;
+        height: 26px;
       }
       
       .chatbot-window {
-        width: calc(100vw - 40px);
-        height: 500px;
-        right: -10px;
+        width: calc(100vw - 30px);
+        height: calc(100vh - 150px);
+        max-height: 600px;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        border-radius: 20px;
+      }
+
+      .chatbot-header {
+        padding: 1.2rem;
+      }
+
+      .chatbot-header h3 {
+        font-size: 1.1rem;
+      }
+
+      .chatbot-messages {
+        padding: 1rem;
+      }
+
+      .chatbot-message {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.1rem;
+        max-width: 85%;
+      }
+
+      .chatbot-input-container {
+        padding: 1rem;
+      }
+
+      .chatbot-input {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      .chatbot-send {
+        width: 44px;
+        height: 44px;
+      }
+
+      .chatbot-quick-replies button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
       }
     }
   </style>
