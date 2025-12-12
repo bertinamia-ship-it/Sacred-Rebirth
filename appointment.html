@@ -6,6 +6,8 @@
     <title>Schedule Your Free Discovery Call - Sacred Rebirth</title>
     <meta name="description" content="Book your free 15-minute discovery call with Sacred Rebirth. Learn about our transformative Ayahuasca, Kambo, and Qigong retreats in Costa Rica.">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --color-gold: #d4a373;
@@ -1140,31 +1142,7 @@
                     <span data-en="Your Information" data-es="Tu Información">Your Information</span>
                 </h3>
 
-                <form id="appointmentForm" action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Web3Forms Access Key -->
-                    <input type="hidden" name="access_key" value="ce40ea9b-6508-45ed-984f-ed95f982d1f7">
-                    <input type="hidden" name="subject" value="🌿 New Discovery Call Booking - Sacred Rebirth">
-                    <input type="hidden" name="from_name" value="Sacred Rebirth Website">
-                    <input type="hidden" name="redirect" value="https://sacred-rebirth.com/appointment.html?confirmed=true">
-                    
-                    <!-- IMPORTANT: This sends to YOU (the owner) -->
-                    <input type="hidden" name="email" value="rebirthsecred@gmail.com">
-                    
-                    <!-- Auto-response configuration for CLIENT -->
-                    <input type="hidden" name="autoresponse" value="true">
-                    <input type="hidden" name="autoresponse_from" value="Sacred Rebirth">
-                    <input type="hidden" name="autoresponse_replyto" value="rebirthsecred@gmail.com">
-                    <input type="hidden" name="autoresponse_subject" value="✨ Your Discovery Call is Confirmed - Sacred Rebirth">
-                    <input type="hidden" name="autoresponse_format" value="text">
-                    <input type="hidden" name="autoresponse_message" id="autoresponseMessage">
-                    
-                    <!-- Hidden fields for booking details -->
-                    <input type="hidden" name="Selected Date" id="hiddenDate">
-                    <input type="hidden" name="Selected Time" id="hiddenTime">
-                    <input type="hidden" name="Question 1 - Healing Journey" id="hiddenQ1">
-                    <input type="hidden" name="Question 2 - Previous Experience" id="hiddenQ2">
-                    <input type="hidden" name="Question 3 - Main Intention" id="hiddenQ3">
-                    <input type="hidden" name="Google Calendar Link" id="calendarLink">
+                <form id="appointmentForm">
 
                     <div class="form-group">
                         <label class="form-label" data-en="Full Name" data-es="Nombre Completo">Full Name</label>
@@ -1417,8 +1395,13 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Form Submission
-        function submitForm() {
+        // Initialize EmailJS
+        (function() {
+            emailjs.init('13oZ3D1_BHon_KVJ6');
+        })();
+
+        // Form Submission with EmailJS
+        async function submitForm() {
             const form = document.getElementById('appointmentForm');
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
@@ -1435,17 +1418,20 @@
                 return;
             }
 
+            // Disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending...</span>';
+
             // Format date
             const lang = localStorage.getItem('language') || 'en';
             const monthNames = lang === 'es' ? mesesEs : months;
             const dateStr = `${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
 
-            // Set hidden fields
-            document.getElementById('hiddenDate').value = dateStr;
-            document.getElementById('hiddenTime').value = selectedTime + ' (CST)';
-            document.getElementById('hiddenQ1').value = document.getElementById('question1').value || 'Not answered';
-            document.getElementById('hiddenQ2').value = document.getElementById('question2').value || 'Not answered';
-            document.getElementById('hiddenQ3').value = document.getElementById('question3').value || 'Not answered';
+            // Get questionnaire responses
+            const question1 = document.getElementById('question1').value || 'Not answered';
+            const question2 = document.getElementById('question2').value || 'Not answered';
+            const question3 = document.getElementById('question3').value || 'Not answered';
             
             // Create Google Calendar Link
             const timeHour = selectedTime.split(':')[0];
@@ -1457,67 +1443,61 @@
             const startDateTime = new Date(selectedDate);
             startDateTime.setHours(hour24, 0, 0);
             const endDateTime = new Date(startDateTime);
-            endDateTime.setMinutes(endDateTime.getMinutes() + 30); // 30 min call
+            endDateTime.setMinutes(endDateTime.getMinutes() + 30);
             
             const formatGoogleDate = (date) => {
                 return date.toISOString().replace(/-|:|\.\d+/g, '');
             };
             
             const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Discovery+Call+-+${encodeURIComponent(fullName)}&dates=${formatGoogleDate(startDateTime)}/${formatGoogleDate(endDateTime)}&details=Discovery+Call+with+${encodeURIComponent(fullName)}%0AEmail:+${encodeURIComponent(email)}%0APhone:+${encodeURIComponent(phone)}%0ACountry:+${encodeURIComponent(country)}&location=WhatsApp+Call&sf=true&output=xml`;
-            
-            document.getElementById('calendarLink').value = calendarUrl;
-            
-            // Auto-response message to client (plain text - best compatibility with Web3Forms)
-            const autoResponseText = `✨ DISCOVERY CALL CONFIRMED ✨
-Sacred Rebirth Retreat
 
-Dear ${fullName},
-
-Your Sacred Rebirth Discovery Call is confirmed! We're excited to connect with you on this transformative journey.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📅 DATE: ${dateStr}
-
-🕐 TIME: ${selectedTime} (CST)
-
-📞 CONTACT: WhatsApp/Phone
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📅 ADD TO GOOGLE CALENDAR:
-${calendarUrl}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📌 IMPORTANT: Michelle will contact you at ${phone} at the scheduled time. Please make sure your phone is available.
-
-Need to reschedule? Simply reply to this email and we'll arrange a new time.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-With love and light 🌿
-
-Michelle & Sacred Rebirth Team
-Valle de Bravo, Mexico
-
-📧 Email: rebirthsecred@gmail.com
-💬 WhatsApp: +52 722 512 3413
-🌐 Website: https://sacred-rebirth.com`;
-
-            document.getElementById('autoresponseMessage').value = autoResponseText;
-
-            // Save summary to localStorage for confirmation page
-            localStorage.setItem('bookingSummary', JSON.stringify({
-                date: dateStr,
-                time: selectedTime + ' (CST)',
-                name: fullName,
+            // Template parameters for EmailJS
+            const templateParams = {
+                fullName: fullName,
                 email: email,
+                phone: phone,
+                country: country,
+                selectedDate: dateStr,
+                selectedTime: selectedTime + ' (CST)',
+                question1: question1,
+                question2: question2,
+                question3: question3,
                 calendarUrl: calendarUrl
-            }));
+            };
 
-            // Submit the form
-            form.submit();
+            try {
+                // Send client confirmation email (beautiful HTML template)
+                await emailjs.send(
+                    'service_b1kkmu4',
+                    'template_kdscwmo',
+                    templateParams
+                );
+
+                // Send admin notification email (with client details)
+                await emailjs.send(
+                    'service_b1kkmu4',
+                    'template_xn973nt',
+                    templateParams
+                );
+
+                // Save summary to localStorage for confirmation page
+                localStorage.setItem('bookingSummary', JSON.stringify({
+                    date: dateStr,
+                    time: selectedTime + ' (CST)',
+                    name: fullName,
+                    email: email,
+                    calendarUrl: calendarUrl
+                }));
+
+                // Redirect to confirmation
+                window.location.href = 'appointment.html?confirmed=true';
+
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                alert('There was an error sending your booking. Please try again or contact us directly at rebirthsecred@gmail.com');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Book My Call</span><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+            }
         }
 
         // Language Support
