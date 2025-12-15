@@ -94,4 +94,22 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/qigong.html" />
   </url>
   
+  <!-- Blog -->
+  <url>
+    <loc>https://sacred-rebirth.com/blog.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/blog.html" />
+  </url>
+  
+  <!-- Blog Articles -->
+  <url>
+    <loc>https://sacred-rebirth.com/blog-ayahuasca-guide.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
 </urlset>

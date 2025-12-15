@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Ayahuasca & Plant Medicine Insights | Sacred Rebirth Valle de Bravo</title>
+  <meta name="description" content="Learn about ayahuasca, kambo, plant medicine ceremonies, preparation, integration, and spiritual healing. Expert insights from Sacred Rebirth facilitators in Valle de Bravo, Mexico." />
+  <meta name="keywords" content="ayahuasca blog, plant medicine articles, ayahuasca preparation guide, kambo benefits, spiritual healing blog, Valle de Bravo travel, integration tips, shamanic wisdom" />
+  <link rel="canonical" href="https://sacred-rebirth.com/blog.html" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog - Ayahuasca & Plant Medicine Insights" />
+  <meta property="og:description" content="Expert articles about ayahuasca, plant medicine, preparation, and spiritual transformation." />
+  <meta property="og:url" content="https://sacred-rebirth.com/blog.html" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Sacred Rebirth Blog",
+    "description": "Articles and insights about ayahuasca, plant medicine, spiritual healing, and transformative retreat experiences",
+    "url": "https://sacred-rebirth.com/blog.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sacred Rebirth",
+      "url": "https://sacred-rebirth.com"
+    }
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Satisfy&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --forest-green: #315B3A;
+      --beige: #E6D9B7;
+      --brown: #6C4F3D;
+      --gold: #D9AE5F;
+      --smoke-white: #F5F5F5;
+      --earth-dark: #2A3E2F;
+      --white: #FFFFFF;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f5f5 60%, #e6d9b7 100%);
+      color: var(--earth-dark);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--forest-green) 0%, var(--earth-dark) 100%);
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 20px rgba(49,91,58,0.3);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: var(--white);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--forest-green);
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(49,91,58,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(49,91,58,0.2);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-category {
+      display: inline-block;
+      background: var(--forest-green);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-card h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .blog-card p {
+      color: var(--earth-dark);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .read-more:hover {
+      background: var(--forest-green);
+    }
+
+    footer {
+      background: var(--earth-dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sacred Rebirth Blog</h1>
+    <p>Insights on Ayahuasca, Plant Medicine & Spiritual Transformation</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="retreat-info.html">Retreat Info</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="appointment.html">Book Call</a>
+  </nav>
+
+  <div class="container">
+    <div class="blog-grid">
+      
+      <!-- Article 1 -->
+      <article class="blog-card">
+        <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765762079/sacred-rebirth/sacred-rebirth/hero1.jpg" alt="What is Ayahuasca Complete Guide" loading="lazy">
+        <div class="blog-content">
+          <span class="blog-category">Ayahuasca Guide</span>
+          <h2>What is Ayahuasca? A Complete Guide for Beginners</h2>
+          <div class="blog-meta">
+            <span>📅 December 15, 2025</span>
+            <span>⏱️ 8 min read</span>
+          </div>
+          <p>Discover everything you need to know about ayahuasca: its ancient origins, how it works, what to expect, benefits, risks, and how to prepare for your first ceremony.</p>
+          <a href="blog-ayahuasca-guide.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-card">
+        <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765762069/sacred-rebirth/sacred-rebirth/hero2_.jpg" alt="Ayahuasca Preparation Diet Guide" loading="lazy">
+        <div class="blog-content">
+          <span class="blog-category">Preparation</span>
+          <h2>How to Prepare for Your Ayahuasca Ceremony: Complete Diet & Mindset Guide</h2>
+          <div class="blog-meta">
+            <span>📅 December 10, 2025</span>
+            <span>⏱️ 10 min read</span>
+          </div>
+          <p>Learn the essential ayahuasca diet (dieta), foods to avoid, medications that interact, mental preparation techniques, and how to set powerful intentions for your ceremony.</p>
+          <a href="blog-preparation-guide.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-card">
+        <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765762064/sacred-rebirth/sacred-rebirth/hero3.jpg" alt="Kambo Benefits and Healing" loading="lazy">
+        <div class="blog-content">
+          <span class="blog-category">Kambo</span>
+          <h2>Kambo Medicine: Benefits, Healing Properties & What to Expect</h2>
+          <div class="blog-meta">
+            <span>📅 December 5, 2025</span>
+            <span>⏱️ 7 min read</span>
+          </div>
+          <p>Explore the powerful healing benefits of kambo, the Amazonian frog medicine. Learn about its immune-boosting properties, detoxification effects, and what happens during a kambo ceremony.</p>
+          <a href="blog-kambo-benefits.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="blog-card">
+        <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765762062/sacred-rebirth/sacred-rebirth/hero4.jpg" alt="Valle de Bravo Travel Guide" loading="lazy">
+        <div class="blog-content">
+          <span class="blog-category">Travel</span>
+          <h2>Valle de Bravo: Your Complete Travel Guide to Mexico's Magical Pueblo</h2>
+          <div class="blog-meta">
+            <span>📅 November 28, 2025</span>
+            <span>⏱️ 12 min read</span>
+          </div>
+          <p>Discover Valle de Bravo, the beautiful magical town where Sacred Rebirth is located. Learn about getting there, what to do, the lake, mountains, culture, and why it's perfect for spiritual retreats.</p>
+          <a href="blog-valle-de-bravo-guide.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="blog-card">
+        <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765762074/sacred-rebirth/sacred-rebirth/hero5.jpg" alt="Integration After Ayahuasca" loading="lazy">
+        <div class="blog-content">
+          <span class="blog-category">Integration</span>
+          <h2>Integration After Ayahuasca: How to Bring Your Insights Into Daily Life</h2>
+          <div class="blog-meta">
+            <span>📅 November 20, 2025</span>
+            <span>⏱️ 9 min read</span>
+          </div>
+          <p>Integration is where the real transformation happens. Learn practical techniques to integrate ayahuasca insights, maintain your healing, and create lasting change in your life.</p>
+          <a href="blog-integration-guide.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article class="blog-card">
+        <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1765762050/sacred-rebirth/sacred-rebirth/PERSONA_FRUSTRADA.jpg" alt="Ayahuasca for Depression and Anxiety" loading="lazy">
+        <div class="blog-content">
+          <span class="blog-category">Mental Health</span>
+          <h2>Ayahuasca for Depression, Anxiety & PTSD: What Research Shows</h2>
+          <div class="blog-meta">
+            <span>📅 November 15, 2025</span>
+            <span>⏱️ 11 min read</span>
+          </div>
+          <p>Explore the growing scientific research on ayahuasca for treating depression, anxiety, PTSD, and trauma. Learn how it works in the brain and real stories of healing and transformation.</p>
+          <a href="blog-ayahuasca-mental-health.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Sacred Rebirth. All rights reserved.</p>
+    <p style="margin-top: 0.5rem;">Valle de Bravo, México | <a href="mailto:rebirthsecred@gmail.com" style="color: var(--gold);">rebirthsecred@gmail.com</a></p>
+  </footer>
+</body>
+</html>
