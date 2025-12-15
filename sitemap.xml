@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Main Page -->
+  <url>
+    <loc>https://sacred-rebirth.com/</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sacred-rebirth.com/" />
+  </url>
+  
+  <!-- Appointment/Discovery Call -->
+  <url>
+    <loc>https://sacred-rebirth.com/appointment.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/appointment.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/appointment.html" />
+  </url>
+  
+  <!-- Gallery -->
+  <url>
+    <loc>https://sacred-rebirth.com/gallery.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/gallery.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/gallery.html" />
+  </url>
+  
+  <!-- Valle de Bravo -->
+  <url>
+    <loc>https://sacred-rebirth.com/valle.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/valle.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/valle.html" />
+  </url>
+  
+  <!-- Retreat Info -->
+  <url>
+    <loc>https://sacred-rebirth.com/retreat-info.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/retreat-info.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/retreat-info.html" />
+  </url>
+  
+  <!-- Ayahuasca -->
+  <url>
+    <loc>https://sacred-rebirth.com/ayahuasca.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/ayahuasca.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/ayahuasca.html" />
+  </url>
+  
+  <!-- Kambo -->
+  <url>
+    <loc>https://sacred-rebirth.com/kambo.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/kambo.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/kambo.html" />
+  </url>
+  
+  <!-- Rapé -->
+  <url>
+    <loc>https://sacred-rebirth.com/rape.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/rape.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/rape.html" />
+  </url>
+  
+  <!-- Qi Gong -->
+  <url>
+    <loc>https://sacred-rebirth.com/qigong.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sacred-rebirth.com/qigong.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://sacred-rebirth.com/qigong.html" />
+  </url>
+  
+</urlset>
