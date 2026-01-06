@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Rebirth Retreat Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+    :root {
+      --forest: #315B3A;
+      --beige: #E6D9B7;
+      --earth: #6C4F3D;
+      --gold: #D9AE5F;
+      --smoke: #F5F5F5;
+      --ink: #2b241f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--smoke);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @media (prefers-reduced-motion: no-preference) {
+      .section {
+        animation: fadeUp 0.8s ease-out backwards;
+      }
+      .section:nth-child(1) { animation-delay: 0.1s; }
+      .section:nth-child(2) { animation-delay: 0.2s; }
+      .section:nth-child(3) { animation-delay: 0.3s; }
+      .section:nth-child(4) { animation-delay: 0.4s; }
+      .section:nth-child(5) { animation-delay: 0.5s; }
+      .section:nth-child(6) { animation-delay: 0.6s; }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Section Base */
+    .section {
+      min-height: 100vh;
+      padding: 60px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-content {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Welcome Section */
+    .welcome {
+      background: linear-gradient(180deg, rgba(49,91,58,.05) 0%, var(--smoke) 100%);
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+
+    .welcome-logo {
+      width: 120px;
+      max-width: 50%;
+      height: auto;
+      margin: 0 auto 30px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.1));
+    }
+
+    .welcome-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .welcome-dates {
+      font-size: 16px;
+      color: var(--earth);
+      margin-bottom: 8px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .welcome-location {
+      font-size: 14px;
+      color: rgba(108,79,61,.8);
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 400;
+    }
+
+    .welcome-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .welcome-text-es {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(43,36,31,.85);
+      font-style: italic;
+    }
+
+    /* Schedule Section */
+    .schedule {
+      background: var(--smoke);
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--forest);
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 0.5px;
+    }
+
+    .schedule-card {
+      background: rgba(255,255,255,.98);
+      border-radius: 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(49,91,58,.08);
+      border: 1px solid rgba(49,91,58,.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .schedule-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(49,91,58,.12);
+      }
+    }
+
+    .schedule-card-header {
+      background: linear-gradient(180deg, var(--forest) 0%, #2a4f32 100%);
+      color: #fff;
+      padding: 16px 20px;
+    }
+
+    .schedule-day {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .schedule-theme {
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(255,255,255,.95);
+      opacity: 0.9;
+    }
+
+    .schedule-body {
+      padding: 16px 20px;
+      background: linear-gradient(180deg, rgba(230,217,183,.2) 0%, rgba(255,255,255,.0) 30%), rgba(255,255,255,.99);
+    }
+
+    .schedule-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(108,79,61,.1);
+      align-items: flex-start;
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-time {
+      min-width: 90px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--earth);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.2px;
+    }
+
+    .schedule-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(108,79,61,.3);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .schedule-activity {
+      flex: 1;
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .ceremony-item {
+      position: relative;
+    }
+
+    .ceremony-item::before {
+      content: '✨';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .ceremony-item .schedule-dot {
+      background: var(--gold);
+      box-shadow: 0 0 0 3px rgba(217,174,95,.2);
+      width: 6px;
+      height: 6px;
+    }
+
+    .ceremony-item .schedule-activity {
+      font-weight: 500;
+      color: var(--forest);
+    }
+
+    /* Menu Section */
+    .menu {
+      background: linear-gradient(180deg, var(--smoke) 0%, rgba(230,217,183,.1) 100%);
+      padding: 60px 20px;
+    }
+
+    .menu-intro {
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 30px;
+    }
+
+    .menu-intro-es {
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(43,36,31,.85);
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    .menu-card {
+      background: rgba(255,255,255,.95);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(49,91,58,.08);
+      border: 1px solid rgba(49,91,58,.1);
+    }
+
+    .menu-meal {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .menu-meal:last-child {
+      margin-bottom: 0;
+    }
+
+    .menu-icon {
+      font-size: 28px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(230,217,183,.3) 0%, rgba(217,174,95,.2) 100%);
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .menu-meal-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--forest);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .menu-description {
+      font-size: 14px;
+      color: rgba(43,36,31,.8);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* Ceremonies Section */
+    .ceremonies {
+      background: var(--smoke);
+      padding: 60px 20px;
+    }
+
+    .ceremony-card {
+      background: rgba(255,255,255,.98);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(49,91,58,.08);
+      border: 1px solid rgba(49,91,58,.1);
+      border-left: 4px solid var(--gold);
+    }
+
+    .ceremony-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: 12px;
+    }
+
+    .ceremony-description {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .ceremony-description-es {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(43,36,31,.85);
+      font-style: italic;
+    }
+
+    /* Location & Tips Section */
+    .location {
+      background: linear-gradient(180deg, rgba(230,217,183,.1) 0%, var(--smoke) 100%);
+      padding: 60px 20px;
+    }
+
+    .location-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: 12px;
+    }
+
+    .location-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .location-text-es {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(43,36,31,.85);
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+
+    .tips-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .tip-item {
+      display: flex;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(108,79,61,.1);
+      align-items: flex-start;
+    }
+
+    .tip-item:last-child {
+      border-bottom: none;
+    }
+
+    .tip-icon {
+      font-size: 20px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(230,217,183,.3);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .tip-content {
+      flex: 1;
+    }
+
+    .tip-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+
+    .tip-text {
+      font-size: 14px;
+      color: rgba(43,36,31,.8);
+      line-height: 1.6;
+    }
+
+    .tip-text-es {
+      font-size: 14px;
+      color: rgba(43,36,31,.75);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: linear-gradient(180deg, var(--smoke) 0%, rgba(49,91,58,.03) 100%);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact-brand {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--forest);
+      margin-bottom: 24px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .contact-info {
+      font-size: 16px;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.8;
+    }
+
+    .contact-link {
+      color: var(--forest);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .contact-link:hover {
+      border-bottom-color: var(--forest);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .welcome-title {
+        font-size: 28px;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .schedule-day {
+        font-size: 16px;
+      }
+      .ceremony-name {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Section -->
+  <section class="section welcome">
+    <div class="section-content">
+      <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1767591489/ChatGPT_Image_Jan_4_2026_10_36_35_PM_dwi0zc.png" alt="Sacred Rebirth Retreats" class="welcome-logo">
+      <h1 class="welcome-title">Sacred Rebirth Retreat Guide</h1>
+      <p class="welcome-dates">January 12 – 18</p>
+      <p class="welcome-location">Valle de Bravo</p>
+      <div class="welcome-text">
+        Welcome to a journey of transformation and renewal. This retreat is designed to support your inner growth through sacred ceremonies, mindful practices, and deep connection with nature.
+      </div>
+      <div class="welcome-text-es">
+        Bienvenido a un viaje de transformación y renovación. Este retiro está diseñado para apoyar tu crecimiento interior a través de ceremonias sagradas, prácticas conscientes y profunda conexión con la naturaleza.
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="section schedule">
+    <div class="section-content">
+      <h2 class="section-title">Daily Schedule</h2>
+      
+      <!-- Monday -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day">🌿 Monday, January 12</div>
+          <div class="schedule-theme">Retreat Opening</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item ceremony-item">
+            <span class="schedule-time">8:30 – 11:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Kambo Ceremony ✨</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:00 – 12:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Breakfast</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">12:30 – 14:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Qi Gong Workshop</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">14:30 – 15:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Lunch</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">16:00 – 17:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Hike in the Forest</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">17:00 – 18:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Documentary: Ayahuasca</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">18:30 – 19:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Dinner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tuesday -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day">🌿 Tuesday, January 13</div>
+          <div class="schedule-theme">Family Order & Lineage</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item">
+            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Qi Gong Practice</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Breakfast</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:00 – 13:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Workshop: Ordering My Family</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Lunch</span>
+          </div>
+          <div class="schedule-item ceremony-item">
+            <span class="schedule-time">16:00 – 23:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Ayahuasca Ceremony ✨</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wednesday -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day">🌿 Wednesday, January 14</div>
+          <div class="schedule-theme">Integration & Parental Energy</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item">
+            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Breakfast</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Workshop Integration Ceremony</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:00 – 14:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Monarch Butterflies</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">14:00 – 15:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Lunch</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">15:30 – 18:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Workshop: Taking Mother/Father Energy</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">18:30 – 19:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Dinner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thursday -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day">🌿 Thursday, January 15</div>
+          <div class="schedule-theme">Family Loyalties</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item">
+            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Qi Gong Practice</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Breakfast</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:00 – 13:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Workshop: Breaking Family Loyalties</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Lunch</span>
+          </div>
+          <div class="schedule-item ceremony-item">
+            <span class="schedule-time">16:00 – 23:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Ayahuasca Ceremony ✨</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Friday -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day">🌿 Friday, January 16</div>
+          <div class="schedule-theme">Inner Child Healing</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item">
+            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Qi Gong Practice</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Breakfast</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:00 – 13:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Workshop: Healing Child Wounds</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Lunch</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">15:00 – 17:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Visit Avándaro</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">17:30 – 18:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Dinner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saturday -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day">🌿 Saturday, January 17</div>
+          <div class="schedule-theme">Ceremonial Closing</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item ceremony-item">
+            <span class="schedule-time">8:30 – 10:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Bufo Ceremony ✨</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Breakfast</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:00 – 12:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Qi Gong Practice</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">12:00 – 13:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Integration Workshop</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Lunch</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">15:00 – 18:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Visit Valle</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">18:30 – 19:30</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Dinner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sunday -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day">🌿 Sunday, January 18</div>
+          <div class="schedule-theme">Farewell</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item">
+            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Breakfast</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Departures</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="section menu">
+    <div class="section-content">
+      <h2 class="section-title">Nourishment</h2>
+      <div class="menu-intro">
+        Our meals are prepared with intention and care, using fresh, local ingredients to support your journey. Each meal is designed to nourish your body and honor the sacred space we create together.
+      </div>
+      <div class="menu-intro-es">
+        Nuestras comidas se preparan con intención y cuidado, usando ingredientes frescos y locales para apoyar tu viaje. Cada comida está diseñada para nutrir tu cuerpo y honrar el espacio sagrado que creamos juntos.
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-meal">
+          <div class="menu-icon">🌅</div>
+          <div>
+            <div class="menu-meal-title">Breakfast</div>
+            <div class="menu-description">Fresh fruits, whole grains, and nourishing options to start your day with energy and clarity.</div>
+            <div class="menu-description" style="font-style: italic; color: rgba(43,36,31,.75); margin-top: 4px;">
+              Frutas frescas, granos integrales y opciones nutritivas para comenzar tu día con energía y claridad.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-meal">
+          <div class="menu-icon">☀️</div>
+          <div>
+            <div class="menu-meal-title">Lunch</div>
+            <div class="menu-description">Balanced, plant-based meals with seasonal vegetables and proteins to sustain you through the day.</div>
+            <div class="menu-description" style="font-style: italic; color: rgba(43,36,31,.75); margin-top: 4px;">
+              Comidas balanceadas a base de plantas con verduras de temporada y proteínas para sostenerte durante el día.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-meal">
+          <div class="menu-icon">🌙</div>
+          <div>
+            <div class="menu-meal-title">Dinner</div>
+            <div class="menu-description">Light, grounding meals to support rest and integration after your daily practices.</div>
+            <div class="menu-description" style="font-style: italic; color: rgba(43,36,31,.75); margin-top: 4px;">
+              Comidas ligeras y reconfortantes para apoyar el descanso y la integración después de tus prácticas diarias.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ceremonies Section -->
+  <section class="section ceremonies">
+    <div class="section-content">
+      <h2 class="section-title">Sacred Ceremonies</h2>
+
+      <div class="ceremony-card">
+        <div class="ceremony-name">Kambo Ceremony</div>
+        <div class="ceremony-description">
+          Kambo is a traditional Amazonian medicine that supports physical and energetic cleansing. The ceremony is conducted with respect and care, following ancestral practices.
+        </div>
+        <div class="ceremony-description-es">
+          Kambo es una medicina tradicional amazónica que apoya la limpieza física y energética. La ceremonia se realiza con respeto y cuidado, siguiendo prácticas ancestrales.
+        </div>
+      </div>
+
+      <div class="ceremony-card">
+        <div class="ceremony-name">Ayahuasca Ceremony</div>
+        <div class="ceremony-description">
+          Ayahuasca is a sacred plant medicine that has been used for thousands of years for healing and spiritual growth. Our ceremonies are held in a safe, supported container with experienced facilitators.
+        </div>
+        <div class="ceremony-description-es">
+          Ayahuasca es una medicina de plantas sagradas que se ha utilizado durante miles de años para la sanación y el crecimiento espiritual. Nuestras ceremonias se realizan en un contenedor seguro y apoyado con facilitadores experimentados.
+        </div>
+      </div>
+
+      <div class="ceremony-card">
+        <div class="ceremony-name">Bufo Ceremony</div>
+        <div class="ceremony-description">
+          Bufo is a powerful medicine that facilitates deep spiritual experiences and insights. This ceremony is offered as part of our closing rituals, supporting integration and completion.
+        </div>
+        <div class="ceremony-description-es">
+          Bufo es una medicina poderosa que facilita experiencias e insights espirituales profundos. Esta ceremonia se ofrece como parte de nuestros rituales de cierre, apoyando la integración y la completitud.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Tips Section -->
+  <section class="section location">
+    <div class="section-content">
+      <h2 class="section-title">Location & Preparation</h2>
+      
+      <div class="location-title">Valle de Bravo</div>
+      <div class="location-text">
+        Our retreat takes place in the beautiful mountain town of Valle de Bravo, surrounded by forests, lakes, and natural beauty. The location provides a perfect setting for reflection, healing, and connection.
+      </div>
+      <div class="location-text-es">
+        Nuestro retiro tiene lugar en el hermoso pueblo de montaña de Valle de Bravo, rodeado de bosques, lagos y belleza natural. La ubicación proporciona un escenario perfecto para la reflexión, la sanación y la conexión.
+      </div>
+
+      <ul class="tips-list">
+        <li class="tip-item">
+          <div class="tip-icon">🎒</div>
+          <div class="tip-content">
+            <div class="tip-title">What to Bring</div>
+            <div class="tip-text">Comfortable clothing, layers for varying temperatures, a journal, water bottle, and an open heart.</div>
+            <div class="tip-text-es">Ropa cómoda, capas para temperaturas variables, un diario, botella de agua y un corazón abierto.</div>
+          </div>
+        </li>
+
+        <li class="tip-item">
+          <div class="tip-icon">🌿</div>
+          <div class="tip-content">
+            <div class="tip-title">Diet Guidelines</div>
+            <div class="tip-text">We recommend following a light, plant-based diet before the retreat. Avoid alcohol, processed foods, and heavy meals in the days leading up to your arrival.</div>
+            <div class="tip-text-es">Recomendamos seguir una dieta ligera a base de plantas antes del retiro. Evita el alcohol, alimentos procesados y comidas pesadas en los días previos a tu llegada.</div>
+          </div>
+        </li>
+
+        <li class="tip-item">
+          <div class="tip-icon">💫</div>
+          <div class="tip-content">
+            <div class="tip-title">Intention Setting</div>
+            <div class="tip-text">Take time before arriving to reflect on your intentions for this journey. What are you seeking to heal, release, or transform?</div>
+            <div class="tip-text-es">Tómate tiempo antes de llegar para reflexionar sobre tus intenciones para este viaje. ¿Qué buscas sanar, liberar o transformar?</div>
+          </div>
+        </li>
+
+        <li class="tip-item">
+          <div class="tip-icon">🤝</div>
+          <div class="tip-content">
+            <div class="tip-title">Community & Respect</div>
+            <div class="tip-text">This is a shared space of healing. We ask that you come with respect for yourself, others, and the sacred practices we will engage in together.</div>
+            <div class="tip-text-es">Este es un espacio compartido de sanación. Te pedimos que vengas con respeto por ti mismo, los demás y las prácticas sagradas en las que participaremos juntos.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact">
+    <div class="section-content">
+      <div class="contact-brand">Sacred Rebirth Retreats</div>
+      <div class="contact-info">
+        <p>For questions or support, please reach out:</p>
+        <p style="margin-top: 16px;">
+          <a href="mailto:info@sacredrebirthretreats.com" class="contact-link">info@sacredrebirthretreats.com</a>
+        </p>
+        <p style="margin-top: 8px;">
+          <a href="https://sacredrebirthretreats.com" class="contact-link">sacredrebirthretreats.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
