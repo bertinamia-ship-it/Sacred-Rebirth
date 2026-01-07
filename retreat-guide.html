@@ -34,6 +34,43 @@
       overflow-x: hidden;
     }
 
+    /* Language Toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(255,255,255,.95);
+      border-radius: 24px;
+      padding: 8px 16px;
+      box-shadow: 0 4px 16px rgba(49,91,58,.15);
+      border: 1px solid rgba(49,91,58,.1);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      opacity: 0.5;
+    }
+
+    .lang-btn.active {
+      opacity: 1;
+      background: rgba(49,91,58,.1);
+    }
+
+    .lang-btn:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
     /* Animations */
     @media (prefers-reduced-motion: no-preference) {
       .section {
@@ -499,18 +536,21 @@
   </style>
 </head>
 <body>
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')" title="English">🇺🇸</button>
+    <button class="lang-btn" data-lang="es" onclick="switchLanguage('es')" title="Español">🇲🇽</button>
+  </div>
+
   <!-- Welcome Section -->
   <section class="section welcome">
     <div class="section-content">
       <img src="https://res.cloudinary.com/dpmozdkfh/image/upload/v1767591489/ChatGPT_Image_Jan_4_2026_10_36_35_PM_dwi0zc.png" alt="Sacred Rebirth Retreats" class="welcome-logo">
-      <h1 class="welcome-title">Sacred Rebirth Retreat Guide</h1>
-      <p class="welcome-dates">January 12 – 18</p>
+      <h1 class="welcome-title" data-i18n="welcome.title">Sacred Rebirth Retreat Guide</h1>
+      <p class="welcome-dates" data-i18n="welcome.dates">January 11 – 18</p>
       <p class="welcome-location">Valle de Bravo</p>
-      <div class="welcome-text">
+      <div class="welcome-text" data-i18n="welcome.text">
         Welcome to a journey of transformation and renewal. This retreat is designed to support your inner growth through sacred ceremonies, mindful practices, and deep connection with nature.
-      </div>
-      <div class="welcome-text-es">
-        Bienvenido a un viaje de transformación y renovación. Este retiro está diseñado para apoyar tu crecimiento interior a través de ceremonias sagradas, prácticas conscientes y profunda conexión con la naturaleza.
       </div>
     </div>
   </section>
@@ -518,7 +558,42 @@
   <!-- Schedule Section -->
   <section class="section schedule">
     <div class="section-content">
-      <h2 class="section-title">Daily Schedule</h2>
+      <h2 class="section-title" data-i18n="schedule.title">Daily Schedule</h2>
+      
+      <!-- Saturday Arrival -->
+      <div class="schedule-card">
+        <div class="schedule-card-header">
+          <div class="schedule-day" data-i18n="schedule.jan11.day">🌿 Saturday, January 11</div>
+          <div class="schedule-theme" data-i18n="schedule.jan11.theme">Arrival Day</div>
+        </div>
+        <div class="schedule-body">
+          <div class="schedule-item">
+            <span class="schedule-time"></span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity" data-i18n="schedule.jan11.activity1">Arrival & Check-in</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time"></span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity" data-i18n="schedule.jan11.activity2">Welcome tea and light refreshments</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time"></span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity" data-i18n="schedule.jan11.activity3">Free time to settle in and rest</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">7:00 PM</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity" data-i18n="schedule.jan11.activity4">Welcome Dinner</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time"></span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity" data-i18n="schedule.jan11.activity5">Opening circle & retreat orientation</span>
+          </div>
+        </div>
+      </div>
       
       <!-- Monday -->
       <div class="schedule-card">
@@ -785,50 +860,120 @@
   <!-- Menu Section -->
   <section class="section menu">
     <div class="section-content">
-      <h2 class="section-title">Nourishment</h2>
-      <div class="menu-intro">
+      <h2 class="section-title" data-i18n="menu.title">Nourishment</h2>
+      <div class="menu-intro" data-i18n="menu.intro">
         Our meals are prepared with intention and care, using fresh, local ingredients to support your journey. Each meal is designed to nourish your body and honor the sacred space we create together.
       </div>
-      <div class="menu-intro-es">
-        Nuestras comidas se preparan con intención y cuidado, usando ingredientes frescos y locales para apoyar tu viaje. Cada comida está diseñada para nutrir tu cuerpo y honrar el espacio sagrado que creamos juntos.
-      </div>
 
+      <!-- January 11 -->
       <div class="menu-card">
-        <div class="menu-meal">
-          <div class="menu-icon">🌅</div>
-          <div>
-            <div class="menu-meal-title">Breakfast</div>
-            <div class="menu-description">Fresh fruits, whole grains, and nourishing options to start your day with energy and clarity.</div>
-            <div class="menu-description" style="font-style: italic; color: rgba(43,36,31,.75); margin-top: 4px;">
-              Frutas frescas, granos integrales y opciones nutritivas para comenzar tu día con energía y claridad.
-            </div>
-          </div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan11.title">January 11</h3>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan11.dinner">Dinner – 7:00 PM</div>
+          <div class="menu-description" data-i18n="menu.jan11.dinner_desc">Organic chicken enchiladas, prepared with organic chicken and fresh vegetables from our garden.</div>
         </div>
       </div>
 
+      <!-- January 12 -->
       <div class="menu-card">
-        <div class="menu-meal">
-          <div class="menu-icon">☀️</div>
-          <div>
-            <div class="menu-meal-title">Lunch</div>
-            <div class="menu-description">Balanced, plant-based meals with seasonal vegetables and proteins to sustain you through the day.</div>
-            <div class="menu-description" style="font-style: italic; color: rgba(43,36,31,.75); margin-top: 4px;">
-              Comidas balanceadas a base de plantas con verduras de temporada y proteínas para sostenerte durante el día.
-            </div>
-          </div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan12.title">January 12</h3>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan12.breakfast">Breakfast</div>
+          <div class="menu-description" data-i18n="menu.jan12.breakfast_desc">Mexican-style eggs served with handmade corn tortillas and fresh seasonal fruit.</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan12.lunch">Lunch</div>
+          <div class="menu-description" data-i18n="menu.jan12.lunch_desc">Tuna salad served with baked tortillas and fresh mixed greens.</div>
+        </div>
+        <div>
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan12.dinner">Dinner</div>
+          <div class="menu-description" data-i18n="menu.jan12.dinner_desc">Fresh organic trout from our lake, served with rice and a garden vegetable salad.</div>
         </div>
       </div>
 
+      <!-- January 13 -->
       <div class="menu-card">
-        <div class="menu-meal">
-          <div class="menu-icon">🌙</div>
-          <div>
-            <div class="menu-meal-title">Dinner</div>
-            <div class="menu-description">Light, grounding meals to support rest and integration after your daily practices.</div>
-            <div class="menu-description" style="font-style: italic; color: rgba(43,36,31,.75); margin-top: 4px;">
-              Comidas ligeras y reconfortantes para apoyar el descanso y la integración después de tus prácticas diarias.
-            </div>
-          </div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan13.title">January 13</h3>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan13.breakfast">Breakfast</div>
+          <div class="menu-description" data-i18n="menu.jan13.breakfast_desc">Huevos rancheros served with handmade corn tortillas and fresh fruit (kiwi, papaya, and melon).</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan13.lunch">Lunch</div>
+          <div class="menu-description" data-i18n="menu.jan13.lunch_desc">Fresh salad with avocado and organic chicken, mixed vegetables, olive oil, and apple vinegar dressing.</div>
+        </div>
+        <div>
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan13.dinner">Dinner</div>
+          <div class="menu-description" data-i18n="menu.jan13.dinner_desc">Organic chicken soup, served with rice on the side to add according to your preference.</div>
+        </div>
+      </div>
+
+      <!-- January 14 -->
+      <div class="menu-card">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan14.title">January 14</h3>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan14.breakfast">Breakfast</div>
+          <div class="menu-description" data-i18n="menu.jan14.breakfast_desc">Hard-boiled eggs served with oatmeal on the side and fresh organic fruit.</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan14.lunch">Lunch</div>
+          <div class="menu-description" data-i18n="menu.jan14.lunch_desc">Rice salad with boiled eggs and organic vegetables.</div>
+        </div>
+        <div>
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan14.dinner">Dinner</div>
+          <div class="menu-description" data-i18n="menu.jan14.dinner_desc">Organic chicken soup, served with rice on the side to add according to your preference.</div>
+        </div>
+      </div>
+
+      <!-- January 15 -->
+      <div class="menu-card">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan15.title">January 15</h3>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan15.breakfast">Breakfast</div>
+          <div class="menu-description" data-i18n="menu.jan15.breakfast_desc">Vegetable omelet seasoned with sea salt, served with homemade crispy potatoes and seasonal fruit.</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan15.lunch">Lunch</div>
+          <div class="menu-description" data-i18n="menu.jan15.lunch_desc">Traditional cecina tacos served with handmade tortillas and homemade sauces.</div>
+        </div>
+        <div>
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan15.dinner">Dinner</div>
+          <div class="menu-description" data-i18n="menu.jan15.dinner_desc">Asian-style BBQ organic chicken marinated with ginger, chili, garlic, and fresh lime, served with steamed seasonal organic vegetables and homemade mashed potatoes.</div>
+        </div>
+      </div>
+
+      <!-- January 16 -->
+      <div class="menu-card">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan16.title">January 16</h3>
+        <div>
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan16.lunch">Lunch</div>
+          <div class="menu-description" data-i18n="menu.jan16.lunch_desc">Visit to downtown Valle de Bravo (Meals taken outside the retreat location)</div>
+        </div>
+      </div>
+
+      <!-- January 17 -->
+      <div class="menu-card">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan17.title">January 17</h3>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan17.breakfast">Breakfast</div>
+          <div class="menu-description" data-i18n="menu.jan17.breakfast_desc">Smoked organic trout on toast, served with bagel, cream cheese, onion, and tomato, accompanied by fresh seasonal fruit.</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan17.lunch">Lunch</div>
+          <div class="menu-description" data-i18n="menu.jan17.lunch_desc">Chicken tinga tacos served with organic salad and handmade tortillas.</div>
+        </div>
+        <div>
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan17.dinner">Dinner</div>
+          <div class="menu-description" data-i18n="menu.jan17.dinner_desc">Lamb leg served with black pepper reduction and demi-glace sauce, accompanied by candied carrots, caramelized pecans, seasonal vegetables, and fresh salad.</div>
+        </div>
+      </div>
+
+      <!-- January 18 -->
+      <div class="menu-card">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan18.title">January 18</h3>
+        <div>
+          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan18.breakfast">Breakfast</div>
+          <div class="menu-description" data-i18n="menu.jan18.breakfast_desc">Chilaquiles topped with two eggs prepared to your liking, served with seasonal fruit.</div>
         </div>
       </div>
     </div>
@@ -939,6 +1084,182 @@
       </div>
     </div>
   </section>
+
+  <script>
+    // Bilingual content map
+    const translations = {
+      en: {
+        'welcome.title': 'Sacred Rebirth Retreat Guide',
+        'welcome.dates': 'January 11 – 18',
+        'welcome.text': 'Welcome to a journey of transformation and renewal. This retreat is designed to support your inner growth through sacred ceremonies, mindful practices, and deep connection with nature.',
+        
+        'schedule.title': 'Daily Schedule',
+        'schedule.jan11.day': '🌿 Saturday, January 11',
+        'schedule.jan11.theme': 'Arrival Day',
+        'schedule.jan11.activity1': 'Arrival & Check-in',
+        'schedule.jan11.activity2': 'Welcome tea and light refreshments',
+        'schedule.jan11.activity3': 'Free time to settle in and rest',
+        'schedule.jan11.activity4': 'Welcome Dinner',
+        'schedule.jan11.activity5': 'Opening circle & retreat orientation',
+        
+        'menu.title': 'Nourishment',
+        'menu.intro': 'Our meals are prepared with intention and care, using fresh, local ingredients to support your journey. Each meal is designed to nourish your body and honor the sacred space we create together.',
+        
+        'menu.jan11.title': 'January 11',
+        'menu.jan11.dinner': 'Dinner – 7:00 PM',
+        'menu.jan11.dinner_desc': 'Organic chicken enchiladas, prepared with organic chicken and fresh vegetables from our garden.',
+        
+        'menu.jan12.title': 'January 12',
+        'menu.jan12.breakfast': 'Breakfast',
+        'menu.jan12.breakfast_desc': 'Mexican-style eggs served with handmade corn tortillas and fresh seasonal fruit.',
+        'menu.jan12.lunch': 'Lunch',
+        'menu.jan12.lunch_desc': 'Tuna salad served with baked tortillas and fresh mixed greens.',
+        'menu.jan12.dinner': 'Dinner',
+        'menu.jan12.dinner_desc': 'Fresh organic trout from our lake, served with rice and a garden vegetable salad.',
+        
+        'menu.jan13.title': 'January 13',
+        'menu.jan13.breakfast': 'Breakfast',
+        'menu.jan13.breakfast_desc': 'Huevos rancheros served with handmade corn tortillas and fresh fruit (kiwi, papaya, and melon).',
+        'menu.jan13.lunch': 'Lunch',
+        'menu.jan13.lunch_desc': 'Fresh salad with avocado and organic chicken, mixed vegetables, olive oil, and apple vinegar dressing.',
+        'menu.jan13.dinner': 'Dinner',
+        'menu.jan13.dinner_desc': 'Organic chicken soup, served with rice on the side to add according to your preference.',
+        
+        'menu.jan14.title': 'January 14',
+        'menu.jan14.breakfast': 'Breakfast',
+        'menu.jan14.breakfast_desc': 'Hard-boiled eggs served with oatmeal on the side and fresh organic fruit.',
+        'menu.jan14.lunch': 'Lunch',
+        'menu.jan14.lunch_desc': 'Rice salad with boiled eggs and organic vegetables.',
+        'menu.jan14.dinner': 'Dinner',
+        'menu.jan14.dinner_desc': 'Organic chicken soup, served with rice on the side to add according to your preference.',
+        
+        'menu.jan15.title': 'January 15',
+        'menu.jan15.breakfast': 'Breakfast',
+        'menu.jan15.breakfast_desc': 'Vegetable omelet seasoned with sea salt, served with homemade crispy potatoes and seasonal fruit.',
+        'menu.jan15.lunch': 'Lunch',
+        'menu.jan15.lunch_desc': 'Traditional cecina tacos served with handmade tortillas and homemade sauces.',
+        'menu.jan15.dinner': 'Dinner',
+        'menu.jan15.dinner_desc': 'Asian-style BBQ organic chicken marinated with ginger, chili, garlic, and fresh lime, served with steamed seasonal organic vegetables and homemade mashed potatoes.',
+        
+        'menu.jan16.title': 'January 16',
+        'menu.jan16.lunch': 'Lunch',
+        'menu.jan16.lunch_desc': 'Visit to downtown Valle de Bravo (Meals taken outside the retreat location)',
+        
+        'menu.jan17.title': 'January 17',
+        'menu.jan17.breakfast': 'Breakfast',
+        'menu.jan17.breakfast_desc': 'Smoked organic trout on toast, served with bagel, cream cheese, onion, and tomato, accompanied by fresh seasonal fruit.',
+        'menu.jan17.lunch': 'Lunch',
+        'menu.jan17.lunch_desc': 'Chicken tinga tacos served with organic salad and handmade tortillas.',
+        'menu.jan17.dinner': 'Dinner',
+        'menu.jan17.dinner_desc': 'Lamb leg served with black pepper reduction and demi-glace sauce, accompanied by candied carrots, caramelized pecans, seasonal vegetables, and fresh salad.',
+        
+        'menu.jan18.title': 'January 18',
+        'menu.jan18.breakfast': 'Breakfast',
+        'menu.jan18.breakfast_desc': 'Chilaquiles topped with two eggs prepared to your liking, served with seasonal fruit.'
+      },
+      es: {
+        'welcome.title': 'Guía del Retiro Sacred Rebirth',
+        'welcome.dates': '11 – 18 de Enero',
+        'welcome.text': 'Bienvenido a un viaje de transformación y renovación. Este retiro está diseñado para apoyar tu crecimiento interior a través de ceremonias sagradas, prácticas conscientes y profunda conexión con la naturaleza.',
+        
+        'schedule.title': 'Programa Diario',
+        'schedule.jan11.day': '🌿 Sábado 11 de Enero',
+        'schedule.jan11.theme': 'Día de Llegada',
+        'schedule.jan11.activity1': 'Llegada y Registro',
+        'schedule.jan11.activity2': 'Té de bienvenida y refrigerios ligeros',
+        'schedule.jan11.activity3': 'Tiempo libre para instalarse y descansar',
+        'schedule.jan11.activity4': 'Cena de Bienvenida',
+        'schedule.jan11.activity5': 'Círculo de apertura y orientación del retiro',
+        
+        'menu.title': 'Alimentación',
+        'menu.intro': 'Nuestras comidas se preparan con intención y cuidado, usando ingredientes frescos y locales para apoyar tu viaje. Cada comida está diseñada para nutrir tu cuerpo y honrar el espacio sagrado que creamos juntos.',
+        
+        'menu.jan11.title': '11 de Enero',
+        'menu.jan11.dinner': 'Cena – 7:00 PM',
+        'menu.jan11.dinner_desc': 'Enchiladas de pollo orgánico, preparadas con pollo orgánico y verduras frescas de nuestro huerto.',
+        
+        'menu.jan12.title': '12 de Enero',
+        'menu.jan12.breakfast': 'Desayuno',
+        'menu.jan12.breakfast_desc': 'Huevos al estilo mexicano servidos con tortillas de maíz hechas a mano y fruta fresca de temporada.',
+        'menu.jan12.lunch': 'Comida',
+        'menu.jan12.lunch_desc': 'Ensalada de atún servida con tostadas horneadas y verduras frescas mixtas.',
+        'menu.jan12.dinner': 'Cena',
+        'menu.jan12.dinner_desc': 'Trucha orgánica fresca de nuestro lago, servida con arroz y ensalada de verduras del huerto.',
+        
+        'menu.jan13.title': '13 de Enero',
+        'menu.jan13.breakfast': 'Desayuno',
+        'menu.jan13.breakfast_desc': 'Huevos rancheros servidos con tortillas de maíz hechas a mano y fruta fresca (kiwi, papaya y melón).',
+        'menu.jan13.lunch': 'Comida',
+        'menu.jan13.lunch_desc': 'Ensalada fresca con aguacate y pollo orgánico, verduras mixtas, aceite de oliva y vinagre de manzana.',
+        'menu.jan13.dinner': 'Cena',
+        'menu.jan13.dinner_desc': 'Sopa de pollo orgánico, servida con arroz al lado para agregar según tu preferencia.',
+        
+        'menu.jan14.title': '14 de Enero',
+        'menu.jan14.breakfast': 'Desayuno',
+        'menu.jan14.breakfast_desc': 'Huevos duros servidos con avena al lado y fruta orgánica fresca.',
+        'menu.jan14.lunch': 'Comida',
+        'menu.jan14.lunch_desc': 'Ensalada de arroz con huevos hervidos y verduras orgánicas.',
+        'menu.jan14.dinner': 'Cena',
+        'menu.jan14.dinner_desc': 'Sopa de pollo orgánico, servida con arroz al lado para agregar según tu preferencia.',
+        
+        'menu.jan15.title': '15 de Enero',
+        'menu.jan15.breakfast': 'Desayuno',
+        'menu.jan15.breakfast_desc': 'Omelette de verduras sazonado con sal de mar, servido con papas crujientes caseras y fruta de temporada.',
+        'menu.jan15.lunch': 'Comida',
+        'menu.jan15.lunch_desc': 'Tacos de cecina tradicionales servidos con tortillas hechas a mano y salsas caseras.',
+        'menu.jan15.dinner': 'Cena',
+        'menu.jan15.dinner_desc': 'Pollo orgánico BBQ estilo asiático marinado con jengibre, chile, ajo y lima fresca, servido con verduras orgánicas de temporada al vapor y puré de papa casero.',
+        
+        'menu.jan16.title': '16 de Enero',
+        'menu.jan16.lunch': 'Comida',
+        'menu.jan16.lunch_desc': 'Visita al centro de Valle de Bravo (Comidas tomadas fuera del lugar del retiro)',
+        
+        'menu.jan17.title': '17 de Enero',
+        'menu.jan17.breakfast': 'Desayuno',
+        'menu.jan17.breakfast_desc': 'Trucha orgánica ahumada en tostada, servida con bagel, queso crema, cebolla y jitomate, acompañada de fruta fresca de temporada.',
+        'menu.jan17.lunch': 'Comida',
+        'menu.jan17.lunch_desc': 'Tacos de tinga de pollo servidos con ensalada orgánica y tortillas hechas a mano.',
+        'menu.jan17.dinner': 'Cena',
+        'menu.jan17.dinner_desc': 'Pierna de cordero servida con reducción de pimienta negra y salsa demi-glace, acompañada de zanahorias confitadas, nueces caramelizadas, verduras de temporada y ensalada fresca.',
+        
+        'menu.jan18.title': '18 de Enero',
+        'menu.jan18.breakfast': 'Desayuno',
+        'menu.jan18.breakfast_desc': 'Chilaquiles coronados con dos huevos preparados a tu gusto, servidos con fruta de temporada.'
+      }
+    };
+
+    // Current language (default: English)
+    let currentLang = 'en';
+
+    // Switch language function
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      
+      // Save preference
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Load saved language preference on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang && (savedLang === 'en' || savedLang === 'es')) {
+        switchLanguage(savedLang);
+      }
+    });
+  </script>
 </body>
 </html>
 
