@@ -8,12 +8,16 @@
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
 
     :root {
-      --forest: #315B3A;
-      --beige: #E6D9B7;
+      --forest: #2d5234;
+      --forest-light: #3d6d47;
+      --beige: #E8DCC4;
       --earth: #6C4F3D;
-      --gold: #D9AE5F;
-      --smoke: #F5F5F5;
+      --gold: #C9A25F;
+      --gold-light: #D9B376;
+      --smoke: #FAF8F5;
+      --white: #FFFFFF;
       --ink: #2b241f;
+      --sage: #8B9F91;
     }
 
     * {
@@ -32,42 +36,54 @@
       color: var(--ink);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* Language Toggle */
     .lang-toggle {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 16px;
+      right: 16px;
       z-index: 1000;
-      background: rgba(255,255,255,.95);
-      border-radius: 24px;
-      padding: 8px 16px;
-      box-shadow: 0 4px 16px rgba(49,91,58,.15);
-      border: 1px solid rgba(49,91,58,.1);
+      background: rgba(255,255,255,.98);
+      border-radius: 50%;
+      padding: 0;
+      box-shadow: 0 2px 12px rgba(49,91,58,.12);
+      border: 1px solid rgba(49,91,58,.08);
+      width: 44px;
+      height: 44px;
       display: flex;
-      gap: 8px;
       align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .lang-toggle:hover {
+      box-shadow: 0 4px 16px rgba(49,91,58,.18);
+      transform: scale(1.05);
     }
 
     .lang-btn {
       background: none;
       border: none;
-      font-size: 20px;
+      font-size: 24px;
       cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 12px;
+      padding: 0;
+      border-radius: 50%;
       transition: all 0.3s ease;
-      opacity: 0.5;
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
     }
 
     .lang-btn.active {
-      opacity: 1;
-      background: rgba(49,91,58,.1);
+      display: flex;
     }
 
     .lang-btn:hover {
-      opacity: 1;
       transform: scale(1.1);
     }
 
@@ -82,6 +98,45 @@
       .section:nth-child(4) { animation-delay: 0.4s; }
       .section:nth-child(5) { animation-delay: 0.5s; }
       .section:nth-child(6) { animation-delay: 0.6s; }
+
+      .schedule-card {
+        animation: fadeUp 0.6s ease-out backwards;
+      }
+      .schedule-card:nth-child(1) { animation-delay: 0.1s; }
+      .schedule-card:nth-child(2) { animation-delay: 0.15s; }
+      .schedule-card:nth-child(3) { animation-delay: 0.2s; }
+      .schedule-card:nth-child(4) { animation-delay: 0.25s; }
+      .schedule-card:nth-child(5) { animation-delay: 0.3s; }
+      .schedule-card:nth-child(6) { animation-delay: 0.35s; }
+      .schedule-card:nth-child(7) { animation-delay: 0.4s; }
+      .schedule-card:nth-child(8) { animation-delay: 0.45s; }
+
+      .menu-card {
+        animation: fadeUp 0.6s ease-out backwards;
+      }
+      .menu-card:nth-child(2) { animation-delay: 0.1s; }
+      .menu-card:nth-child(3) { animation-delay: 0.15s; }
+      .menu-card:nth-child(4) { animation-delay: 0.2s; }
+      .menu-card:nth-child(5) { animation-delay: 0.25s; }
+      .menu-card:nth-child(6) { animation-delay: 0.3s; }
+      .menu-card:nth-child(7) { animation-delay: 0.35s; }
+      .menu-card:nth-child(8) { animation-delay: 0.4s; }
+      .menu-card:nth-child(9) { animation-delay: 0.45s; }
+
+      .ceremony-card {
+        animation: fadeUp 0.6s ease-out backwards;
+      }
+      .ceremony-card:nth-child(1) { animation-delay: 0.1s; }
+      .ceremony-card:nth-child(2) { animation-delay: 0.2s; }
+      .ceremony-card:nth-child(3) { animation-delay: 0.3s; }
+
+      .tip-item {
+        animation: fadeUp 0.5s ease-out backwards;
+      }
+      .tip-item:nth-child(1) { animation-delay: 0.1s; }
+      .tip-item:nth-child(2) { animation-delay: 0.2s; }
+      .tip-item:nth-child(3) { animation-delay: 0.3s; }
+      .tip-item:nth-child(4) { animation-delay: 0.4s; }
     }
 
     @keyframes fadeUp {
@@ -105,7 +160,7 @@
     /* Section Base */
     .section {
       min-height: 100vh;
-      padding: 60px 20px;
+      padding: 80px 20px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -118,52 +173,67 @@
       width: 100%;
     }
 
+    /* Decorative elements */
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,159,145,.2), transparent);
+    }
+
     /* Welcome Section */
     .welcome {
-      background: linear-gradient(180deg, rgba(49,91,58,.05) 0%, var(--smoke) 100%);
+      background: linear-gradient(180deg, rgba(45,82,52,.04) 0%, var(--smoke) 100%);
       text-align: center;
-      padding: 80px 20px 60px;
+      padding: 100px 20px 80px;
     }
 
     .welcome-logo {
-      width: 120px;
+      width: 140px;
       max-width: 50%;
       height: auto;
-      margin: 0 auto 30px;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,.1));
+      margin: 0 auto 36px;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,.08));
     }
 
     .welcome-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-size: 40px;
       font-weight: 500;
       color: var(--forest);
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      letter-spacing: 0.8px;
+      line-height: 1.3;
     }
 
     .welcome-dates {
-      font-size: 16px;
+      font-size: 17px;
       color: var(--earth);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: 500;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
     }
 
     .welcome-location {
-      font-size: 14px;
-      color: rgba(108,79,61,.8);
-      margin-bottom: 40px;
+      font-size: 13px;
+      color: var(--sage);
+      margin-bottom: 48px;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-weight: 400;
+      letter-spacing: 0.25em;
+      font-weight: 500;
     }
 
     .welcome-text {
-      font-size: 16px;
-      line-height: 1.8;
+      font-size: 17px;
+      line-height: 1.85;
       color: var(--ink);
       margin-bottom: 20px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .welcome-text-es {
@@ -176,66 +246,97 @@
     /* Schedule Section */
     .schedule {
       background: var(--smoke);
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
 
     .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 500;
       color: var(--forest);
       text-align: center;
-      margin-bottom: 40px;
-      letter-spacing: 0.5px;
+      margin-bottom: 48px;
+      letter-spacing: 1px;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
     .schedule-card {
-      background: rgba(255,255,255,.98);
-      border-radius: 16px;
-      margin-bottom: 20px;
+      background: var(--white);
+      border-radius: 20px;
+      margin-bottom: 24px;
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(49,91,58,.08);
-      border: 1px solid rgba(49,91,58,.1);
+      box-shadow: 0 2px 24px rgba(45,82,52,.06);
+      border: 1px solid rgba(45,82,52,.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     @media (hover: hover) and (prefers-reduced-motion: no-preference) {
       .schedule-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 24px rgba(49,91,58,.12);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(45,82,52,.12);
       }
     }
 
     .schedule-card-header {
-      background: linear-gradient(180deg, var(--forest) 0%, #2a4f32 100%);
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
       color: #fff;
-      padding: 16px 20px;
+      padding: 20px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schedule-card-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(40%, -40%);
     }
 
     .schedule-day {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 600;
-      margin-bottom: 4px;
-      letter-spacing: 0.3px;
+      margin-bottom: 6px;
+      letter-spacing: 0.4px;
+      position: relative;
+      z-index: 1;
     }
 
     .schedule-theme {
-      font-size: 13px;
+      font-size: 14px;
       font-style: italic;
       color: rgba(255,255,255,.95);
-      opacity: 0.9;
+      opacity: 0.92;
+      position: relative;
+      z-index: 1;
     }
 
     .schedule-body {
-      padding: 16px 20px;
-      background: linear-gradient(180deg, rgba(230,217,183,.2) 0%, rgba(255,255,255,.0) 30%), rgba(255,255,255,.99);
+      padding: 20px 24px;
+      background: var(--white);
     }
 
     .schedule-item {
       display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(108,79,61,.1);
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(139,159,145,.12);
       align-items: flex-start;
     }
 
@@ -244,86 +345,186 @@
     }
 
     .schedule-time {
-      min-width: 90px;
-      font-size: 13px;
-      font-weight: 500;
+      min-width: 105px;
+      font-size: 14px;
+      font-weight: 600;
       color: var(--earth);
       font-variant-numeric: tabular-nums;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.3px;
     }
 
     .schedule-dot {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: rgba(108,79,61,.3);
-      margin-top: 6px;
+      background: var(--sage);
+      margin-top: 7px;
       flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(139,159,145,.15);
     }
 
     .schedule-activity {
       flex: 1;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--ink);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .ceremony-item {
       position: relative;
+      background: linear-gradient(90deg, rgba(201,162,95,.03) 0%, transparent 100%);
+      margin-left: -24px;
+      margin-right: -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+      border-radius: 8px;
     }
 
     .ceremony-item::before {
       content: '✨';
       position: absolute;
-      left: -20px;
+      left: 4px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 14px;
-      opacity: 0.7;
+      font-size: 16px;
+      opacity: 0.8;
     }
 
     .ceremony-item .schedule-dot {
       background: var(--gold);
-      box-shadow: 0 0 0 3px rgba(217,174,95,.2);
-      width: 6px;
-      height: 6px;
+      box-shadow: 0 0 0 4px rgba(201,162,95,.2);
+      width: 7px;
+      height: 7px;
     }
 
     .ceremony-item .schedule-activity {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--forest);
     }
 
     /* Menu Section */
     .menu {
-      background: linear-gradient(180deg, var(--smoke) 0%, rgba(230,217,183,.1) 100%);
-      padding: 60px 20px;
+      background: linear-gradient(180deg, var(--smoke) 0%, rgba(232,220,196,.08) 100%);
+      padding: 80px 20px;
     }
 
     .menu-intro {
       text-align: center;
-      font-size: 16px;
-      line-height: 1.8;
+      font-size: 17px;
+      line-height: 1.85;
       color: var(--ink);
-      margin-bottom: 30px;
+      margin-bottom: 50px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .menu-intro-es {
       text-align: center;
-      font-size: 16px;
-      line-height: 1.8;
+      font-size: 17px;
+      line-height: 1.85;
       color: rgba(43,36,31,.85);
       font-style: italic;
       margin-bottom: 40px;
     }
 
     .menu-card {
-      background: rgba(255,255,255,.95);
+      background: var(--white);
+      border-radius: 24px;
+      padding: 0;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 24px rgba(45,82,52,.06);
+      border: 1px solid rgba(45,82,52,.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden;
+    }
+
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .menu-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(45,82,52,.12);
+      }
+    }
+
+    .menu-card-header {
+      background: linear-gradient(135deg, rgba(232,220,196,.3) 0%, rgba(201,162,95,.15) 100%);
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(139,159,145,.1);
+    }
+
+    .menu-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--forest);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .menu-card-body {
+      padding: 28px;
+    }
+
+    .menu-meal {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 24px;
+      padding: 16px;
       border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 16px rgba(49,91,58,.08);
-      border: 1px solid rgba(49,91,58,.1);
+      transition: background 0.3s ease;
+    }
+
+    .menu-meal:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .menu-meal:hover {
+        background: rgba(232,220,196,.15);
+      }
+    }
+
+    .menu-icon {
+      font-size: 32px;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(232,220,196,.5) 0%, rgba(201,162,95,.3) 100%);
+      border-radius: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(45,82,52,.08);
+    }
+
+    .menu-meal-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .menu-meal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .menu-meal-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(139,159,145,.2), transparent);
+      min-width: 20px;
+    }
+
+    .menu-description {
+      font-size: 15px;
+      color: rgba(43,36,31,.85);
+      line-height: 1.7;
     }
 
     .menu-meal {
@@ -366,80 +567,91 @@
     /* Ceremonies Section */
     .ceremonies {
       background: var(--smoke);
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
 
     .ceremony-card {
-      background: rgba(255,255,255,.98);
-      border-radius: 16px;
-      padding: 24px;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px;
       margin-bottom: 24px;
-      box-shadow: 0 4px 16px rgba(49,91,58,.08);
-      border: 1px solid rgba(49,91,58,.1);
+      box-shadow: 0 2px 24px rgba(45,82,52,.06);
+      border: 1px solid rgba(45,82,52,.08);
       border-left: 4px solid var(--gold);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
+    }
+
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .ceremony-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 28px rgba(45,82,52,.1);
+        border-left-color: var(--gold-light);
+      }
     }
 
     .ceremony-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 500;
       color: var(--forest);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
     }
 
     .ceremony-description {
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.8;
       color: var(--ink);
       margin-bottom: 16px;
     }
 
     .ceremony-description-es {
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.8;
       color: rgba(43,36,31,.85);
       font-style: italic;
     }
 
     /* Location & Tips Section */
     .location {
-      background: linear-gradient(180deg, rgba(230,217,183,.1) 0%, var(--smoke) 100%);
-      padding: 60px 20px;
+      background: linear-gradient(180deg, rgba(232,220,196,.08) 0%, var(--smoke) 100%);
+      padding: 80px 20px;
     }
 
     .location-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 500;
       color: var(--forest);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
     }
 
     .location-text {
-      font-size: 16px;
-      line-height: 1.8;
+      font-size: 17px;
+      line-height: 1.85;
       color: var(--ink);
       margin-bottom: 8px;
     }
 
     .location-text-es {
-      font-size: 16px;
-      line-height: 1.8;
+      font-size: 17px;
+      line-height: 1.85;
       color: rgba(43,36,31,.85);
       font-style: italic;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .tips-list {
       list-style: none;
-      margin-top: 24px;
+      margin-top: 32px;
     }
 
     .tip-item {
       display: flex;
-      gap: 12px;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(108,79,61,.1);
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(139,159,145,.15);
       align-items: flex-start;
     }
 
@@ -448,14 +660,14 @@
     }
 
     .tip-icon {
-      font-size: 20px;
-      width: 32px;
-      height: 32px;
+      font-size: 22px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(230,217,183,.3);
-      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(232,220,196,.4) 0%, rgba(201,162,95,.2) 100%);
+      border-radius: 12px;
       flex-shrink: 0;
     }
 
@@ -464,73 +676,88 @@
     }
 
     .tip-title {
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 17px;
+      font-weight: 600;
       color: var(--forest);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
     }
 
     .tip-text {
-      font-size: 14px;
-      color: rgba(43,36,31,.8);
-      line-height: 1.6;
+      font-size: 15px;
+      color: rgba(43,36,31,.85);
+      line-height: 1.7;
     }
 
     .tip-text-es {
-      font-size: 14px;
+      font-size: 15px;
       color: rgba(43,36,31,.75);
       font-style: italic;
-      margin-top: 4px;
+      margin-top: 6px;
+      line-height: 1.7;
     }
 
     /* Contact Section */
     .contact {
-      background: linear-gradient(180deg, var(--smoke) 0%, rgba(49,91,58,.03) 100%);
-      padding: 60px 20px;
+      background: linear-gradient(180deg, var(--smoke) 0%, rgba(45,82,52,.04) 100%);
+      padding: 80px 20px;
       text-align: center;
     }
 
     .contact-brand {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 500;
       color: var(--forest);
-      margin-bottom: 24px;
-      letter-spacing: 0.2em;
+      margin-bottom: 28px;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       font-family: 'Inter', sans-serif;
     }
 
     .contact-info {
-      font-size: 16px;
+      font-size: 17px;
       color: var(--ink);
       margin-bottom: 12px;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     .contact-link {
       color: var(--forest);
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s ease;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease, color 0.3s ease;
+      padding-bottom: 2px;
     }
 
     .contact-link:hover {
-      border-bottom-color: var(--forest);
+      border-bottom-color: var(--gold);
+      color: var(--forest-light);
     }
 
     /* Responsive */
     @media (max-width: 480px) {
       .welcome-title {
-        font-size: 28px;
+        font-size: 32px;
       }
       .section-title {
-        font-size: 28px;
+        font-size: 30px;
       }
       .schedule-day {
-        font-size: 16px;
+        font-size: 17px;
       }
       .ceremony-name {
-        font-size: 20px;
+        font-size: 22px;
+      }
+      .lang-toggle {
+        width: 40px;
+        height: 40px;
+        top: 12px;
+        right: 12px;
+      }
+      .lang-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
       }
     }
   </style>
@@ -538,8 +765,8 @@
 <body>
   <!-- Language Toggle -->
   <div class="lang-toggle">
-    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')" title="English">🇺🇸</button>
-    <button class="lang-btn" data-lang="es" onclick="switchLanguage('es')" title="Español">🇲🇽</button>
+    <button class="lang-btn" data-lang="en" onclick="switchLanguage('es')" title="Switch to Español">🇲🇽</button>
+    <button class="lang-btn" data-lang="es" onclick="switchLanguage('en')" title="Switch to English">🇺🇸</button>
   </div>
 
   <!-- Welcome Section -->
@@ -603,37 +830,37 @@
         </div>
         <div class="schedule-body">
           <div class="schedule-item ceremony-item">
-            <span class="schedule-time">8:30 – 11:00</span>
+            <span class="schedule-time">7:30 – 10:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Kambo Ceremony ✨</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">11:00 – 12:00</span>
+            <span class="schedule-time">10:00 – 11:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Breakfast</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">12:30 – 14:00</span>
+            <span class="schedule-time">11:30 AM – 1:00 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Qi Gong Workshop</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">14:30 – 15:30</span>
+            <span class="schedule-time">1:30 – 2:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Lunch</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">16:00 – 17:00</span>
+            <span class="schedule-time">3:00 – 4:00 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Hike in the Forest</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">17:00 – 18:30</span>
+            <span class="schedule-time">4:00 – 5:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Documentary: Ayahuasca</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">18:30 – 19:30</span>
+            <span class="schedule-time">5:30 – 6:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Dinner</span>
           </div>
@@ -648,29 +875,34 @@
         </div>
         <div class="schedule-body">
           <div class="schedule-item">
-            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-time">9:00 – 10:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Qi Gong Practice</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-time">10:00 – 11:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Breakfast</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">11:00 – 13:30</span>
+            <span class="schedule-time">11:00 AM – 1:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Workshop: Ordering My Family</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-time">1:30 – 2:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Lunch</span>
           </div>
           <div class="schedule-item ceremony-item">
-            <span class="schedule-time">16:00 – 23:00</span>
+            <span class="schedule-time">4:00 – 11:00 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Ayahuasca Ceremony ✨</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">11:00 PM – 12:00 AM</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Dinner</span>
           </div>
         </div>
       </div>
@@ -679,36 +911,36 @@
       <div class="schedule-card">
         <div class="schedule-card-header">
           <div class="schedule-day">🌿 Wednesday, January 14</div>
-          <div class="schedule-theme">Integration & Parental Energy</div>
+          <div class="schedule-theme">Breaking Family Loyalties</div>
         </div>
         <div class="schedule-body">
           <div class="schedule-item">
-            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-time">9:00 – 10:00 AM</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Qi Gong Practice</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00 – 11:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Breakfast</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-time">11:00 AM – 1:30 PM</span>
             <span class="schedule-dot"></span>
-            <span class="schedule-activity">Workshop Integration Ceremony</span>
+            <span class="schedule-activity">Workshop: Breaking Family Loyalties</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">11:00 – 14:00</span>
-            <span class="schedule-dot"></span>
-            <span class="schedule-activity">Monarch Butterflies</span>
-          </div>
-          <div class="schedule-item">
-            <span class="schedule-time">14:00 – 15:00</span>
+            <span class="schedule-time">1:30 – 2:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Lunch</span>
           </div>
-          <div class="schedule-item">
-            <span class="schedule-time">15:30 – 18:30</span>
+          <div class="schedule-item ceremony-item">
+            <span class="schedule-time">4:00 – 11:00 PM</span>
             <span class="schedule-dot"></span>
-            <span class="schedule-activity">Workshop: Taking Mother/Father Energy</span>
+            <span class="schedule-activity">Ayahuasca Ceremony ✨</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">18:30 – 19:30</span>
+            <span class="schedule-time">11:00 PM – 12:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Dinner</span>
           </div>
@@ -719,33 +951,38 @@
       <div class="schedule-card">
         <div class="schedule-card-header">
           <div class="schedule-day">🌿 Thursday, January 15</div>
-          <div class="schedule-theme">Family Loyalties</div>
+          <div class="schedule-theme">Inner Child Healing</div>
         </div>
         <div class="schedule-body">
           <div class="schedule-item">
-            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-time">9:00 – 10:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Qi Gong Practice</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-time">10:00 – 11:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Breakfast</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">11:00 – 13:30</span>
+            <span class="schedule-time">11:00 AM – 1:30 PM</span>
             <span class="schedule-dot"></span>
-            <span class="schedule-activity">Workshop: Breaking Family Loyalties</span>
+            <span class="schedule-activity">Monarch Butterflies Visit</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-time">1:30 – 2:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Lunch</span>
           </div>
-          <div class="schedule-item ceremony-item">
-            <span class="schedule-time">16:00 – 23:00</span>
+          <div class="schedule-item">
+            <span class="schedule-time">3:00 – 5:30 PM</span>
             <span class="schedule-dot"></span>
-            <span class="schedule-activity">Ayahuasca Ceremony ✨</span>
+            <span class="schedule-activity">Workshop: Healing Child Wounds</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">5:30 – 6:30 PM</span>
+            <span class="schedule-dot"></span>
+            <span class="schedule-activity">Dinner</span>
           </div>
         </div>
       </div>
@@ -754,38 +991,38 @@
       <div class="schedule-card">
         <div class="schedule-card-header">
           <div class="schedule-day">🌿 Friday, January 16</div>
-          <div class="schedule-theme">Inner Child Healing</div>
+          <div class="schedule-theme">Parental Energy</div>
         </div>
         <div class="schedule-body">
           <div class="schedule-item">
-            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-time">9:00 – 10:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Qi Gong Practice</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-time">10:00 – 11:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Breakfast</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">11:00 – 13:30</span>
+            <span class="schedule-time">11:00 AM – 1:30 PM</span>
             <span class="schedule-dot"></span>
-            <span class="schedule-activity">Workshop: Healing Child Wounds</span>
+            <span class="schedule-activity">Workshop: Taking Mother/Father Energy</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-time">1:30 – 2:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Lunch</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">15:00 – 17:30</span>
+            <span class="schedule-time">3:00 – 5:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Visit Avándaro</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">17:30 – 18:30</span>
+            <span class="schedule-time">5:30 – 6:30 PM</span>
             <span class="schedule-dot"></span>
-            <span class="schedule-activity">Dinner</span>
+            <span class="schedule-activity">Dinner in Avándaro</span>
           </div>
         </div>
       </div>
@@ -798,37 +1035,32 @@
         </div>
         <div class="schedule-body">
           <div class="schedule-item ceremony-item">
-            <span class="schedule-time">8:30 – 10:00</span>
+            <span class="schedule-time">9:00 – 10:30 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Bufo Ceremony ✨</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-time">10:30 – 11:30 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Breakfast</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">11:00 – 12:00</span>
-            <span class="schedule-dot"></span>
-            <span class="schedule-activity">Qi Gong Practice</span>
-          </div>
-          <div class="schedule-item">
-            <span class="schedule-time">12:00 – 13:30</span>
+            <span class="schedule-time">12:00 – 1:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Integration Workshop</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">13:30 – 14:30</span>
+            <span class="schedule-time">1:30 – 2:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Lunch</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">15:00 – 18:30</span>
+            <span class="schedule-time">3:00 – 5:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Visit Valle</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">18:30 – 19:30</span>
+            <span class="schedule-time">5:30 – 6:30 PM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Dinner</span>
           </div>
@@ -843,12 +1075,12 @@
         </div>
         <div class="schedule-body">
           <div class="schedule-item">
-            <span class="schedule-time">9:00 – 10:00</span>
+            <span class="schedule-time">9:00 – 10:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Breakfast</span>
           </div>
           <div class="schedule-item">
-            <span class="schedule-time">10:00 – 11:00</span>
+            <span class="schedule-time">10:00 – 11:00 AM</span>
             <span class="schedule-dot"></span>
             <span class="schedule-activity">Departures</span>
           </div>
@@ -867,113 +1099,199 @@
 
       <!-- January 11 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan11.title">January 11</h3>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan11.dinner">Dinner – 7:00 PM</div>
-          <div class="menu-description" data-i18n="menu.jan11.dinner_desc">Organic chicken enchiladas, prepared with organic chicken and fresh vegetables from our garden.</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan11.title">January 11</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🍽️</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan11.dinner">Dinner – 7:00 PM</div>
+              <div class="menu-description" data-i18n="menu.jan11.dinner_desc">Organic chicken enchiladas, prepared with organic chicken and fresh vegetables from our garden.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- January 12 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan12.title">January 12</h3>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan12.breakfast">Breakfast</div>
-          <div class="menu-description" data-i18n="menu.jan12.breakfast_desc">Mexican-style eggs served with handmade corn tortillas and fresh seasonal fruit.</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan12.title">January 12</h3>
         </div>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan12.lunch">Lunch</div>
-          <div class="menu-description" data-i18n="menu.jan12.lunch_desc">Tuna salad served with baked tortillas and fresh mixed greens.</div>
-        </div>
-        <div>
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan12.dinner">Dinner</div>
-          <div class="menu-description" data-i18n="menu.jan12.dinner_desc">Fresh organic trout from our lake, served with rice and a garden vegetable salad.</div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🌅</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan12.breakfast">Breakfast</div>
+              <div class="menu-description" data-i18n="menu.jan12.breakfast_desc">Mexican-style eggs served with handmade corn tortillas and fresh seasonal fruit.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">☀️</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan12.lunch">Lunch</div>
+              <div class="menu-description" data-i18n="menu.jan12.lunch_desc">Tuna salad served with baked tortillas and fresh mixed greens.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">🌙</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan12.dinner">Dinner</div>
+              <div class="menu-description" data-i18n="menu.jan12.dinner_desc">Fresh organic trout from our lake, served with rice and a garden vegetable salad.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- January 13 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan13.title">January 13</h3>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan13.breakfast">Breakfast</div>
-          <div class="menu-description" data-i18n="menu.jan13.breakfast_desc">Huevos rancheros served with handmade corn tortillas and fresh fruit (kiwi, papaya, and melon).</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan13.title">January 13</h3>
         </div>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan13.lunch">Lunch</div>
-          <div class="menu-description" data-i18n="menu.jan13.lunch_desc">Fresh salad with avocado and organic chicken, mixed vegetables, olive oil, and apple vinegar dressing.</div>
-        </div>
-        <div>
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan13.dinner">Dinner</div>
-          <div class="menu-description" data-i18n="menu.jan13.dinner_desc">Organic chicken soup, served with rice on the side to add according to your preference.</div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🌅</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan13.breakfast">Breakfast</div>
+              <div class="menu-description" data-i18n="menu.jan13.breakfast_desc">Huevos rancheros served with handmade corn tortillas and fresh fruit (kiwi, papaya, and melon).</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">☀️</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan13.lunch">Lunch</div>
+              <div class="menu-description" data-i18n="menu.jan13.lunch_desc">Fresh salad with avocado and organic chicken, mixed vegetables, olive oil, and apple vinegar dressing.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">🌙</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan13.dinner">Dinner</div>
+              <div class="menu-description" data-i18n="menu.jan13.dinner_desc">Organic chicken soup, served with rice on the side to add according to your preference.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- January 14 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan14.title">January 14</h3>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan14.breakfast">Breakfast</div>
-          <div class="menu-description" data-i18n="menu.jan14.breakfast_desc">Hard-boiled eggs served with oatmeal on the side and fresh organic fruit.</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan14.title">January 14</h3>
         </div>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan14.lunch">Lunch</div>
-          <div class="menu-description" data-i18n="menu.jan14.lunch_desc">Rice salad with boiled eggs and organic vegetables.</div>
-        </div>
-        <div>
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan14.dinner">Dinner</div>
-          <div class="menu-description" data-i18n="menu.jan14.dinner_desc">Organic chicken soup, served with rice on the side to add according to your preference.</div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🌅</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan14.breakfast">Breakfast</div>
+              <div class="menu-description" data-i18n="menu.jan14.breakfast_desc">Hard-boiled eggs served with oatmeal on the side and fresh organic fruit.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">☀️</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan14.lunch">Lunch</div>
+              <div class="menu-description" data-i18n="menu.jan14.lunch_desc">Rice salad with boiled eggs and organic vegetables.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">🌙</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan14.dinner">Dinner</div>
+              <div class="menu-description" data-i18n="menu.jan14.dinner_desc">Organic chicken soup, served with rice on the side to add according to your preference.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- January 15 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan15.title">January 15</h3>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan15.breakfast">Breakfast</div>
-          <div class="menu-description" data-i18n="menu.jan15.breakfast_desc">Vegetable omelet seasoned with sea salt, served with homemade crispy potatoes and seasonal fruit.</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan15.title">January 15</h3>
         </div>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan15.lunch">Lunch</div>
-          <div class="menu-description" data-i18n="menu.jan15.lunch_desc">Traditional cecina tacos served with handmade tortillas and homemade sauces.</div>
-        </div>
-        <div>
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan15.dinner">Dinner</div>
-          <div class="menu-description" data-i18n="menu.jan15.dinner_desc">Asian-style BBQ organic chicken marinated with ginger, chili, garlic, and fresh lime, served with steamed seasonal organic vegetables and homemade mashed potatoes.</div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🌅</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan15.breakfast">Breakfast</div>
+              <div class="menu-description" data-i18n="menu.jan15.breakfast_desc">Vegetable omelet seasoned with sea salt, served with homemade crispy potatoes and seasonal fruit.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">☀️</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan15.lunch">Lunch</div>
+              <div class="menu-description" data-i18n="menu.jan15.lunch_desc">Traditional cecina tacos served with handmade tortillas and homemade sauces.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">🌙</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan15.dinner">Dinner</div>
+              <div class="menu-description" data-i18n="menu.jan15.dinner_desc">Asian-style BBQ organic chicken marinated with ginger, chili, garlic, and fresh lime, served with steamed seasonal organic vegetables and homemade mashed potatoes.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- January 16 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan16.title">January 16</h3>
-        <div>
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan16.lunch">Lunch</div>
-          <div class="menu-description" data-i18n="menu.jan16.lunch_desc">Visit to downtown Valle de Bravo (Meals taken outside the retreat location)</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan16.title">January 16</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🏞️</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan16.lunch">Lunch</div>
+              <div class="menu-description" data-i18n="menu.jan16.lunch_desc">Visit to downtown Valle de Bravo (Meals taken outside the retreat location)</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- January 17 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan17.title">January 17</h3>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan17.breakfast">Breakfast</div>
-          <div class="menu-description" data-i18n="menu.jan17.breakfast_desc">Smoked organic trout on toast, served with bagel, cream cheese, onion, and tomato, accompanied by fresh seasonal fruit.</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan17.title">January 17</h3>
         </div>
-        <div style="margin-bottom: 16px;">
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan17.lunch">Lunch</div>
-          <div class="menu-description" data-i18n="menu.jan17.lunch_desc">Chicken tinga tacos served with organic salad and handmade tortillas.</div>
-        </div>
-        <div>
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan17.dinner">Dinner</div>
-          <div class="menu-description" data-i18n="menu.jan17.dinner_desc">Lamb leg served with black pepper reduction and demi-glace sauce, accompanied by candied carrots, caramelized pecans, seasonal vegetables, and fresh salad.</div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🌅</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan17.breakfast">Breakfast</div>
+              <div class="menu-description" data-i18n="menu.jan17.breakfast_desc">Smoked organic trout on toast, served with bagel, cream cheese, onion, and tomato, accompanied by fresh seasonal fruit.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">☀️</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan17.lunch">Lunch</div>
+              <div class="menu-description" data-i18n="menu.jan17.lunch_desc">Chicken tinga tacos served with organic salad and handmade tortillas.</div>
+            </div>
+          </div>
+          <div class="menu-meal">
+            <div class="menu-icon">🌙</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan17.dinner">Dinner</div>
+              <div class="menu-description" data-i18n="menu.jan17.dinner_desc">Lamb leg served with black pepper reduction and demi-glace sauce, accompanied by candied carrots, caramelized pecans, seasonal vegetables, and fresh salad.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- January 18 -->
       <div class="menu-card">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--forest); margin-bottom: 16px;" data-i18n="menu.jan18.title">January 18</h3>
-        <div>
-          <div style="font-weight: 500; color: var(--earth); margin-bottom: 6px;" data-i18n="menu.jan18.breakfast">Breakfast</div>
-          <div class="menu-description" data-i18n="menu.jan18.breakfast_desc">Chilaquiles topped with two eggs prepared to your liking, served with seasonal fruit.</div>
+        <div class="menu-card-header">
+          <h3 class="menu-card-title" data-i18n="menu.jan18.title">January 18</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-meal">
+            <div class="menu-icon">🌅</div>
+            <div class="menu-meal-content">
+              <div class="menu-meal-title" data-i18n="menu.jan18.breakfast">Breakfast</div>
+              <div class="menu-description" data-i18n="menu.jan18.breakfast_desc">Chilaquiles topped with two eggs prepared to your liking, served with seasonal fruit.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1235,9 +1553,15 @@
     function switchLanguage(lang) {
       currentLang = lang;
       
-      // Update button states
+      // Update button visibility - show opposite flag
       document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
+        if (btn.dataset.lang === 'en') {
+          // Show Mexico flag when in English (click to switch to Spanish)
+          btn.classList.toggle('active', lang === 'en');
+        } else {
+          // Show USA flag when in Spanish (click to switch to English)
+          btn.classList.toggle('active', lang === 'es');
+        }
       });
       
       // Update all translatable elements
@@ -1252,11 +1576,14 @@
       localStorage.setItem('preferredLanguage', lang);
     }
 
-    // Load saved language preference on page load
+    // Load saved language preference or default to English
     document.addEventListener('DOMContentLoaded', () => {
       const savedLang = localStorage.getItem('preferredLanguage');
-      if (savedLang && (savedLang === 'en' || savedLang === 'es')) {
-        switchLanguage(savedLang);
+      // Always default to English unless explicitly saved as Spanish
+      if (savedLang === 'es') {
+        switchLanguage('es');
+      } else {
+        switchLanguage('en');
       }
     });
   </script>
